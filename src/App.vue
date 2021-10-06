@@ -7,7 +7,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
     HelloWorld
   },
@@ -15,14 +15,6 @@ export default {
     title: String,
     isBold: Boolean,
   },
-  methods: {
-
-  },
-  mounted() {
-    localStorage.hocico = 'Tomas'
-    console.log(localStorage.hocico);
-  }
-
 }
 
 
