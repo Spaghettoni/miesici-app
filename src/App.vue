@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="Welcome to Your Vue.js App" age="15" icon="favicon"/>
 </template>
 
 <script>
@@ -10,8 +10,22 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  props: {
+    title: String,
+    isBold: Boolean,
+  },
+  methods: {
+
+  },
+  mounted() {
+    localStorage.hocico = 'Tomas'
+    console.log(localStorage.hocico);
   }
+
 }
+
+
 </script>
 
 <style>
