@@ -1,10 +1,12 @@
 <template>
-$END$
+<div>
+  <h2>Welcome to miesici App</h2>
+</div>
 </template>
 
 <script>
 export default {
-name: "HomeComponent"
+  name: "HomeComponent"
 }
 </script>
 

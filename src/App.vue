@@ -1,23 +1,14 @@
 <template>
-  <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/NotFound">Not Found</router-link>
-  </div>
+  <nav-bar-component></nav-bar-component>
   <router-view />
-
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App" age="15" icon="favicon"/>
-
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import NavBarComponent from "@/components/NavBarComponent";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  },
+  name: 'App',
+  components: {NavBarComponent},
   props: {
     title: String,
     isBold: Boolean,
