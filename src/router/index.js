@@ -3,6 +3,7 @@ import NotFoundComponent from "@/components/NotFoundComponent.vue";
 import HomeComponent from "@/components/HomeComponent";
 import LoginComponent from "@/components/LoginComponent";
 import UpcomingEventsComponent from "@/components/UpcomingEventsComponent";
+import RegistrationComponent from "@/components/RegistrationComponent";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     name: "UpcomingEventsComponent",
     component: UpcomingEventsComponent,
   },
+  {
+    path: "/Registration",
+    name: "Registration",
+    component: RegistrationComponent,
+  }
 ];
 
 const router = createRouter({
