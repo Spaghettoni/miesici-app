@@ -36,7 +36,7 @@
         />
       </div>
       <button type="button" v-on:click="register()"
-              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black">Register</button>
+              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black hover:bg-orange">Register</button>
 
       <div class="mt-5 mx-auto text-xl flex flex-col items-center">
         <p>Already have an account?</p>
