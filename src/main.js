@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/styles.css'
 import router from './router'
+import {LocalStorageController} from "@/controllers/LocalStorageController";
+import {UsersController} from "@/controllers/UsersController";
 
 const app = createApp(App);
 
@@ -37,6 +39,9 @@ requireComponent.keys().forEach(fileName => {
 });
 
 app.use(router).mount('#app');
+const con = new LocalStorageController()
+const usersController = new UsersController();
+usersController.printAllUsers();
 
 
 
