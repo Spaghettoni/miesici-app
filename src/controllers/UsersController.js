@@ -26,8 +26,6 @@ export class UsersController {
         return false;
     }
 
-
-
     printAllUsers(){
         var arrayLength = this.users.length;
         for (let i = 0; i < arrayLength; i++) {
