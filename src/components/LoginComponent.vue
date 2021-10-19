@@ -1,14 +1,30 @@
 <template>
-  <div id="login" class="border-black border-2">
-    <div class="form-inputs">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" v-model="input.username" placeholder="Username" />
+  <div id="login" class="w-full flex justify-center">
+    <div class="mx-6 mt-10 p-10 max-w-2xl border-2 flex flex-col w-full">
+      <div class="form-inputs flex flex-col">
+        <label class="text-2xl" for="username">Username</label>
+        <input type="text" id="username" name="username"
+               v-model="input.username"
+               placeholder="username"
+               class="px-4 py-2 text-4xl border-2 border-black"
+        />
+      </div>
+      <div class="mt-6 form-inputs  flex flex-col">
+        <label class="text-2xl" for="password">Password</label>
+        <input type="password" id="password" name="password"
+               v-model="input.password"
+               placeholder="password"
+               class="px-4 py-2 text-4xl border-2 border-black"
+        />
+      </div>
+      <button type="button" v-on:click="login()"
+              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black">Login</button>
+
+      <div class="mt-5 mx-auto text-xl flex flex-col items-center">
+        <p>Don't have an account yet?</p>
+        <router-link to="/Registration" class="font-semibold underline">Register here!</router-link>
+      </div>
     </div>
-    <div class="form-inputs">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" v-model="input.password" placeholder="Password" />
-    </div>
-    <button type="button" v-on:click="login()" class="border-2 border-black">Login</button>
   </div>
 </template>
 
