@@ -8,26 +8,26 @@ import RegistrationComponent from "@/components/RegistrationComponent";
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: HomeComponent,
   },
   {
-    path: "/NotFound",
+    path: "/not-found",
     name: "NotFoundComponent",
     component: NotFoundComponent,
   },
   {
-    path: "/Login",
+    path: "/login",
     name: "LoginComponent",
     component: LoginComponent,
   },
   {
-    path: "/Events",
+    path: "/events",
     name: "UpcomingEventsComponent",
     component: UpcomingEventsComponent,
   },
   {
-    path: "/Registration",
+    path: "/register",
     name: "Registration",
     component: RegistrationComponent,
   }
