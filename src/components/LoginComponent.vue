@@ -18,7 +18,11 @@
         />
       </div>
       <button type="button" v-on:click="login()"
-              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black">Login</button>
+              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+                     hover:bg-white hover:text-black"
+      >
+        Login
+      </button>
 
       <div class="mt-5 mx-auto text-xl flex flex-col items-center">
         <p>Don't have an account yet?</p>
@@ -45,7 +49,7 @@ export default {
   },
   methods: {
     login() {
-      if(this.input.username != "" && this.input.password != "") {
+      if(this.input.username !== "" && this.input.password !== "") {
         // This should actually be an api call not a check against this.$parent.mockAccount
         // if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
         //   this.$emit("authenticated", true);
@@ -53,7 +57,7 @@ export default {
         // } else {
         //   console.log("The username and / or password is incorrect");
         // }
-        if(this.input.username == "filip" && this.input.password == "filip") {
+        if(this.input.username === "filip" && this.input.password === "filip") {
           // this.$emit("authenticated", true);
           router.push(UpcomingEventsComponent);
         } else {
