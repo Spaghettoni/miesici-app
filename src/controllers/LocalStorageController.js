@@ -1,11 +1,27 @@
 import storage from "@/assets/LocalStorage";
-import {UsersController} from "@/controllers/UsersController";
 
-export class LocalStorageController {
-    constructor() {
-        localStorage.setItem("db", JSON.stringify(storage));
+const LocalStorageController = {
+    constructor: () => {
+        if(LocalStorageController._instance){
+            return LocalStorageController._instance
+        }
+        LocalStorageController._instance = this;
+        if (!localStorage.getItem('db')) {
+            localStorage.setItem("db", JSON.stringify(storage));
+            console.log('nebola databazka bro');
+        }
+        console.log('konstruktor co');
+    },
+
+    save: async (key, value) => {
+        let db = JSON.parse(localStorage.getItem("db"));
+        db[key] = value;
+        await localStorage.setItem("db", JSON.stringify(db));
+        console.log("successfully changed key " + key + " to value " + value);
     }
 }
+
+export default LocalStorageController;
 
 
 

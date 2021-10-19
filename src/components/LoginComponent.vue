@@ -17,9 +17,9 @@
                class="px-4 py-2 text-4xl border-2 border-black"
         />
       </div>
-      <button type="button" v-on:click="login.login(input.username, input.password, '/')"
+      <button type="button" v-on:click="this.login(input.username, input.password, '/')"
               class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
-                      hover:bg-orange"
+                      hover:bg-orange "
       >
         Login
       </button>
@@ -33,18 +33,19 @@
 </template>
 
 <script>
-import router from "@/router";
-import {LoginController} from "../controllers/LoginController";
+import LoginController from "../controllers/LoginController";
+import router from "../router";
 
 export default {
   name: 'LoginComponent',
   data() {
     return {
-      login: new LoginController(),
+      login: LoginController.login,
       input: {
         username: "",
         password: ""
-      }
+      },
+      route: router.currentRoute,
     }
   },
 }
