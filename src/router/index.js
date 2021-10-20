@@ -5,6 +5,7 @@ import RegistrationComponent from "@/components/RegistrationComponent";
 import ProfileComponent from "../components/ProfileComponent";
 import TeamsComponent from "../components/TeamsPageComponent";
 import EventsComponent from "../components/EventsComponent";
+import TeamDetailComponent from "../components/TeamDetailComponent";
 
 const routes = [
   {
@@ -21,6 +22,12 @@ const routes = [
     path: "/teams",
     name: "Teams",
     component: TeamsComponent,
+  },
+  {
+    path: "/team-detail",
+    name: "TeamDetail",
+    props: true,
+    component: TeamDetailComponent,
   },
   {
     path: "/events",
