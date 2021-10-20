@@ -6,6 +6,24 @@
     >
       Home
     </div>
+    <div v-if="this.state.loggedUser !== null"
+         @click="updatePath('/profile')"
+         class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange"
+    >
+      Profile
+    </div>
+    <div v-if="this.state.loggedUser !== null"
+         @click="updatePath('/teams')"
+         class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange"
+    >
+      Teams
+    </div>
+    <div v-if="this.state.loggedUser !== null"
+         @click="updatePath('/events')"
+         class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange"
+    >
+      Events
+    </div>
     <div  v-if="this.state.loggedUser === null"
           @click="updatePath('/login')"
           class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange"
@@ -36,7 +54,6 @@ export default {
   name: "NavBarComponent",
   data() {
     return {
-      navEntries: ['/', '/events', '/teams', '/login', '/register'],
       router: router,
       state: store.state,
       logout: LoginController.logout,
