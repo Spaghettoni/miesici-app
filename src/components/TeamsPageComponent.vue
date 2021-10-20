@@ -1,7 +1,7 @@
 <template>
-<div>
+<div class="w-full flex justify-center">
   <div>
-    Teams
+    <h1>My Teams</h1>
   </div>
   <div>
     <div v-bind:key=team v-for="team in this.teams">
@@ -16,21 +16,16 @@
 
 <script>
 import TeamsController from "../controllers/TeamsController";
-import TeamComponent from "./TeamComponent";
 
 export default {
   name: "TeamsComponent",
-  components: {TeamComponent},
   data() {
     return {
       teams: null,
     }
   },
   mounted() {
-    console.log('Teams Component mounted!');
-    console.log('this.teams:', this.teams);
     this.teams = TeamsController.getTeams();
-    console.log(this.teams)
   }
 }
 </script>
