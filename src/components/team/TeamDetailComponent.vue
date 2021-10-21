@@ -1,6 +1,11 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="mt-10 p-4 flex flex-col w-full max-w-2xl border-2">
+      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
+           @click="goBack"
+      >
+        &lt;&nbsp;back
+      </div>
       <div>
         <h1 class="mb-4 font-semibold text-6xl">
           Team detail
@@ -48,6 +53,8 @@
 </template>
 
 <script>
+import router from "../../router";
+
 export default {
   name: "TeamDetailComponent",
   props: {
@@ -59,6 +66,11 @@ export default {
       input: {
         member: '',
       }
+    }
+  },
+  methods: {
+    goBack() {
+      router.back();
     }
   },
   mounted() {

@@ -1,7 +1,12 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="mt-10 p-4 flex flex-col w-full max-w-2xl border-2">
-      <div class="flex justify-between items-center">
+      <div class="cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
+           @click="goBack"
+      >
+        &lt;&nbsp;back
+      </div>
+      <div class="mt-6 flex justify-between items-center">
         <h1 class="mb-4 font-semibold text-6xl">
           My Teams
         </h1>
@@ -30,12 +35,18 @@
 
 <script>
 import TeamsController from "../../controllers/TeamsController";
+import router from "../../router";
 
 export default {
   name: "TeamsComponent",
   data() {
     return {
       teams: null,
+    }
+  },
+  methods: {
+    goBack() {
+      router.back()
     }
   },
   mounted() {
