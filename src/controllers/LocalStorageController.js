@@ -7,6 +7,7 @@ const LocalStorageController = {
         }
         LocalStorageController._instance = this;
         if (!localStorage.getItem('db')) {
+            console.log('database refreshed');
             localStorage.setItem("db", JSON.stringify(storage));
         }
     },
