@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 p-4 flex flex-col w-full max-w-2xl border-2">
+    <div class="mt-10 p-4 flex flex-col w-full max-w-3xl border-2">
       <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
            @click="goBack"
       >
@@ -37,6 +37,8 @@
       <button type="button"
               class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
                       hover:bg-orange"
+              @click="createTeam"
+
       >
         Create team
       </button>
@@ -46,6 +48,7 @@
 
 <script>
 import router from "../../router";
+import TeamsController from "../../controllers/TeamsController";
 
 export default {
   name: "CreateTeamComponent",
@@ -60,6 +63,10 @@ export default {
   methods: {
     goBack() {
       router.back()
+    },
+    createTeam() {
+      TeamsController.createTeam(this.input.teamName);
+      router.push('/teams');
     }
   },
 }

@@ -20,6 +20,14 @@ const LocalStorageController = {
 
     get: (key) => {
         return JSON.parse(localStorage.getItem("db"))[key];
+    },
+
+    getDB: () => {
+        return JSON.parse(localStorage.getItem("db"));
+    },
+
+    saveDB: (db) => {
+        localStorage.setItem("db", JSON.stringify(db));
     }
 }
 

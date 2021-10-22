@@ -7,6 +7,7 @@ import LoginController from "./controllers/LoginController";
 import TeamsController from "./controllers/TeamsController";
 
 console.log('main called');
+localStorage.clear();
 LocalStorageController.constructor();
 LoginController.constructor();
 TeamsController.constructor();
