@@ -40,14 +40,17 @@ const storage = {
         {
             "name": "Veľký šampionát v Bernolákove",
             "team": "Miesici",
+            "attendees": ["Janko", "Milan", "Tomino"],
         },
         {
             "name": "DL Boyz derby",
             "team": "Miesici",
+            "attendees": ["Lukáš", "Matej", "Filip"],
         },
         {
             "name": "Račiansky playoff",
             "team": "Futbalisti",
+            "attendees": [],
         },
     ],
 
