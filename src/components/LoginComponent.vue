@@ -37,6 +37,7 @@ export default {
         // } else {
         //   console.log("The username and / or password is incorrect");
         // }
+
         if(this.input.username == "filip" && this.input.password == "filip") {
           // this.$emit("authenticated", true);
           router.push(UpcomingEventsComponent);
