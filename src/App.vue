@@ -3,7 +3,7 @@
       <div class="w-full">
         <nav-bar-component></nav-bar-component>
       </div>
-      <div>
+      <div class="">
         <router-view />
       </div>
   </div>
