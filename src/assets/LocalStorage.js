@@ -7,12 +7,15 @@ const storage = {
     {"username": "Ondrej", "password": "Ondrej", "mail":"ondrej@gmail.com", "teams": ["Futbalisti"]}
   ],
 
+  "loggedUser": null,
+
   "teams": [
 
     {"name": "Kolegovci", "members": ["Janko"]},
     {"name": "Miesici", "members": ["Janko"]},
     {"name": "Futbalisti", "members": ["Peter", "Ondrej"]}
-  ]
+  ],
+
 
 }
 

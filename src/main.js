@@ -2,10 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/styles.css'
 import router from './router'
-import {LocalStorageController} from "@/controllers/LocalStorageController";
-import {UsersController} from "@/controllers/UsersController";
+import LocalStorageController from "./controllers/LocalStorageController";
+import LoginController from "./controllers/LoginController";
+
+console.log('main called');
+LocalStorageController.constructor();
+LoginController.constructor();
 
 const app = createApp(App);
+app.use(router);
 
 const requireComponent = require.context(
     // The relative path of the components folder
@@ -38,10 +43,7 @@ requireComponent.keys().forEach(fileName => {
     )
 });
 
-app.use(router).mount('#app');
-const con = new LocalStorageController()
-const usersController = new UsersController();
-usersController.printAllUsers();
+app.mount('#app');
 
 
 

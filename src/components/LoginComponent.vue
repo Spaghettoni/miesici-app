@@ -17,9 +17,9 @@
                class="px-4 py-2 text-4xl border-2 border-black"
         />
       </div>
-      <button type="button" v-on:click="login()"
+      <button type="button" v-on:click="this.login(input.username, input.password, '/')"
               class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
-                     hover:bg-white hover:text-black"
+                      hover:bg-orange "
       >
         Login
       </button>
@@ -33,42 +33,21 @@
 </template>
 
 <script>
-import router from "@/router";
-import NotFoundComponent from "@/components/NotFoundComponent";
-import UpcomingEventsComponent from "@/components/UpcomingEventsComponent";
+import LoginController from "../controllers/LoginController";
+import router from "../router";
 
 export default {
   name: 'LoginComponent',
   data() {
     return {
+      login: LoginController.login,
       input: {
         username: "",
         password: ""
-      }
+      },
+      route: router.currentRoute,
     }
   },
-  methods: {
-    login() {
-      if(this.input.username !== "" && this.input.password !== "") {
-        // This should actually be an api call not a check against this.$parent.mockAccount
-        // if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-        //   this.$emit("authenticated", true);
-        //   this.$router.replace({ name: "Secure" });
-        // } else {
-        //   console.log("The username and / or password is incorrect");
-        // }
-        if(this.input.username === "filip" && this.input.password === "filip") {
-          // this.$emit("authenticated", true);
-          router.push(UpcomingEventsComponent);
-        } else {
-          console.log("The username and / or password is incorrect");
-          router.push(NotFoundComponent);
-        }
-      } else {
-        console.log("A username and password must be present");
-      }
-    }
-  }
 }
 </script>
 

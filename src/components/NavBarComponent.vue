@@ -1,15 +1,60 @@
 <template>
-  <div id="nav" class="m-auto flex flex-col sm:px-0 sm:flex-row justify-center flex-wrap py-4 border-b-2">
-    <router-link to="/" class="mx-4 border-2 py-1 px-2 text-center">Home</router-link>
-    <router-link to="/not-found" class="mx-4 border-2 py-1 px-2 text-center">Not Found</router-link>
-    <router-link to="/login" class="mx-4 border-2 py-1 px-2 text-center">Login</router-link>
-    <router-link to="/register" class="mx-4 border-2 py-1 px-2 text-center">Registration</router-link>
+  <div id="nav"
+       class="m-auto flex flex-col sm:px-0 sm:flex-row justify-end flex-wrap py-4 border-b-2 bg-white font-semibold">
+    <div @click="updatePath('/')"
+         class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange"
+    >
+      Home
+    </div>
+    <div  v-if="this.state.loggedUser === null"
+          @click="updatePath('/login')"
+          class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange"
+    >
+      Login
+    </div>
+    <div  v-if="this.state.loggedUser === null"
+          @click="updatePath('/register')"
+          class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange mr-10"
+    >
+      Register
+    </div>
+    <div  v-if="this.state.loggedUser !== null"
+          @click="this.logout()"
+          class="mx-4 border-2 py-1 px-5 text-center hover:bg-orange mr-10"
+    >
+      Logout
+    </div>
   </div>
 </template>
 
 <script>
+import LoginController from "../controllers/LoginController";
+import router from "../router";
+import store from "../store";
+
 export default {
-  name: "NavBarComponent"
+  name: "NavBarComponent",
+  data() {
+    return {
+      navEntries: ['/', '/events', '/teams', '/login', '/register'],
+      router: router,
+      state: store.state,
+      logout: LoginController.logout,
+    }
+  },
+  mounted() {
+    console.log('more gadzo', router.currentRoute.value.path);
+  },
+  methods: {
+    async updatePath(target) {
+      console.log(this.state.loggedUser);
+      await router.push(target);
+      console.log(router.currentRoute);
+      await store.setCurrentPathAction(target);
+    }
+  },
+
+
 }
 </script>
 
