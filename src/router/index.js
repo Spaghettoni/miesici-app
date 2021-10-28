@@ -1,30 +1,36 @@
 import { createWebHistory, createRouter } from "vue-router";
-import NotFoundComponent from "@/components/NotFoundComponent.vue";
 import HomeComponent from "@/components/HomeComponent";
 import LoginComponent from "@/components/LoginComponent";
-import UpcomingEventsComponent from "@/components/UpcomingEventsComponent";
 import RegistrationComponent from "@/components/RegistrationComponent";
+import ProfileComponent from "../components/ProfileComponent";
+import TeamsComponent from "../components/TeamsPageComponent";
+import EventsComponent from "../components/EventsComponent";
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeComponent,
   },
   {
-    path: "/not-found",
-    name: "NotFoundComponent",
-    component: NotFoundComponent,
+    path: "/profile",
+    name: "Profile",
+    component: ProfileComponent,
+  },
+  {
+    path: "/teams",
+    name: "Teams",
+    component: TeamsComponent,
+  },
+  {
+    path: "/events",
+    name: "Events",
+    component: EventsComponent,
   },
   {
     path: "/login",
     name: "LoginComponent",
     component: LoginComponent,
-  },
-  {
-    path: "/events",
-    name: "UpcomingEventsComponent",
-    component: UpcomingEventsComponent,
   },
   {
     path: "/register",

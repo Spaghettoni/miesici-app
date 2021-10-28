@@ -1,38 +1,39 @@
 import storage from "@/assets/LocalStorage";
 
-export class UsersController {
+const UsersController = (() => {
+    let users = JSON.parse(localStorage.getItem("db")).users;
 
-    constructor() {
-        this.users = JSON.parse(localStorage.getItem("db")).users;
+    function constructor() {
+
+        if(UsersController._instance){
+            return UsersController._instance
+        }
+        UsersController._instance = this;
+
     }
 
-    reloadUsers(){
-        this.users = JSON.parse(localStorage.getItem("db")).users;
+    function reloadUsers() {
+        users = JSON.parse(localStorage.getItem("db")).users;
     }
 
-    insert(){
+    function insert() {
         //vlozi do localstorage
-        this.reloadUsers();
+        reloadUsers();
     }
 
-    checkLogin(username, password){
-        var arrayLength = this.users.length;
-        for (let i = 0; i < arrayLength; i++) {
-            let user = this.users[i];
-            if(user.name == username && user.password == password){
-                return true;
-            }
-        }
-        return false;
+    function getUsers() {
+        return users;
     }
 
-    printAllUsers(){
-        var arrayLength = this.users.length;
+    function printAllUsers() {
+        let arrayLength = users.length;
         for (let i = 0; i < arrayLength; i++) {
-            console.log(this.users[i]);
+            console.log(users[i]);
         }
     }
+    return {
+        getUsers,
+    }
+})();
 
-
-
-}
+export default UsersController;

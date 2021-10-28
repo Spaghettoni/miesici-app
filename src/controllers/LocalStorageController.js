@@ -18,6 +18,10 @@ const LocalStorageController = {
         db[key] = value;
         await localStorage.setItem("db", JSON.stringify(db));
         console.log("successfully changed key " + key + " to value " + value);
+    },
+
+    get: (key) => {
+        return JSON.parse(localStorage.getItem("db"))[key];
     }
 }
 

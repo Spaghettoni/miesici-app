@@ -4,10 +4,12 @@ import './assets/styles.css'
 import router from './router'
 import LocalStorageController from "./controllers/LocalStorageController";
 import LoginController from "./controllers/LoginController";
+import TeamsController from "./controllers/TeamsController";
 
 console.log('main called');
 LocalStorageController.constructor();
 LoginController.constructor();
+TeamsController.constructor();
 
 const app = createApp(App);
 app.use(router);
