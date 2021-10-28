@@ -8,9 +8,7 @@ const LocalStorageController = {
         LocalStorageController._instance = this;
         if (!localStorage.getItem('db')) {
             localStorage.setItem("db", JSON.stringify(storage));
-            console.log('nebola databazka bro');
         }
-        console.log('konstruktor co');
     },
 
     save: async (key, value) => {

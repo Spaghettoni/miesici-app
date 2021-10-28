@@ -20,8 +20,6 @@ const LoginController = (() => {
                 await store.setCurrentPathAction(targetPath);
                 await LocalStorageController.save('loggedUser', username);
                 await router.push(targetPath);
-
-                console.log(store.state);
             }
         }
     }
@@ -32,7 +30,6 @@ const LoginController = (() => {
         await store.setCurrentPathAction('/');
         console.log("successfully logged out!");
         await router.push('/');
-        console.log(router.currentRoute.value.path);
     }
 
     function getLoggedUser() {
