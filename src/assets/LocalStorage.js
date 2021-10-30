@@ -1,21 +1,55 @@
 const storage = {
-  "users": [
-    {"username": "Janko", "password": "Janko", "mail":"janko@gmail.com", "teams": ["Kolegovci", "Miesici"]},
+    "users": [
+        {
+            "username": "Janko",
+            "password": "Janko",
+            "mail": "janko@gmail.com"
+        },
 
-    {"username": "Peter", "password": "Peter", "mail":"peter@gmail.com", "teams": ["Futbalisti"]},
+        {
+            "username": "Peter",
+            "password": "Peter",
+            "mail": "peter@gmail.com"
+        },
 
-    {"username": "Ondrej", "password": "Ondrej", "mail":"ondrej@gmail.com", "teams": ["Futbalisti"]}
-  ],
+        {
+            "username": "Ondrej",
+            "password": "Ondrej",
+            "mail": "ondrej@gmail.com"
+        }
+    ],
 
-  "loggedUser": null,
+    "loggedUser": null,
 
-  "teams": [
+    "teams": [
+        {
+            "name": "Kolegovci",
+            "members": ["Janko"]
+        },
+        {
+            "name": "Miesici",
+            "members": ["Janko"]
+        },
+        {
+            "name": "Futbalisti",
+            "members": ["Peter", "Ondrej"]
+        }
+    ],
 
-    {"name": "Kolegovci", "members": ["Janko"]},
-    {"name": "Miesici", "members": ["Janko"]},
-    {"name": "Futbalisti", "members": ["Peter", "Ondrej"]}
-  ],
-
+    "events": [
+        {
+            "name": "Veľký šampionát v Bernolákove",
+            "team": "Miesici",
+        },
+        {
+            "name": "DL Boyz derby",
+            "team": "Miesici",
+        },
+        {
+            "name": "Račiansky playoff",
+            "team": "Futbalisti",
+        },
+    ],
 
 }
 

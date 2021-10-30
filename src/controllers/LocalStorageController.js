@@ -7,6 +7,7 @@ const LocalStorageController = {
         }
         LocalStorageController._instance = this;
         if (!localStorage.getItem('db')) {
+            console.log('database refreshed');
             localStorage.setItem("db", JSON.stringify(storage));
         }
     },
@@ -20,6 +21,14 @@ const LocalStorageController = {
 
     get: (key) => {
         return JSON.parse(localStorage.getItem("db"))[key];
+    },
+
+    getDB: () => {
+        return JSON.parse(localStorage.getItem("db"));
+    },
+
+    saveDB: (db) => {
+        localStorage.setItem("db", JSON.stringify(db));
     }
 }
 

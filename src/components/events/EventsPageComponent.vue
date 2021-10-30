@@ -8,14 +8,14 @@
       </div>
       <div class="mt-6 flex justify-between items-center">
         <h1 class="mb-4 font-semibold text-6xl">
-          My Teams
+          My Upcoming Events
         </h1>
         <router-link
             to="/create-team"
             class="ml-14 flex border items-center hover:bg-orange cursor-pointer">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
-            Create new team
+            Create new event
           </div>
         </router-link>
       </div>
@@ -38,10 +38,10 @@ import TeamsController from "../../controllers/TeamsController";
 import router from "../../router";
 
 export default {
-  name: "TeamsComponent",
+  name: "EventsComponent",
   data() {
     return {
-      teams: null,
+      events: null,
     }
   },
   methods: {
@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    this.teams = TeamsController.getTeams();
+    this.events = TeamsController.getTeams();
   }
 }
 </script>

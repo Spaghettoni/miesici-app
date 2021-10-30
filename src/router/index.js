@@ -4,7 +4,7 @@ import LoginComponent from "@/components/LoginComponent";
 import RegistrationComponent from "@/components/RegistrationComponent";
 import ProfileComponent from "../components/ProfileComponent";
 import TeamsComponent from "../components/team/TeamsPageComponent";
-import EventsComponent from "../components/events/EventsComponent";
+import EventsComponent from "../components/events/EventsPageComponent";
 import TeamDetailComponent from "../components/team/TeamDetailComponent";
 import CreateTeamComponent from "../components/team/CreateTeamComponent";
 

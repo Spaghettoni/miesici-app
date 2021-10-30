@@ -59,14 +59,11 @@ export default {
       logout: LoginController.logout,
     }
   },
-  mounted() {
-    console.log('more gadzo', router.currentRoute.value.path);
-  },
   methods: {
     async updatePath(target) {
-      console.log(this.state.loggedUser);
+      console.log('logged user:', this.state.loggedUser);
       await router.push(target);
-      console.log(router.currentRoute);
+      console.log('path:', router.currentRoute);
       await store.setCurrentPathAction(target);
     }
   },
