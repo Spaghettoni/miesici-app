@@ -21,12 +21,12 @@
       </div>
       <div class="flex flex-col">
         <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
-                     v-bind:key=team v-for="team in this.teams"
-                     :to="{name: 'TeamDetail', params: {teamName: team.name, members: team.members}}">
-          <team-component
-              :team-name=team.name
-              :members=team.members
-          ></team-component>
+                     v-bind:key=event v-for="event in this.events"
+                     :to="{name: 'EventDetail', params: {name: event.name, attendees: event.attendees}}">
+          <event-component
+              :name=event.name
+              :attendees=event.attendees
+          ></event-component>
         </router-link>
       </div>
     </div>
@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import TeamsController from "../../controllers/TeamsController";
 import router from "../../router";
+import EventsController from "../../controllers/EventsController";
 
 export default {
   name: "EventsComponent",
@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    this.events = TeamsController.getTeams();
+    this.events = EventsController.getEvents();
   }
 }
 </script>

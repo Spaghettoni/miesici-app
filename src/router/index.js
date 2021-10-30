@@ -7,6 +7,8 @@ import TeamsComponent from "../components/team/TeamsPageComponent";
 import EventsComponent from "../components/events/EventsPageComponent";
 import TeamDetailComponent from "../components/team/TeamDetailComponent";
 import CreateTeamComponent from "../components/team/CreateTeamComponent";
+import EventDetailComponent from "../components/events/EventDetailComponent";
+import CreateEventComponent from "../components/events/CreateEventComponent";
 
 const routes = [
   {
@@ -39,6 +41,17 @@ const routes = [
     path: "/events",
     name: "Events",
     component: EventsComponent,
+  },
+  {
+    path: "/event-detail",
+    name: "EventDetail",
+    props: true,
+    component: EventDetailComponent,
+  },
+  {
+    path: "/create-event",
+    name: "CreateEvent",
+    component: CreateEventComponent,
   },
   {
     path: "/login",
