@@ -26,7 +26,7 @@
           </h1>
           <div class="flex flex-wrap">
             <div class="font-semibold text-lg mr-2 "
-                 v-bind:key=member v-for="member in members">
+                 v-bind:key=member v-for="member in this.members">
               {{ member }},
             </div>
           </div>
@@ -59,18 +59,19 @@
 <script>
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
+import UsersController from "../../controllers/UsersController";
 
 export default {
   name: "TeamDetailComponent",
   props: {
     teamName: String,
-    members: Array,
   },
   data() {
     return {
       input: {
         member: '',
-      }
+      },
+      members: []
     }
   },
   methods: {
@@ -79,15 +80,14 @@ export default {
     },
 
     addMember() {
+      if (UsersController.doesUserExist(this.input.member) && !this.members.includes(this.input.member)) {
+        this.members.push(this.input.member);
+      }
       TeamsController.addMember(this.teamName, this.input.member);
-      router.push('/teams');
     },
   },
   mounted() {
-    console.log(
-        'members:',
-        this.members,
-    )
+    this.members = TeamsController.getTeams().filter((team) => team.name === this.teamName)[0].members;
   }
 }
 </script>

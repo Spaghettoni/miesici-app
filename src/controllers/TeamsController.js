@@ -42,7 +42,7 @@ const TeamsController = (() => {
                     window.alert("User is already a member of the team");
                     return;
                 }
-                if(UsersController.doesUserExist(member) == false){
+                if(!UsersController.doesUserExist(member)){
                     window.alert("User '" + member + "' doesn't exist");
                     return;
                 }
