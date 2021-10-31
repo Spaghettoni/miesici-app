@@ -11,7 +11,7 @@
           My Upcoming Events
         </h1>
         <router-link
-            to="/create-team"
+            to="/create-event"
             class="ml-14 flex border items-center hover:bg-orange cursor-pointer">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
@@ -22,10 +22,20 @@
       <div class="flex flex-col">
         <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
                      v-bind:key=event v-for="event in this.events"
-                     :to="{name: 'EventDetail', params: {name: event.name, attendees: event.attendees}}">
+                     :to="{name: 'EventDetail',
+                     params: {
+                       name: event.name,
+                       attendees: event.attendees,
+                       place: event.place,
+                       sport: event.sport,
+                       datetime: event.datetime,
+                       team: event.team}}">
           <event-component
               :name=event.name
               :attendees=event.attendees
+              :place=event.place
+              :datetime=event.datetime
+              :sport=event.sport
           ></event-component>
         </router-link>
       </div>
