@@ -11,22 +11,24 @@
           Team detail
         </h1>
       </div>
-      <div class="flex flex-col">
-        <div class="flex">
+      <div class="flex flex-shrink">
+        <div class="flex flex-col ">
           <div class="text-lg underline italic">
-            Team name:
+            Team&nbsp;name:
           </div>
-          <h1 class="ml-5 text-lg font-semibold">
-            {{ this.teamName }}
-          </h1>
-        </div>
-        <div class="flex">
           <div class="text-lg underline italic">
             Members:
           </div>
-          <div class="ml-9 font-semibold text-lg"
-               v-bind:key=member v-for="member in this.members">
-            {{ member }}
+        </div>
+        <div class="ml-5 flex flex-col ">
+          <h1 class="text-lg font-semibold">
+            {{ teamName }}
+          </h1>
+          <div class="flex flex-wrap">
+            <div class="font-semibold text-lg mr-2 "
+                 v-bind:key=member v-for="member in members">
+              {{ member }},
+            </div>
           </div>
         </div>
       </div>
