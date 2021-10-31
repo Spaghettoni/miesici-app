@@ -30,7 +30,6 @@ export default {
     members: Array,
   },
   mounted() {
-    console.log('team name', this.teamName, 'members', this.members);
   }
 }
 </script>

@@ -27,18 +27,20 @@
           <select class="px-4 py-2"
                   v-model="selected"
           >
-            <option value="all-teams" class="" @click="select">
+            <option value="all-teams" class="" @click="filterTeams">
               All teams
             </option>
             <option v-bind:key="team" v-for="team in this.teams"
                     v-bind:value="team.name"
-                    @click="select"
+                    @click="filterTeams"
             >
               {{ team.name }}
             </option>
           </select>
           <input type="text" class="px-4 py-2"
                  placeholder="search by member"
+                 v-model="member"
+                 @input="filterTeams"
           />
         </div>
       </div>
@@ -66,21 +68,25 @@ export default {
     return {
       teams: null,
       selected: 'all-teams',
-      selectedTeams: null
+      selectedTeams: null,
+      member: '',
     }
   },
   methods: {
     goBack() {
       router.back()
     },
-    select() {
-      this.selectedTeams = this.teams.filter((team) => team.name === this.selected || this.selected === 'all-teams');
-      console.log('selected:', this.selected, ' selectedTeams:', this.selectedTeams);
-    }
+    filterTeams() {
+      this.selectedTeams = this.teams.filter(
+          (team) =>
+              (team.name === this.selected || this.selected === 'all-teams') &&
+              (team.members.filter((person) => person.startsWith(this.member)).length > 0 || this.member === '')
+      );
+    },
   },
   mounted() {
     this.teams = TeamsController.getTeams();
-    this.select();
+    this.filterTeams();
   }
 }
 </script>
