@@ -1,6 +1,7 @@
 import router from "../router";
 import store from "../store";
 import LocalStorageController from "./LocalStorageController";
+import UsersController from "./UsersController";
 
 const LoginController = (() => {
     let users = JSON.parse(localStorage.getItem("db")).users;
@@ -14,6 +15,8 @@ const LoginController = (() => {
     }
 
     async function login(username, password, targetPath) {
+        users = LocalStorageController.get("users");
+
         for (const user of users) {
             if (user.username === username && user.password === password) {
                 await store.setLoggedUserAction(username);
