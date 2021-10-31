@@ -16,6 +16,66 @@ const storage = {
             "username": "Ondrej",
             "password": "Ondrej",
             "mail": "ondrej@gmail.com"
+        },
+
+        {
+            "username": "Slavo",
+            "password": "Slavo",
+            "mail": "slavo@gmail.com"
+        },
+
+        {
+            "username": "Hrusky",
+            "password": "Hrusky",
+            "mail": "hrusky@gmail.com"
+        },
+
+        {
+            "username": "Dynamo",
+            "password": "Dynamo",
+            "mail": "dynamo@gmail.com"
+        },
+
+        {
+            "username": "Andrej",
+            "password": "Andrej",
+            "mail": "andrej@gmail.com"
+        },
+
+        {
+            "username": "Lukas",
+            "password": "Lukas",
+            "mail": "lukas@gmail.com"
+        },
+
+        {
+            "username": "Rene",
+            "password": "Rene",
+            "mail": "rene@gmail.com"
+        },
+
+        {
+            "username": "Sebastian",
+            "password": "Sebastian",
+            "mail": "sebastian@gmail.com"
+        },
+
+        {
+            "username": "Nikita",
+            "password": "Nikita",
+            "mail": "nikita@gmail.com"
+        },
+
+        {
+            "username": "Livia",
+            "password": "Livia",
+            "mail": "livia@gmail.com"
+        },
+
+        {
+            "username": "Julia",
+            "password": "Julia",
+            "mail": "julia@gmail.com"
         }
     ],
 
@@ -24,14 +84,46 @@ const storage = {
     "teams": [
         {
             "name": "Kolegovci",
-            "members": ["Janko"]
+            "members": ["Janko", "Ondrej", "Slavo", "Peter", "Livia"]
         },
+
         {
             "name": "Miesici",
-            "members": ["Janko"]
+            "members": ["Janko", "Sebastian", "Nikita"]
         },
+
         {
             "name": "Futbalisti",
+            "members": ["Peter", "Ondrej", "Sebastian", "Nikita", "Livia", "Julia", "Rene", "Slavo", "Dynamo", "Hrusky", "Andrej"]
+        },
+
+        {
+            "name": "Experti",
+            "members": ["Andrej", "Dynamo", "Slavo", "Janko", "Peter", "Julia", "Hrusky", "Rene"]
+        },
+
+        {
+            "name": "Sportovci",
+            "members": ["Slavo", "Janko", "Hrusky", "Nikita", "Sebastian", "Peter", "Dynamo", "Andrej"]
+        },
+
+        {
+            "name": "Stara skola",
+            "members": ["Peter", "Janko", "Hrusky", "Dynamo"]
+        },
+
+        {
+            "name": "Barcelona",
+            "members": ["Peter", "Slavo", "Ondrej", "Janko","Sebastian", "Nikita", "Livia", "Julia", "Rene"]
+        },
+
+        {
+            "name": "Odbornici",
+            "members": ["Janko"]
+        },
+
+        {
+            "name": "Vagosi",
             "members": ["Peter", "Ondrej"]
         }
     ],
@@ -45,6 +137,7 @@ const storage = {
             "datetime": "2021-11-05 12:00",
             "attendees": ["Janko", "Milan", "Tomino"],
         },
+
         {
             "name": "DL Boyz derby",
             "place": "Bratislava",
@@ -53,6 +146,7 @@ const storage = {
             "datetime": "2021-11-06 20:00",
             "attendees": ["Lukáš", "Matej", "Filip"],
         },
+        
         {
             "name": "Račiansky playoff",
             "place": "Bratislava",
@@ -61,6 +155,60 @@ const storage = {
             "datetime": "2021-11-07 15:00",
             "attendees": [],
         },
+
+        {
+            "name": "Vrakunske miesenie",
+            "place": "Vrakuna",
+            "sport": "Futbal",
+            "team": "Barcelona",
+            "datetime": "2021-11-07 15:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Hokejbalek",
+            "place": "Bratislava",
+            "sport": "Hokejbal",
+            "team": "Barcelona",
+            "datetime": "2021-11-10 15:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Trosku hroty",
+            "place": "Bratislava",
+            "sport": "Curling",
+            "team": "Sportovci",
+            "datetime": "2021-11-10 15:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Grandslam",
+            "place": "Bratislava",
+            "sport": "Tenis",
+            "team": "Sportovci",
+            "datetime": "2021-11-22 16:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Olympiada",
+            "place": "Tokyo",
+            "sport": "Hod ostepom",
+            "team": "Experti",
+            "datetime": "2021-12-08 12:21",
+            "attendees": [],
+        },
+
+        {
+            "name": "Turnaj v lolku",
+            "place": "Unispace",
+            "sport": "Esport",
+            "team": "Experti",
+            "datetime": "2021-12-06 14:40",
+            "attendees": [],
+        }
     ],
 
 }
