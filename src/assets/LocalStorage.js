@@ -84,7 +84,7 @@ const storage = {
     "teams": [
         {
             "name": "Kolegovci",
-            "members": ["Janko", "Ondrej", "Slavo", "Peter", "Livia"]
+            "members": ["Janko", "Ondrej", "Slavo", "Livia"]
         },
 
         {
@@ -114,7 +114,7 @@ const storage = {
 
         {
             "name": "Barcelona",
-            "members": ["Peter", "Slavo", "Ondrej", "Janko","Sebastian", "Nikita", "Livia", "Julia", "Rene"]
+            "members": ["Peter", "Slavo", "Ondrej","Sebastian", "Nikita", "Livia", "Julia", "Rene"]
         },
 
         {

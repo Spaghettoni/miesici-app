@@ -8,14 +8,16 @@
         <h2 class="text-8xl font-bold underline">
           Meet and play!
         </h2>
-        <div class="flex justify-between mt-12 text-3xl font-semibold">
-          <div class="px-10 py-12 border-2 cursor-pointer hover:bg-orange">
-            <p>Create your team!</p>
-          </div>
-          <div class="px-10 py-12 border-2 cursor-pointer hover:bg-orange">
-            <p>Create events!</p>
-          </div>
-        </div>
+
+<!--        <div class="flex justify-between mt-12 text-3xl font-semibold">-->
+<!--          <div class="px-10 py-12 border-2 cursor-pointer hover:bg-orange">-->
+<!--            <p>Create your team!</p>-->
+<!--          </div>-->
+<!--          <div class="px-10 py-12 border-2 cursor-pointer hover:bg-orange">-->
+<!--            <p>Create events!</p>-->
+<!--          </div>-->
+<!--        </div>-->
+
       </div>
     </div>
   </div>
