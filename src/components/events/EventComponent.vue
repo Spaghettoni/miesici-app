@@ -1,62 +1,47 @@
 <template>
   <div class="p-2">
-    <div>
-      <div class="flex items-end">
+    <div class="flex">
+      <div class="flex flex-col text-right border-r pr-2">
         <div class="text-lg underline italic">
           Event name:
         </div>
-        <h1 class="ml-5 text-lg font-semibold">
+        <div class="text-lg underline italic">
+          Team:
+        </div>
+        <div class="text-lg underline italic">
+          Attendees:
+        </div>
+        <div class="text-lg underline italic">
+          Sport:
+        </div>
+        <div class="text-lg underline italic">
+          Place:
+        </div>
+        <div class="text-lg underline italic">
+          Date and time:
+        </div>
+      </div>
+      <div class="flex flex-col ml-5 ">
+        <div class="text-lg font-semibold">
           {{ this.name }}
-        </h1>
+        </div>
+        <div class="font-semibold text-lg">
+          {{ this.team }}
+        </div>
+        <div class="font-semibold text-lg">
+          {{ this.attendees.length }}
+        </div>
+        <div class="font-semibold text-lg">
+          {{ this.sport }}
+        </div>
+        <div class="font-semibold text-lg">
+          {{ this.place }}
+        </div>
+        <div class="font-semibold text-lg">
+          {{ this.datetime }}
+        </div>
       </div>
     </div>
-
-    <div class="flex items-end">
-      <div class="text-lg underline italic">
-        Team:
-      </div>
-      <div class="ml-9 font-semibold text-lg">
-        {{ this.team }}
-      </div>
-    </div>
-
-    <div class="flex items-end">
-      <div class="text-lg underline italic">
-        Attendees:
-      </div>
-      <div class="ml-9 font-semibold text-lg">
-        {{ this.attendees.length }}
-      </div>
-    </div>
-
-    <div class="flex items-end">
-      <div class="text-lg underline italic">
-        Sport:
-      </div>
-      <div class="ml-9 font-semibold text-lg">
-        {{ this.sport}}
-      </div>
-    </div>
-
-    <div class="flex items-end">
-      <div class="text-lg underline italic">
-        Place:
-      </div>
-      <div class="ml-9 font-semibold text-lg">
-        {{ this.place}}
-      </div>
-    </div>
-
-    <div class="flex items-end">
-      <div class="text-lg underline italic">
-        Date and time:
-      </div>
-      <div class="ml-9 font-semibold text-lg">
-        {{ this.datetime}}
-      </div>
-    </div>
-
-
   </div>
 </template>
 
@@ -73,6 +58,7 @@ export default {
     attendees: Array
   },
   mounted() {
+    console.log(this.team)
   }
 }
 </script>
