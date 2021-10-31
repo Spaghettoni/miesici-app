@@ -41,11 +41,19 @@
           {{ this.datetime }}
         </div>
       </div>
+
+      <p class="ml-auto text-2xl text-green"
+         v-if="this.userJoinedThisEvent"
+      > 
+        JOINED ✓
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import LoginController from '../../controllers/LoginController';
+
 export default {
   name: "EventComponent",
   props: {
@@ -57,8 +65,13 @@ export default {
     private: Boolean,
     attendees: Array
   },
+  data() {
+    return {
+      userJoinedThisEvent: null,
+    }
+  },
   mounted() {
-    console.log(this.team)
+    this.userJoinedThisEvent = this.attendees.includes(LoginController.getLoggedUser());
   }
 }
 </script>
