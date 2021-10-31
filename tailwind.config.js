@@ -6,7 +6,8 @@ module.exports = {
       orange: '#FCA311',
       gray: {
         light: '#D1D1D1',
-      }
+      },
+      green: "#10B981",
     },
     extend: {
       spacing: {
