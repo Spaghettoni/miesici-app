@@ -35,7 +35,7 @@
                class="px-4 py-2 text-4xl border-2 border-black"
         />
       </div>
-      <button type="button" v-on:click="register()"
+      <button type="button" v-on:click="register(input.username, input.password, input.confirmPassword, input.email, '/')"
               class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black hover:bg-orange">Register</button>
 
       <div class="mt-5 mx-auto text-xl flex flex-col items-center">
@@ -47,29 +47,23 @@
 </template>
 
 <script>
+import RegistrationController from "../controllers/RegistrationController";
+import router from "../router";
 
 export default {
   name: 'RegistrationComponent',
   data() {
     return {
+      register: RegistrationController.register,
       input: {
         username: "",
-        email: "",
         password: "",
         confirmPassword: "",
-      }
+        email: ""
+      },
+      route: router.currentRoute,
     }
   },
-  methods: {
-    register() {
-      if(this.input.username !== "" && this.input.password !== "") {
-        localStorage.username = this.input.username;
-        localStorage.password = this.input.password;
-      } else {
-        console.log("A username and password must be present");
-      }
-    }
-  }
 }
 </script>
 

@@ -1,4 +1,5 @@
 import storage from "@/assets/LocalStorage";
+import LocalStorageController from "./LocalStorageController";
 
 const UsersController = (() => {
     let users = JSON.parse(localStorage.getItem("db")).users;
@@ -16,13 +17,29 @@ const UsersController = (() => {
         users = JSON.parse(localStorage.getItem("db")).users;
     }
 
-    function insert() {
-        //vlozi do localstorage
+    function insertUser(username, password, email) {
+        let db = LocalStorageController.getDB();
+        const newUser = {
+            "username": username,
+            "password": password,
+            "mail": email
+        };
+        db.users.push(newUser);
+        LocalStorageController.saveDB(db);
         reloadUsers();
     }
 
     function getUsers() {
         return users;
+    }
+
+    function doesUserExist(username){
+        for (const user of users){
+            if(user.username === username){
+                return true;
+            }
+        }
+        return false;
     }
 
     function printAllUsers() {
@@ -33,6 +50,9 @@ const UsersController = (() => {
     }
     return {
         getUsers,
+        doesUserExist,
+        insertUser,
+        printAllUsers
     }
 })();
 
