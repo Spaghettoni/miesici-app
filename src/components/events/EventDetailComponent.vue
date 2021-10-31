@@ -6,15 +6,17 @@
       >
         &lt;&nbsp;back
       </div>
+
       <div>
         <h1 class="mb-4 font-semibold text-6xl">
           Events detail
         </h1>
       </div>
+
       <div class="flex flex-col">
         <div class="flex">
           <div class="text-lg underline italic">
-            Event name:
+            Name:
           </div>
           <h1 class="ml-5 text-lg font-semibold">
             {{ this.name }}
@@ -36,46 +38,100 @@
             {{ this.place }}
           </h1>
         </div>
+
         <div class="flex">
           <div class="text-lg underline italic">
-            Date:
+            Date and time:
           </div>
           <h1 class="ml-5 text-lg font-semibold">
-            {{ this.date }}
+            {{ this.datetime }}
           </h1>
         </div>
+
         <div class="flex">
           <div class="text-lg underline italic">
-            Time:
+            Team:
           </div>
-          <div class="ml-9 font-semibold text-lg">
-            {{ this.time }}
-          </div>
+          <h1 class="ml-5 text-lg font-semibold">
+            {{ this.team }}
+          </h1>
         </div>
+
+        <div class="flex">
+          <div class="text-lg underline italic">
+            Attendes:
+          </div>
+          <h1 class="ml-5 text-lg font-semibold" v-bind:key=attendee v-for="attendee in this.attendees">
+            {{attendee}}
+          </h1>
+        </div>
+
+
       </div>
+
+      <div>
+
+      <button type="button"
+              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+                      hover:bg-orange" v-if="this.isPresent"
+              @click="leave"
+      >
+        LEAVE
+      </button>
+
+        <button type="button"
+                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+                      hover:bg-orange" v-else
+                @click="join"
+        >
+          JOIN
+        </button>
+
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import router from "../../router";
+import EventsController from "@/controllers/EventsController";
+import LocalStorageController from "@/controllers/LocalStorageController";
+import LoginController from "@/controllers/LoginController";
 
 export default {
   name: "EventDetailComponent",
   props: {
     name: String,
-    sport: Array,
+    sport: String,
     place: String,
-    date: Date,
-    time: String,
+    datetime: String,
+    team: String,
+    attendees: Array,
     private: Boolean,
-    attendees: Array
+  },
+  data(){
+    return {
+      isPresent: null,
+    }
   },
   methods: {
     goBack() {
       router.back();
     },
+    join(){
+      EventsController.joinEvent(this.name);
+      router.back();
+    },
+    leave(){
+      EventsController.leaveEvent(this.name);
+      router.back();
+    }
+  },
+  mounted() {
+     this.isPresent = this.attendees.includes(LoginController.getLoggedUser())
   }
+
 }
 </script>
 
