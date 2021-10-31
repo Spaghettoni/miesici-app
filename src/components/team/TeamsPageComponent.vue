@@ -19,9 +19,34 @@
           </div>
         </router-link>
       </div>
+      <div>
+        <div class="font-semibold">
+          Search teams
+        </div>
+        <div class="border flex max-w-min">
+          <select class="px-4 py-2"
+                  v-model="selected"
+          >
+            <option value="all-teams" class="" @click="filterTeams">
+              All teams
+            </option>
+            <option v-bind:key="team" v-for="team in this.teams"
+                    v-bind:value="team.name"
+                    @click="filterTeams"
+            >
+              {{ team.name }}
+            </option>
+          </select>
+          <input type="text" class="px-4 py-2"
+                 placeholder="search by member"
+                 v-model="member"
+                 @input="filterTeams"
+          />
+        </div>
+      </div>
       <div class="flex flex-col">
         <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
-                     v-bind:key=team v-for="team in this.teams"
+                     v-bind:key=team v-for="team in this.selectedTeams"
                      :to="{name: 'TeamDetail', params: {teamName: team.name, members: team.members}}">
           <team-component
               :team-name=team.name
@@ -42,15 +67,26 @@ export default {
   data() {
     return {
       teams: null,
+      selected: 'all-teams',
+      selectedTeams: null,
+      member: '',
     }
   },
   methods: {
     goBack() {
       router.back()
-    }
+    },
+    filterTeams() {
+      this.selectedTeams = this.teams.filter(
+          (team) =>
+              (team.name === this.selected || this.selected === 'all-teams') &&
+              (team.members.filter((person) => person.startsWith(this.member)).length > 0 || this.member === '')
+      );
+    },
   },
   mounted() {
     this.teams = TeamsController.getTeams();
+    this.filterTeams();
   }
 }
 </script>
