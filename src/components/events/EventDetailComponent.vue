@@ -13,72 +13,60 @@
         </h1>
       </div>
 
-      <div class="flex flex-col">
-        <div class="flex">
+      <div class="flex">
+        <div class="flex flex-col text-right border-r pr-2">
           <div class="text-lg underline italic">
-            Name:
+            Event name:
           </div>
-          <h1 class="ml-5 text-lg font-semibold">
-            {{ this.name }}
-          </h1>
-        </div>
-        <div class="flex">
-          <div class="text-lg underline italic">
-            Sport:
-          </div>
-          <h1 class="ml-5 text-lg font-semibold">
-            {{ this.sport }}
-          </h1>
-        </div>
-        <div class="flex">
-          <div class="text-lg underline italic">
-            Place:
-          </div>
-          <h1 class="ml-5 text-lg font-semibold">
-            {{ this.place }}
-          </h1>
-        </div>
-
-        <div class="flex">
-          <div class="text-lg underline italic">
-            Date and time:
-          </div>
-          <h1 class="ml-5 text-lg font-semibold">
-            {{ this.datetime }}
-          </h1>
-        </div>
-
-        <div class="flex">
           <div class="text-lg underline italic">
             Team:
           </div>
-          <h1 class="ml-5 text-lg font-semibold">
-            {{ this.team }}
-          </h1>
-        </div>
-
-        <div class="flex">
           <div class="text-lg underline italic">
-            Attendes:
+            Attendees:
           </div>
-          <h1 class="ml-5 text-lg font-semibold" v-bind:key=attendee v-for="attendee in this.attendees">
-            {{attendee}}
-          </h1>
+          <div class="text-lg underline italic">
+            Sport:
+          </div>
+          <div class="text-lg underline italic">
+            Place:
+          </div>
+          <div class="text-lg underline italic">
+            Date and time:
+          </div>
         </div>
-
-
+        <div class="flex flex-col ml-5 ">
+          <div class="text-lg font-semibold">
+            {{ this.name }}
+          </div>
+          <div class="font-semibold text-lg">
+            {{ this.team }}
+          </div>
+          <div class="flex flex-wrap">
+            <div class="mr-2 text-lg font-semibold" v-bind:key=attendee v-for="attendee in this.attendees">
+              {{ attendee }},
+            </div>
+          </div>
+          <div class="font-semibold text-lg">
+            {{ this.sport }}
+          </div>
+          <div class="font-semibold text-lg">
+            {{ this.place }}
+          </div>
+          <div class="font-semibold text-lg">
+            {{ this.datetime }}
+          </div>
+        </div>
       </div>
 
       <div>
 
-      <button type="button"
-              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+        <button type="button"
+                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
                       hover:bg-orange" v-if="this.isPresent"
-              @click="leave"
-      >
-        LEAVE
-      </button>
-
+                @click="leave"
+        >
+          LEAVE
+        </button>
         <button type="button"
                 class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
                       hover:bg-orange" v-else
@@ -110,7 +98,7 @@ export default {
     attendees: Array,
     private: Boolean,
   },
-  data(){
+  data() {
     return {
       isPresent: null,
     }
@@ -119,17 +107,17 @@ export default {
     goBack() {
       router.back();
     },
-    join(){
+    join() {
       EventsController.joinEvent(this.name);
       router.back();
     },
-    leave(){
+    leave() {
       EventsController.leaveEvent(this.name);
       router.back();
     }
   },
   mounted() {
-     this.isPresent = this.attendees.includes(LoginController.getLoggedUser())
+    this.isPresent = this.attendees.includes(LoginController.getLoggedUser())
   }
 
 }
