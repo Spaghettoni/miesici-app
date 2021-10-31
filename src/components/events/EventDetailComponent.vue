@@ -69,12 +69,35 @@
 
       </div>
 
+      <div>
+
+      <button type="button"
+              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+                      hover:bg-orange" v-if="this.isPresent"
+              @click="leave"
+      >
+        LEAVE
+      </button>
+
+        <button type="button"
+                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+                      hover:bg-orange" v-else
+                @click="join"
+        >
+          JOIN
+        </button>
+
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import router from "../../router";
+import EventsController from "@/controllers/EventsController";
+import LocalStorageController from "@/controllers/LocalStorageController";
+import LoginController from "@/controllers/LoginController";
 
 export default {
   name: "EventDetailComponent",
@@ -87,11 +110,28 @@ export default {
     attendees: Array,
     private: Boolean,
   },
+  data(){
+    return {
+      isPresent: null,
+    }
+  },
   methods: {
     goBack() {
       router.back();
     },
+    join(){
+      EventsController.joinEvent(this.name);
+      router.back();
+    },
+    leave(){
+      EventsController.leaveEvent(this.name);
+      router.back();
+    }
+  },
+  mounted() {
+     this.isPresent = this.attendees.includes(LoginController.getLoggedUser())
   }
+
 }
 </script>
 
