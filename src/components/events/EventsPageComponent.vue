@@ -32,6 +32,7 @@
                        team: event.team}}">
           <event-component
               :name=event.name
+              :team=event.team
               :attendees=event.attendees
               :place=event.place
               :datetime=event.datetime

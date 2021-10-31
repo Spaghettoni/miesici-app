@@ -13,6 +13,15 @@
 
     <div class="flex items-end">
       <div class="text-lg underline italic">
+        Team:
+      </div>
+      <div class="ml-9 font-semibold text-lg">
+        {{ this.team }}
+      </div>
+    </div>
+
+    <div class="flex items-end">
+      <div class="text-lg underline italic">
         Attendees:
       </div>
       <div class="ml-9 font-semibold text-lg">
@@ -48,7 +57,6 @@
     </div>
 
 
-
   </div>
 </template>
 
@@ -57,6 +65,7 @@ export default {
   name: "EventComponent",
   props: {
     name: String,
+    team: String,
     sport: String,
     place: String,
     datetime: String,
