@@ -6,11 +6,13 @@
       >
         &lt;&nbsp;back
       </div>
+
       <div>
         <h1 class="mb-4 font-semibold text-6xl">
           Events detail
         </h1>
       </div>
+
       <div class="flex flex-col">
         <div class="flex">
           <div class="text-lg underline italic">
@@ -66,6 +68,7 @@
 
 
       </div>
+
     </div>
   </div>
 </template>
