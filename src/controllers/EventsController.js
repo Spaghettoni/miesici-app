@@ -1,5 +1,6 @@
 import store from "../store";
 import LocalStorageController from "./LocalStorageController";
+import LoginController from "@/controllers/LoginController";
 
 const EventsController = (() => {
         function constructor() {
@@ -20,8 +21,39 @@ const EventsController = (() => {
             return Object.values(events).filter((event) => userTeams.map(team => team.name).includes(event.team));
         }
 
+        function doesEventExist(eventName){
+            let events = LocalStorageController.get("events");
+            for (const event in events){
+                if(event.name === eventName){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function insertEvent(name, sport, place, datetime, team){
+            let db = LocalStorageController.getDB();
+            let loggedUser = LoginController.getLoggedUser();
+
+            if(doesEventExist(name) === true){
+                return;
+            }
+
+            const newEvent = {
+                "name": name,
+                "place": place,
+                "sport": sport,
+                "team": team,
+                "datetime": datetime,
+                "attendees": [loggedUser],
+            }
+            db.events.push(newEvent);
+            LocalStorageController.saveDB(db);
+        }
+
         return {
             getEvents,
+            insertEvent,
         }
 })();
 

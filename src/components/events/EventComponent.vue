@@ -10,6 +10,7 @@
         </h1>
       </div>
     </div>
+
     <div class="flex items-end">
       <div class="text-lg underline italic">
         Attendees:
@@ -18,6 +19,36 @@
         {{ this.attendees.length }}
       </div>
     </div>
+
+    <div class="flex items-end">
+      <div class="text-lg underline italic">
+        Sport:
+      </div>
+      <div class="ml-9 font-semibold text-lg">
+        {{ this.sport}}
+      </div>
+    </div>
+
+    <div class="flex items-end">
+      <div class="text-lg underline italic">
+        Place:
+      </div>
+      <div class="ml-9 font-semibold text-lg">
+        {{ this.place}}
+      </div>
+    </div>
+
+    <div class="flex items-end">
+      <div class="text-lg underline italic">
+        Date and time:
+      </div>
+      <div class="ml-9 font-semibold text-lg">
+        {{ this.datetime}}
+      </div>
+    </div>
+
+
+
   </div>
 </template>
 
@@ -26,10 +57,9 @@ export default {
   name: "EventComponent",
   props: {
     name: String,
-    sport: Array,
+    sport: String,
     place: String,
-    date: Date,
-    time: String,
+    datetime: String,
     private: Boolean,
     attendees: Array
   },
