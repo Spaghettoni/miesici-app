@@ -94,7 +94,7 @@ const storage = {
 
         {
             "name": "Futbalisti",
-            "members": ["Peter", "Ondrej", "Sebastian", "Nikita", "Livia", "Julia", "Rene", "Slavo", "Dynamo", "Hrusky", "Andrej"]
+            "members": ["Peter", "Ondrej", "Sebastian", "Nikita", "Livia", "Julia", "Slavo", "Dynamo", "Hrusky", "Andrej"]
         },
 
         {
