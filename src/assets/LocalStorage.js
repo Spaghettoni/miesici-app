@@ -153,16 +153,16 @@ const storage = {
             "sport": "Futbal",
             "team": "Futbalisti",
             "datetime": "2021-11-07 15:00",
-            "attendees": [],
+            "attendees": ["Jan", "Ondrej", "Julia", "Nikita"],
         },
 
         {
             "name": "Vrakunske miesenie",
             "place": "Vrakuna",
-            "sport": "Futbal",
+            "sport": "Petang",
             "team": "Barcelona",
             "datetime": "2021-11-07 15:00",
-            "attendees": [],
+            "attendees": ["Miro", "Jaro", "Peter", "Janko"],
         },
 
         {
@@ -171,7 +171,7 @@ const storage = {
             "sport": "Hokejbal",
             "team": "Barcelona",
             "datetime": "2021-11-10 15:00",
-            "attendees": [],
+            "attendees": ["Ondrej", "Tomas", "Janka", "Ondrej", "Dynamo", "Nikita", "Matej"],
         },
 
         {

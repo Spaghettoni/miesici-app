@@ -43,8 +43,9 @@
           </div>
           <div class="flex flex-wrap">
             <div class="mr-2 text-lg font-semibold" v-bind:key=attendee v-for="attendee in this.attendees">
-              {{ attendee }},
+              {{ attendee  }},
             </div>
+            &nbsp;
           </div>
           <div class="font-semibold text-lg">
             {{ this.sport }}
