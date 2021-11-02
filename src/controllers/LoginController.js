@@ -25,6 +25,7 @@ const LoginController = (() => {
                 await router.push(targetPath);
             }
         }
+        await router.push('/events');
     }
 
     async function logout() {

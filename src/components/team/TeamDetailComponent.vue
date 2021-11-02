@@ -23,11 +23,13 @@
         <div class="ml-5 flex flex-col ">
           <h1 class="text-lg font-semibold">
             {{ teamName }}
+            &nbsp;
           </h1>
           <div class="flex flex-wrap">
             <div class="font-semibold text-lg mr-2 "
                  v-bind:key=member v-for="member in this.members">
               {{ member }},
+
             </div>
           </div>
         </div>
