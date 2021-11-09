@@ -1,4 +1,4 @@
-import { Model } from '@vuex-orm/core'
+import { Model, use } from '@vuex-orm/core'
 import storage from '../assets/LocalStorage.js'
 
 class User extends Model {
@@ -74,14 +74,64 @@ class EventUser extends Model {
 }
 
 
+/*
+    Loads data from an object into Models.
+    Assumes that names (team names, usernames) are used as foreign keys
+    in the object.
+*/
 function initModels(){
-    let users = storage["users"];
+    initUsers();
+    initTeams();
+    initEvents();
+}
+
+
+function initUsers(){
+    const users = storage["users"];
     User.insert({
         data: users
     })
-    console.log(User.all());
-
-    //not finished
 }
+
+
+function initTeams(){
+    const teams = storage["teams"];
+    for(let team of teams){
+        let users = usersFromUsernames(team.members);
+        Team.insert({
+            data: {
+              name: team.name,
+              members: users
+            }
+        })
+    }
+}
+
+
+function initEvents(){
+    const events = storage["events"];
+    for(let event of events){
+        let users = usersFromUsernames(event.attendees);
+        let foundTeams = Team.query().where('name', event.team).limit(1).get();
+        let foundTeam = foundTeams[0];
+
+        Event.insert({
+            data: {
+              name: event.name,
+              place: event.place,
+              sport: event.sport,
+              team_id: foundTeam.id,
+              datetime: event.datetime,
+              attendees: users
+            }
+        })
+    }
+}
+
+
+function usersFromUsernames(usernames){
+    return User.query().where('username', u => usernames.includes(u)).get();
+}
+
 
 export {User, Team, TeamUser, Event, EventUser, initModels};
