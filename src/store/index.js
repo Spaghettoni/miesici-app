@@ -3,8 +3,15 @@ import LocalStorageController from "../controllers/LocalStorageController";
 import Vuex from 'vuex';
 import VuexORM from '@vuex-orm/core';
 import {User, Team, TeamUser, Event, EventUser, initModels} from './Models';
+import VuexPersistence from 'vuex-persist';
 
 LocalStorageController.constructor();
+
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
+
 
 const database = new VuexORM.Database();
 
@@ -17,8 +24,30 @@ database.register(EventUser);
 
 // Create Vuex Store and register database through Vuex ORM.
 const store = new Vuex.Store({
-  plugins: [VuexORM.install(database)]
+  // state: reactive({
+  //   currentPath: '/',
+  //   loggedUser:  JSON.parse(localStorage.getItem("db")).loggedUser,
+  // }),
+
+  // setCurrentPathAction(newPath) {
+  //   this.state.currentPath = newPath;
+  // },
+
+  // setLoggedUserAction(user) {
+  //     this.state.loggedUser = user;
+  // },
+
+  // clearCurrentPathAction() {
+  //     this.state.currentPath = '/';
+  // },
+
+  // clearLoggedUserAction() {
+  //     this.state.loggedUser = null;
+  // },
+
+  plugins: [VuexORM.install(database), new VuexPersistence().plugin]
 });
+
 
 initModels();
 
