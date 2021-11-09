@@ -1,28 +1,25 @@
 import {reactive} from "vue";
 import LocalStorageController from "../controllers/LocalStorageController";
+import Vuex from 'vuex';
+import VuexORM from '@vuex-orm/core';
+import {User, Team, TeamUser, Event, EventUser, initModels} from './Models';
+
 LocalStorageController.constructor();
 
-const store = {
-    state: reactive({
-        currentPath: '/',
-        loggedUser:  JSON.parse(localStorage.getItem("db")).loggedUser,
-    }),
+const database = new VuexORM.Database();
 
-    setCurrentPathAction(newPath) {
-       this.state.currentPath = newPath;
-    },
+// Register Models.
+database.register(User);
+database.register(Team);
+database.register(TeamUser);
+database.register(Event);
+database.register(EventUser);
 
-    setLoggedUserAction(user) {
-        this.state.loggedUser = user;
-    },
+// Create Vuex Store and register database through Vuex ORM.
+const store = new Vuex.Store({
+  plugins: [VuexORM.install(database)]
+});
 
-    clearCurrentPathAction() {
-        this.state.currentPath = '/';
-    },
-
-    clearLoggedUserAction() {
-        this.state.loggedUser = null;
-    }
-}
+initModels();
 
 export default store;

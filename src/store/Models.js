@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core'
+import storage from '../assets/LocalStorage.js'
 
 class User extends Model {
     static entity = 'users'
@@ -22,7 +23,7 @@ class Team extends Model {
             id: this.uid(),
             name: this.attr(''),
             members: this.belongsToMany(User, TeamUser, 'team_id', 'user_id'),
-            events: this.hasMany(Event, team_id)
+            events: this.hasMany(Event, 'team_id')
         }
     }
 }
@@ -43,7 +44,7 @@ class TeamUser extends Model {
 
 
 class Event extends Model {
-    static entity = 'teams'
+    static entity = 'events'
   
     static fields () {
         return {
@@ -71,3 +72,16 @@ class EventUser extends Model {
         }
     }
 }
+
+
+function initModels(){
+    let users = storage["users"];
+    User.insert({
+        data: users
+    })
+    console.log(User.all());
+
+    //not finished
+}
+
+export {User, Team, TeamUser, Event, EventUser, initModels};
