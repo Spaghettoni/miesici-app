@@ -24,13 +24,13 @@ const LoginController = (() => {
 
         let foundUser = foundUsers[0];
         store.commit('setLoggedUser', foundUser);
-        //await LocalStorageController.save('loggedUser', JSON.stringify(foundUser));
+        await localStorage.setItem('loggedUser', JSON.stringify(foundUser));
         store.commit('setCurrentPath', targetPath);
         await router.push(targetPath);
     }
 
     async function logout() {
-        //await LocalStorageController.save('loggedUser', null);
+        await localStorage.setItem('loggedUser', null);
         store.commit('setLoggedUser', null);
         store.commit('setCurrentPath', '/');
         console.log("successfully logged out!");
