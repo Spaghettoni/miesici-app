@@ -24,26 +24,28 @@ database.register(EventUser);
 
 // Create Vuex Store and register database through Vuex ORM.
 const store = new Vuex.Store({
-  // state: reactive({
-  //   currentPath: '/',
-  //   loggedUser:  JSON.parse(localStorage.getItem("db")).loggedUser,
-  // }),
+  state: {
+    currentPath: '/',
+    loggedUser:  JSON.parse(localStorage.getItem("loggedUser"))
+  },
 
-  // setCurrentPathAction(newPath) {
-  //   this.state.currentPath = newPath;
-  // },
-
-  // setLoggedUserAction(user) {
-  //     this.state.loggedUser = user;
-  // },
-
-  // clearCurrentPathAction() {
-  //     this.state.currentPath = '/';
-  // },
-
-  // clearLoggedUserAction() {
-  //     this.state.loggedUser = null;
-  // },
+  mutations:{
+    setCurrentPath(state, newPath) {
+        state.currentPath = newPath;
+    },
+  
+    setLoggedUser(state, user) {
+        state.loggedUser = user;
+    },
+  
+    clearCurrentPath(state) {
+        state.currentPath = '/';
+    },
+  
+    clearLoggedUser(state) {
+        state.loggedUser = null;
+    }
+  },
 
   plugins: [VuexORM.install(database), new VuexPersistence().plugin]
 });

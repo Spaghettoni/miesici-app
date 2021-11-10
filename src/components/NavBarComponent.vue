@@ -64,7 +64,7 @@ export default {
       console.log('logged user:', this.state.loggedUser);
       await router.push(target);
       console.log('path:', router.currentRoute);
-      await store.setCurrentPathAction(target);
+      store.commit('setCurrentPath',target);
     }
   },
 

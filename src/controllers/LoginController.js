@@ -1,7 +1,7 @@
 import router from "../router";
 import store from "../store";
 import LocalStorageController from "./LocalStorageController";
-import UsersController from "./UsersController";
+import { User } from "../store/Models";
 
 const LoginController = (() => {
     let users = JSON.parse(localStorage.getItem("db")).users;
@@ -15,29 +15,31 @@ const LoginController = (() => {
     }
 
     async function login(username, password, targetPath) {
-        users = LocalStorageController.get("users");
+        let foundUsers = User.query().where((user) => {
+            return user.username === username && user.password === password
+        }).get();
 
-        for (const user of users) {
-            if (user.username === username && user.password === password) {
-                await store.setLoggedUserAction(username);
-                await store.setCurrentPathAction(targetPath);
-                await LocalStorageController.save('loggedUser', username);
-                await router.push(targetPath);
-            }
+        if(foundUsers.length === 0){
+            await router.push('/events'); //??
         }
-        await router.push('/events');
+
+        let foundUser = foundUsers[0];
+        store.commit('setLoggedUser', foundUser);
+        await LocalStorageController.save('loggedUser', JSON.stringify(foundUser));
+        store.commit('setCurrentPath', targetPath);
+        await router.push(targetPath);
     }
 
     async function logout() {
         await LocalStorageController.save('loggedUser', null);
-        await store.setLoggedUserAction(null);
-        await store.setCurrentPathAction('/');
+        store.commit('setLoggedUser', null);
+        store.commit('setCurrentPath', '/');
         console.log("successfully logged out!");
         await router.push('/');
     }
 
     function getLoggedUser() {
-        return JSON.parse(localStorage.getItem("db")).loggedUser;
+        return JSON.parse(localStorage.getItem("loggedUser"));
     }
 
     return {

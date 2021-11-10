@@ -6,9 +6,8 @@ const LocalStorageController = {
             return LocalStorageController._instance
         }
         LocalStorageController._instance = this;
-        if (!localStorage.getItem('db')) {
-            console.log('database refreshed');
-            localStorage.setItem("db", JSON.stringify(storage));
+        if (!localStorage.getItem('loggedUser')) {
+            localStorage.setItem('loggedUser', null);
         }
     },
 
