@@ -5,7 +5,6 @@ import { User } from "../store/Models";
 import UsersController from "./UsersController";
 
 const LoginController = (() => {
-    let users = JSON.parse(localStorage.getItem("db")).users;
 
     function constructor() {
         if(LoginController._instance){
@@ -25,13 +24,13 @@ const LoginController = (() => {
 
         let foundUser = foundUsers[0];
         store.commit('setLoggedUser', foundUser);
-        await LocalStorageController.save('loggedUser', JSON.stringify(foundUser));
+        //await LocalStorageController.save('loggedUser', JSON.stringify(foundUser));
         store.commit('setCurrentPath', targetPath);
         await router.push(targetPath);
     }
 
     async function logout() {
-        await LocalStorageController.save('loggedUser', null);
+        //await LocalStorageController.save('loggedUser', null);
         store.commit('setLoggedUser', null);
         store.commit('setCurrentPath', '/');
         console.log("successfully logged out!");
