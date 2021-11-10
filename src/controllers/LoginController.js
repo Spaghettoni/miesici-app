@@ -20,7 +20,8 @@ const LoginController = (() => {
         }).get();
 
         if(foundUsers.length === 0){
-            await router.push('/events'); //??
+            await router.push(targetPath); 
+            return;
         }
 
         let foundUser = foundUsers[0];
