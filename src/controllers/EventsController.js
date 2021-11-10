@@ -1,6 +1,7 @@
 import store from "../store";
 import LocalStorageController from "./LocalStorageController";
 import LoginController from "@/controllers/LoginController";
+import { Team } from "../store/Models";
 
 const EventsController = (() => {
     function constructor() {
@@ -12,13 +13,20 @@ const EventsController = (() => {
 
     }
 
-    function getEvents() {
+    /*
+        returns events of users teams
+    */
+    function getUsersEvents() {
         const loggedUser = store.state.loggedUser;
-        const teams = LocalStorageController.get('teams');
-        const userTeams = Object.values(teams).filter((element) => element.members.includes(loggedUser));
-        const events = LocalStorageController.get('events');
-        console.log('user teams:', userTeams.map(team => team.name));
-        return Object.values(events).filter((event) => userTeams.map(team => team.name).includes(event.team));
+        const usersTeams = Team.query().with('events.attendees').with('members').get()  //withAllRecursive
+        .filter((team) => team.members.some((u) => u.id === loggedUser.id));
+
+        let events = [];
+        for(let team of usersTeams){
+            events.push(...team.events);
+        }
+        
+        return events;
     }
 
     function joinEvent(eventName) {
@@ -85,7 +93,7 @@ const EventsController = (() => {
     }
 
     return {
-        getEvents,
+        getUsersEvents,
         insertEvent,
         joinEvent,
         leaveEvent

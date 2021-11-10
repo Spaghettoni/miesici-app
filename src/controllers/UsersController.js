@@ -13,10 +13,9 @@ const UsersController = (() => {
     }
 
     function doesUsernameExist(username){
-        let usersWithUsername = User.query().where((user) => {
+        return User.query().where((user) => {
             return user.username === username 
-        }).get();
-        return usersWithUsername.length > 0;
+        }).exists();
     }
 
     function findByUsernameAndPassword(username, password){
