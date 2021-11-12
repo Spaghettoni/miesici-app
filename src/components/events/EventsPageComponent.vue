@@ -24,16 +24,13 @@
                      v-bind:key=event v-for="event in this.events"
                      :to="{name: 'EventDetail',
                      params: {
-                       name: event.name,
-                       attendees: event.attendees,
-                       place: event.place,
-                       sport: event.sport,
-                       datetime: event.datetime,
-                       team: event.team}}">
+                       eventId: event.id,
+                     }}">
           <event-component
+              :eventId=event.id
               :name=event.name
-              :team=event.team
-              :attendees=event.attendees
+              :team=teamName(event)
+              :attendees=attendeeNames(event)
               :place=event.place
               :datetime=event.datetime
               :sport=event.sport
@@ -47,6 +44,7 @@
 <script>
 import router from "../../router";
 import EventsController from "../../controllers/EventsController";
+import { Team } from "../../store/Models";
 
 export default {
   name: "EventsComponent",
@@ -58,10 +56,18 @@ export default {
   methods: {
     goBack() {
       router.back()
+    },
+
+    teamName(event){
+      return Team.query().whereId(event.team_id).first().name;
+    },
+
+    attendeeNames(event){
+       return event.attendees.map(a => a.username);
     }
   },
   mounted() {
-    this.events = EventsController.getEvents();
+    this.events = EventsController.getUsersEvents();
   }
 }
 </script>

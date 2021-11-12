@@ -50,8 +50,8 @@
       <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl">Team</label>
 
-        <select v-model="input.team" id="team" name="team" class="border-2 px-4 py-2 text-2xl">
-          <option v-for="option in this.teams" v-bind:value="option.name" v-bind:key="option" >
+        <select v-model="input.team" id="team" name="team" @change="saveTeamIdOnChange($event)" class="border-2 px-4 py-2 text-2xl">
+          <option v-for="option in this.teams" v-bind:value="option.id" v-bind:key="option" >
             {{ option.name }}
           </option>
         </select>
@@ -75,6 +75,8 @@
 import router from "@/router";
 import TeamsController from "@/controllers/TeamsController";
 import EventsController from "@/controllers/EventsController";
+import store from "../../store";
+import { Event } from "../../store/Models";
 
 export default {
   name: "CreateEventComponent",
@@ -86,27 +88,44 @@ export default {
         sport: '',
         datetime: '',
         team: '',
+        selectedTeamId: null
       },
-      teams: []
+      teams: [],
     }
   },
+
   methods: {
     goBack() {
       router.back()
     },
+
     createEvent(){
-      EventsController.insertEvent(
-          this.input.name,
-          this.input.sport,
-          this.input.place,
-          this.input.datetime.split("T").join(" "),
-          this.input.team
-      );
+      if(!this.input.selectedTeamId){
+        return;   //toto sa zmeni ak budu public eventy
+      }
+      const loggedUser = store.state.loggedUser;
+
+      Event.insert({
+          data: {
+            name: this.input.name,
+            place: this.input.place,
+            sport: this.input.sport,
+            team_id: this.input.selectedTeamId,
+            datetime: this.input.datetime.split("T").join(" "),
+            attendees: [loggedUser]
+          }
+      });
       router.push('/events');
+    },
+
+    saveTeamIdOnChange(e) {
+        const teamId = e.target.value;
+        this.input.selectedTeamId = teamId;
     }
   },
+
   mounted() {
-    this.teams = TeamsController.getTeams();
+    this.teams = TeamsController.getUsersTeams();
   }
 
 }

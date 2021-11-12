@@ -1,28 +1,56 @@
 import {reactive} from "vue";
 import LocalStorageController from "../controllers/LocalStorageController";
+import Vuex from 'vuex';
+import VuexORM from '@vuex-orm/core';
+import {User, Team, TeamUser, Event, EventUser, initModels} from './Models';
+import VuexPersistence from 'vuex-persist';
+
 LocalStorageController.constructor();
 
-const store = {
-    state: reactive({
-        currentPath: '/',
-        loggedUser:  JSON.parse(localStorage.getItem("db")).loggedUser,
-    }),
 
-    setCurrentPathAction(newPath) {
-       this.state.currentPath = newPath;
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
+
+
+const database = new VuexORM.Database();
+
+// Register Models.
+database.register(User);
+database.register(Team);
+database.register(TeamUser);
+database.register(Event);
+database.register(EventUser);
+
+// Create Vuex Store and register database through Vuex ORM.
+const store = new Vuex.Store({
+  state: {
+    currentPath: '/',
+    loggedUser:  JSON.parse(localStorage.getItem("loggedUser"))
+  },
+
+  mutations:{
+    setCurrentPath(state, newPath) {
+        state.currentPath = newPath;
     },
-
-    setLoggedUserAction(user) {
-        this.state.loggedUser = user;
+  
+    setLoggedUser(state, user) {
+        state.loggedUser = user;
     },
-
-    clearCurrentPathAction() {
-        this.state.currentPath = '/';
+  
+    clearCurrentPath(state) {
+        state.currentPath = '/';
     },
-
-    clearLoggedUserAction() {
-        this.state.loggedUser = null;
+  
+    clearLoggedUser(state) {
+        state.loggedUser = null;
     }
-}
+  },
+
+  plugins: [VuexORM.install(database), new VuexPersistence().plugin]
+});
+
+
+initModels();
 
 export default store;

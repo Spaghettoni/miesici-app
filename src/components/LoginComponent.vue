@@ -17,7 +17,7 @@
                class="px-4 py-2 text-4xl border-2 border-black"
         />
       </div>
-      <button type="button" v-on:click="this.login(input.username, input.password, '/')"
+      <button type="button" v-on:click="this.login(input.username, input.password, '/events')"
               class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
                       hover:bg-orange "
       >
