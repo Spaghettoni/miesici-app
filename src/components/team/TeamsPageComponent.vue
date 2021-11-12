@@ -6,13 +6,13 @@
       >
         &lt;&nbsp;back
       </div>
-      <div class="mt-6 flex justify-between items-center">
-        <h1 class="mb-4 font-semibold text-6xl">
+      <div class="mt-6 flex justify-between items-center flex-wrap">
+        <h1 class="mb-4 mr-8 font-semibold text-6xl">
           My Teams
         </h1>
         <router-link
             to="/create-team"
-            class="ml-14 flex border items-center hover:bg-orange cursor-pointer">
+            class="my-4 flex border items-center hover:bg-orange cursor-pointer">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
             Create new team
@@ -23,7 +23,7 @@
         <div class="font-semibold">
           Search teams
         </div>
-        <div class="border flex max-w-min">
+        <div class="border flex max-w-min flex-col sm:flex-row">
           <select class="px-4 py-2"
                   v-model="selected"
           >
