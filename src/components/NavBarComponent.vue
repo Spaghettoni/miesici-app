@@ -66,7 +66,7 @@ export default {
       console.log('path:', router.currentRoute);
       await store.setCurrentPathAction(target);
     }
-  },
+  }
 
 
 }
