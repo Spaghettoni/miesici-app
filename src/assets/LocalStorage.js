@@ -135,7 +135,7 @@ const storage = {
             "sport": "Tenis",
             "team": "Miesici",
             "datetime": "2021-11-05 12:00",
-            "attendees": ["Janko", "Milan", "Tomino"],
+            "attendees": ["Ondrej", "Slavo", "Livia"],
         },
 
         {
@@ -144,7 +144,7 @@ const storage = {
             "sport": "Futbal",
             "team": "Miesici",
             "datetime": "2021-11-06 20:00",
-            "attendees": ["Lukáš", "Matej", "Filip"],
+            "attendees": ["Ondrej", "Slavo", "Livia"],
         },
         
         {
@@ -153,7 +153,7 @@ const storage = {
             "sport": "Futbal",
             "team": "Futbalisti",
             "datetime": "2021-11-07 15:00",
-            "attendees": ["Jan", "Ondrej", "Julia", "Nikita"],
+            "attendees": ["Sebastian", "Nikita", "Livia", "Julia"],
         },
 
         {
@@ -162,7 +162,7 @@ const storage = {
             "sport": "Petang",
             "team": "Barcelona",
             "datetime": "2021-11-07 15:00",
-            "attendees": ["Miro", "Jaro", "Peter", "Janko"],
+            "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita"],
         },
 
         {
@@ -171,7 +171,7 @@ const storage = {
             "sport": "Hokejbal",
             "team": "Barcelona",
             "datetime": "2021-11-10 15:00",
-            "attendees": ["Ondrej", "Tomas", "Janka", "Ondrej", "Dynamo", "Nikita", "Matej"],
+            "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita", "Livia", "Julia", "Rene"],
         },
 
         {
