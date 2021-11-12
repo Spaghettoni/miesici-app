@@ -6,6 +6,9 @@
       <div class="z-0">
         <router-view />
       </div>
+    <div class="w-full">
+      <footer-component></footer-component>
+    </div>
   </div>
 </template>
 
