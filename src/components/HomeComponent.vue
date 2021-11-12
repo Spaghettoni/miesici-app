@@ -1,11 +1,11 @@
 <template>
   <div class="border-black pt-20">
-    <div class="flex justify-end">
+    <div class="flex flex-col-reverse sm:flex-row sm:justify-end">
       <div class="mx-auto">
-      <img alt="" v-bind:src="'/pictures/landing.png'">
+        <img class="px-10" alt="" v-bind:src="'/pictures/landing.png'">
       </div>
-      <div class="px-36 py-14 border-l-2 border-gray-light">
-        <h2 class="text-8xl font-bold underline">
+      <div class="px-5 sm:px-10 border-l-2 border-gray-light">
+        <h2 class="text-4xl sm:text-8xl font-bold underline z-0">
           Meet and play!
         </h2>
 

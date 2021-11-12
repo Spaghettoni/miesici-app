@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <p class="ml-auto text-2xl text-green"
+      <p class="ml-auto text-xl sm:text-2xl text-green"
          v-if="this.userJoined"
       > 
         JOINED ✓

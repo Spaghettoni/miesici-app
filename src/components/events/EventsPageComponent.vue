@@ -6,13 +6,13 @@
       >
         &lt;&nbsp;back
       </div>
-      <div class="mt-6 flex justify-between items-center">
-        <h1 class="mb-4 font-semibold text-6xl">
-          My Upcoming Events
+      <div class="mt-6 flex justify-between items-center flex-wrap">
+        <h1 class="mb-4 mr-8 font-semibold text-6xl">
+          My Upcoming <br/>Events
         </h1>
         <router-link
             to="/create-event"
-            class="ml-14 flex border items-center hover:bg-orange cursor-pointer">
+            class="flex border items-center hover:bg-orange cursor-pointer">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
             Create new event
