@@ -35,7 +35,7 @@
       </div>
 
       <input type="submit"
-              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
+              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black
                       hover:bg-orange"
               @click="createTeam"
              value = "Create team"

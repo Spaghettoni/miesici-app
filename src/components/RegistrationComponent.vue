@@ -36,7 +36,7 @@
         />
       </div>
       <input type="submit" v-on:click="register(input.username, input.password, input.confirmPassword, input.email, '/')"
-              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black hover:bg-orange"
+              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black hover:bg-orange"
              value = "Register"
       />
 
