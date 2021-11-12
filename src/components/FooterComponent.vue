@@ -3,7 +3,7 @@
   <v-footer class="m-auto flex flex-col sm:px-0 sm:flex-row justify-center flex-wrap py-4 border-2 bg-white font-semibold">
 
     <div class="mx-4 py-1 px-5 text-center cursor-pointer ">
-      © miesiči-app team 2021
+      © miesiči-app team :2021
     </div>
 
 
