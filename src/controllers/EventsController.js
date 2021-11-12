@@ -48,8 +48,6 @@ const EventsController = (() => {
         return EventUser.query().whereId([eventId, loggedUser.id]).exists();
     }
 
-    
-
     return {
         getUsersEvents,
         joinEvent,

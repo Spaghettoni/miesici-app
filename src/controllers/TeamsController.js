@@ -23,36 +23,34 @@ const TeamsController = (() => {
 
     function createTeam(name) {
         const loggedUser = store.state.loggedUser;
-        const newTeam = {
-            name: name,
-            members: [loggedUser],
-        }
-        console.log('creating team with name:', name);
-        let db = LocalStorageController.getDB();
-        db.teams.push(newTeam);
-        LocalStorageController.saveDB(db);
+        Team.insert({
+            data: {
+              name: name,
+              members: [loggedUser]
+            }
+        })
     }
 
-    function addMember(team, member) {
-        console.log('adding', member, ' to team', team);
-        let db = LocalStorageController.getDB();
-        db.teams.forEach((element) => {
-            if (element.name === team) {
-                let members = element.members;
+    function addMember(teamId, username) {
+        const users = UsersController.findByUsername(username);
+        if(users.length === 0){
+            window.alert("user doesn't exist");
+            return;
+        }
 
-                if(members.includes(member)){
-                    window.alert("User is already a member of the team");
-                    return;
-                }
-                if(!UsersController.doesUserExist(member)){
-                    window.alert("User '" + member + "' doesn't exist");
-                    return;
-                }
+        const user = users[0];
+        const isMemberAlready = TeamUser.query().whereId([teamId, user.id]).exists();
+        if(isMemberAlready){
+            window.alert("user is already a member of the team");
+            return;
+        }
 
-                element.members.push(member);
+        TeamUser.insert({
+            data: {
+                team_id: teamId,
+                user_id: user.id
             }
         });
-        LocalStorageController.saveDB(db);
     }
 
     return {

@@ -24,9 +24,16 @@ const UsersController = (() => {
         }).get();
     }
 
+    function findByUsername(username){
+        return User.query().where((user) => {
+            return user.username === username
+        }).get();
+    }
+
     return {
         doesUsernameExist,
-        findByUsernameAndPassword
+        findByUsernameAndPassword,
+        findByUsername
     }
 })();
 
