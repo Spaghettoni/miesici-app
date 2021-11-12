@@ -8,11 +8,15 @@ module.exports = {
         light: '#D1D1D1',
       },
       green: "#10B981",
+      white: '#FFF'
     },
     extend: {
       spacing: {
         '14.5': '70px'
       },
+      dropShadow: {
+        'extreme': '0 25px 25px rgba(0, 0, 0, 0.75)',
+      }
 
     },
   },
