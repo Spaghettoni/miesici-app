@@ -47,10 +47,10 @@
       <div class="flex flex-col">
         <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
                      v-bind:key=team v-for="team in this.selectedTeams"
-                     :to="{name: 'TeamDetail', params: {teamName: team.name, members: team.members}}">
+                     :to="{name: 'TeamDetail', params: {teamId: team.id}}">
           <team-component
               :team-name=team.name
-              :members=team.members
+              :members=this.memberNames(team)
           ></team-component>
         </router-link>
       </div>
@@ -76,16 +76,22 @@ export default {
     goBack() {
       router.back()
     },
+
     filterTeams() {
       this.selectedTeams = this.teams.filter(
           (team) =>
               (team.name === this.selected || this.selected === 'all-teams') &&
-              (team.members.filter((person) => person.startsWith(this.member)).length > 0 || this.member === '')
+              (team.members.map((member) => member.username)
+              .filter((person) => person.startsWith(this.member)).length > 0 || this.member === '')
       );
     },
+
+    memberNames(team){
+       return team.members.map(m => m.username);
+    }
   },
   mounted() {
-    this.teams = TeamsController.getTeams();
+    this.teams = TeamsController.getUsersTeams();
     this.filterTeams();
   }
 }

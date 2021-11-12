@@ -22,13 +22,13 @@
         </div>
         <div class="ml-5 flex flex-col ">
           <h1 class="text-lg font-semibold">
-            {{ teamName }}
+            {{ this.team.name }}
             &nbsp;
           </h1>
           <div class="flex flex-wrap">
             <div class="font-semibold text-lg mr-2 "
-                 v-bind:key=member v-for="member in this.members">
-              {{ member }},
+                 v-bind:key=username v-for="username in this.memberNames()">
+              {{ username }},
 
             </div>
           </div>
@@ -61,35 +61,43 @@
 <script>
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
-import UsersController from "../../controllers/UsersController";
+import {Team} from "../../store/Models";
 
 export default {
   name: "TeamDetailComponent",
   props: {
-    teamName: String,
+    teamId: String,
   },
   data() {
     return {
       input: {
         member: '',
       },
-      members: []
+      team: null
     }
   },
+
   methods: {
     goBack() {
       router.back();
     },
 
     addMember() {
-      if (UsersController.doesUserExist(this.input.member) && !this.members.includes(this.input.member)) {
-        this.members.push(this.input.member);
-      }
-      TeamsController.addMember(this.teamName, this.input.member);
+      TeamsController.addMember(this.teamId, this.input.member);
+      this.loadTeam();
+    },
+
+    loadTeam(){
+      this.team = Team.query().whereId(this.teamId).with('members').first();
+    },
+
+    memberNames(){
+       return this.team.members.map(a => a.username);
     },
   },
-  mounted() {
-    this.members = TeamsController.getTeams().filter((team) => team.name === this.teamName)[0].members;
+
+  created(){
+    this.loadTeam();
   }
 }
 </script>

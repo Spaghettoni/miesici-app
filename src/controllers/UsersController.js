@@ -1,8 +1,7 @@
-import storage from "@/assets/LocalStorage";
-import LocalStorageController from "./LocalStorageController";
+import { User } from "../store/Models";
+
 
 const UsersController = (() => {
-    let users = JSON.parse(localStorage.getItem("db")).users;
 
     function constructor() {
 
@@ -13,46 +12,28 @@ const UsersController = (() => {
 
     }
 
-    function reloadUsers() {
-        users = JSON.parse(localStorage.getItem("db")).users;
+    function doesUsernameExist(username){
+        return User.query().where((user) => {
+            return user.username === username 
+        }).exists();
     }
 
-    function insertUser(username, password, email) {
-        let db = LocalStorageController.getDB();
-        const newUser = {
-            "username": username,
-            "password": password,
-            "mail": email
-        };
-        db.users.push(newUser);
-        LocalStorageController.saveDB(db);
-        reloadUsers();
+    function findByUsernameAndPassword(username, password){
+        return User.query().where((user) => {
+            return user.username === username && user.password === password
+        }).get();
     }
 
-    function getUsers() {
-        return users;
+    function findByUsername(username){
+        return User.query().where((user) => {
+            return user.username === username
+        }).get();
     }
 
-    function doesUserExist(username){
-        for (const user of users){
-            if(user.username === username){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function printAllUsers() {
-        let arrayLength = users.length;
-        for (let i = 0; i < arrayLength; i++) {
-            console.log(users[i]);
-        }
-    }
     return {
-        getUsers,
-        doesUserExist,
-        insertUser,
-        printAllUsers
+        doesUsernameExist,
+        findByUsernameAndPassword,
+        findByUsername
     }
 })();
 

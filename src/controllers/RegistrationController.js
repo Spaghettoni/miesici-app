@@ -1,10 +1,9 @@
 import router from "../router";
 import store from "../store";
-import LocalStorageController from "./LocalStorageController";
 import UsersController from "./UsersController";
+import { User } from "../store/Models";
 
 const RegistrationController = (() => {
-    let users = JSON.parse(localStorage.getItem("db")).users;
 
     function constructor() {
         if(RegistrationController._instance){
@@ -15,24 +14,30 @@ const RegistrationController = (() => {
     }
 
     async function register(username, password, confirmPassword, email, targetPath) {
-        console.log("sme v metode register");
         if(username === "" || password === "" || email === ""){
+            window.alert("please fill out all fields");
             return;
         }
         if(password !== confirmPassword){
+            window.alert("passwords do not match");
             return;
         }
 
-        if(UsersController.doesUserExist(username)){
-            console.log("meno uz existuje");
+        if(UsersController.doesUsernameExist(username)){
             window.alert("username is already taken");
             return;
         }
 
-        await store.setCurrentPathAction(targetPath);
+        store.commit('setCurrentPath', targetPath);
         await router.push(targetPath);  
 
-        await UsersController.insertUser(username, password, email);
+        User.insert({
+            data: {
+                username: username,
+                password: password,
+                email: email
+              }
+        })
     }
 
 
