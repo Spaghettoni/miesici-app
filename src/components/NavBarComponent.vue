@@ -50,6 +50,17 @@ import LoginController from "../controllers/LoginController";
 import router from "../router";
 import store from "../store";
 
+const apiURL =
+    "https://api.github.com/repos/Spaghettoni/miesici-app/commits?per_page=3&sha=master";
+const xhr = new XMLHttpRequest();
+xhr.open("GET", apiURL);
+xhr.onload = function() {
+  let commits = JSON.parse(xhr.responseText);
+  console.log(commits[0].commit.author.date.split('T').reverse().join(' ').split('Z').join(' '));
+};
+xhr.send();
+
+
 export default {
   name: "NavBarComponent",
   data() {
