@@ -1,7 +1,11 @@
 <template>
   <div class="p-2">
     <div class="flex">
-      <div class="flex flex-col text-right border-r pr-2">
+<!--         v-bind:class="this.userJoined && 'bg-green border-2 border-green'"-->
+
+      <div class="flex flex-col text-right border-r pr-2"
+
+      >
         <div class="text-lg underline italic">
           Event name:
         </div>
@@ -21,7 +25,7 @@
           Date and time:
         </div>
       </div>
-      <div class="flex flex-col ml-5 ">
+      <div class="flex mr-auto flex-col ml-5 relative">
         <div class="text-lg font-semibold">
           {{ this.name }}
         </div>
@@ -42,10 +46,10 @@
         </div>
       </div>
 
-      <p class="ml-auto text-xl sm:text-2xl text-green"
+      <p class=" ml-auto text-xl sm:text-2xl text-green"
          v-if="this.userJoined"
-      > 
-        JOINED ✓
+      >
+        ✓
       </p>
     </div>
   </div>
