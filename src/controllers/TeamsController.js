@@ -1,6 +1,7 @@
 import store from "../store";
 import LocalStorageController from "./LocalStorageController";
 import UsersController from "./UsersController";
+import { Team, TeamUser } from "../store/Models";
 
 const TeamsController = (() => {
     function constructor() {
@@ -12,11 +13,12 @@ const TeamsController = (() => {
 
     }
 
-    function getTeams() {
+    function getUsersTeams() {
         const loggedUser = store.state.loggedUser;
-        const teams = LocalStorageController.get('teams');
-        return Object.values(teams).filter((element) => element.members.includes(loggedUser));
-
+        return Team.query().withAllRecursive()  //with('events.attendees').with('members') 
+        .where((team) => TeamUser.query()
+            .where((tu) => tu.team_id === team.id && tu.user_id === loggedUser.id).exists())
+        .get();
     }
 
     function createTeam(name) {
@@ -54,7 +56,7 @@ const TeamsController = (() => {
     }
 
     return {
-        getTeams,
+        getUsersTeams,
         createTeam,
         addMember,
     }

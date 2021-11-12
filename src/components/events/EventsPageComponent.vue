@@ -24,13 +24,10 @@
                      v-bind:key=event v-for="event in this.events"
                      :to="{name: 'EventDetail',
                      params: {
-                       name: event.name,
-                       attendees: attendeeNames(event),
-                       place: event.place,
-                       sport: event.sport,
-                       datetime: event.datetime,
-                       team: teamName(event)}}">
+                       eventId: event.id,
+                     }}">
           <event-component
+              :eventId=event.id
               :name=event.name
               :team=teamName(event)
               :attendees=attendeeNames(event)

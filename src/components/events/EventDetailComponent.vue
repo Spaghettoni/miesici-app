@@ -36,25 +36,25 @@
         </div>
         <div class="flex flex-col ml-5 ">
           <div class="text-lg font-semibold">
-            {{ this.name }}
+            {{ this.event.name }}
           </div>
           <div class="font-semibold text-lg">
-            {{ this.team }}
+            {{ this.teamName()}}
           </div>
           <div class="flex flex-wrap">
-            <div class="mr-2 text-lg font-semibold" v-bind:key=attendee v-for="attendee in this.attendees">
-              {{ attendee  }},
+            <div class="mr-2 text-lg font-semibold" v-bind:key=username v-for="username in this.attendeeNames()">
+              {{ username }},
             </div>
             &nbsp;
           </div>
           <div class="font-semibold text-lg">
-            {{ this.sport }}
+            {{ this.event.sport }}
           </div>
           <div class="font-semibold text-lg">
-            {{ this.place }}
+            {{ this.event.place }}
           </div>
           <div class="font-semibold text-lg">
-            {{ this.datetime }}
+            {{ this.event.datetime }}
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
 
         <button type="button"
                 class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
-                      hover:bg-orange" v-if="this.isPresent"
+                      hover:bg-orange" v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
@@ -85,42 +85,56 @@
 <script>
 import router from "../../router";
 import EventsController from "@/controllers/EventsController";
-import LocalStorageController from "@/controllers/LocalStorageController";
-import LoginController from "@/controllers/LoginController";
+import {Event, Team} from "../../store/Models";
 
 export default {
   name: "EventDetailComponent",
   props: {
-    name: String,
-    sport: String,
-    place: String,
-    datetime: String,
-    team: String,
-    attendees: Array,
-    private: Boolean,
+    eventId: String,
   },
   data() {
     return {
-      isPresent: null,
+      event: null
     }
   },
+
+  computed: {
+    userJoined() {
+      return EventsController.didUserJoinEvent(this.eventId);
+    }
+  },
+
   methods: {
     goBack() {
       router.back();
     },
+
     join() {
-      EventsController.joinEvent(this.name);
-      router.back();
+      EventsController.joinEvent(this.eventId);
+      this.loadEvent();
     },
+
     leave() {
-      EventsController.leaveEvent(this.name);
-      router.back();
+      EventsController.leaveEvent(this.eventId);
+      this.loadEvent();
+    },
+
+    loadEvent(){
+      this.event = Event.query().whereId(this.eventId).with('attendees').first();
+    },
+
+    attendeeNames(){
+       return this.event.attendees.map(a => a.username);
+    },
+
+    teamName(){
+      return Team.query().whereId(this.event.team_id).first().name;
     }
   },
-  mounted() {
-    this.isPresent = this.attendees.includes(LoginController.getLoggedUser())
-  }
 
+  created(){
+    this.loadEvent();
+  }
 }
 </script>
 

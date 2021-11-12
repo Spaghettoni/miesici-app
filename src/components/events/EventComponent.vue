@@ -43,7 +43,7 @@
       </div>
 
       <p class="ml-auto text-2xl text-green"
-         v-if="this.userJoinedThisEvent"
+         v-if="this.userJoined"
       > 
         JOINED ✓
       </p>
@@ -52,11 +52,12 @@
 </template>
 
 <script>
-import LoginController from '../../controllers/LoginController';
+import EventsController from '../../controllers/EventsController';
 
 export default {
   name: "EventComponent",
   props: {
+    eventId: String,
     name: String,
     team: String,
     sport: String,
@@ -65,13 +66,11 @@ export default {
     private: Boolean,
     attendees: Array
   },
-  data() {
-    return {
-      userJoinedThisEvent: null,
+
+  computed: {
+    userJoined() {
+      return EventsController.didUserJoinEvent(this.eventId);
     }
-  },
-  mounted() {
-    this.userJoinedThisEvent = this.attendees.includes(LoginController.getLoggedUser());
   }
 }
 </script>
