@@ -30,11 +30,11 @@ const LoginController = (() => {
     }
 
     async function logout() {
+        await router.push('/');
         await localStorage.setItem('loggedUser', null);
         store.commit('setLoggedUser', null);
         store.commit('setCurrentPath', '/');
         console.log("successfully logged out!");
-        await router.push('/');
     }
 
     function getLoggedUser() {

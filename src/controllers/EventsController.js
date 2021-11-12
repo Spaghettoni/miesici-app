@@ -45,6 +45,9 @@ const EventsController = (() => {
 
     function didUserJoinEvent(eventId){
         const loggedUser = store.state.loggedUser;
+        if(loggedUser === null){
+            return false;
+        }
         return EventUser.query().whereId([eventId, loggedUser.id]).exists();
     }
 
