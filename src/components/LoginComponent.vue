@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="w-full flex justify-center">
+  <form id="login" class="w-full flex justify-center">
     <div class="mx-6 mt-10 p-10 max-w-2xl border-2 flex flex-col w-full">
       <div class="form-inputs flex flex-col">
         <label class="text-2xl" for="username">Username</label>
@@ -17,19 +17,19 @@
                class="px-4 py-2 text-4xl border-2 border-black"
         />
       </div>
-      <button type="button" v-on:click="this.login(input.username, input.password, '/events')"
+      <input type="submit" v-on:click="this.login(input.username, input.password, '/events')"
               class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black text-white bg-black
                       hover:bg-orange "
-      >
-        Login
-      </button>
+             value = "Login"
+      />
+
 
       <div class="mt-5 mx-auto text-xl flex flex-col items-center">
         <p>Don't have an account yet?</p>
         <router-link to="/register" class="font-semibold underline">Register here!</router-link>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>

@@ -9,6 +9,7 @@ import TeamDetailComponent from "../components/team/TeamDetailComponent";
 import CreateTeamComponent from "../components/team/CreateTeamComponent";
 import EventDetailComponent from "../components/events/EventDetailComponent";
 import CreateEventComponent from "../components/events/CreateEventComponent";
+import NotFoundComponent from "@/components/NotFoundComponent";
 
 const routes = [
   {
@@ -62,7 +63,8 @@ const routes = [
     path: "/register",
     name: "Registration",
     component: RegistrationComponent,
-  }
+  },
+  { path: "/:catchAll(.*)", component: NotFoundComponent }
 ];
 
 const router = createRouter({
