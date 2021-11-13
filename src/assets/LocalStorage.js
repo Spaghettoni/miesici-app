@@ -3,79 +3,92 @@ const storage = {
         {
             "username": "Janko",
             "password": "Janko",
-            "mail": "janko@gmail.com"
+            "mail": "janko@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Peter",
             "password": "Peter",
-            "mail": "peter@gmail.com"
+            "mail": "peter@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Ondrej",
             "password": "Ondrej",
-            "mail": "ondrej@gmail.com"
+            "mail": "ondrej@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Slavo",
             "password": "Slavo",
-            "mail": "slavo@gmail.com"
+            "mail": "slavo@gmail.com",
+            "bio" : "I like beer. I like beer. I like beer. I like beer. I like beer. I like beer. I like beer. I like beer. I like beer."
         },
 
         {
             "username": "Hrusky",
             "password": "Hrusky",
-            "mail": "hrusky@gmail.com"
+            "mail": "hrusky@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Dynamo",
             "password": "Dynamo",
-            "mail": "dynamo@gmail.com"
+            "mail": "dynamo@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Andrej",
             "password": "Andrej",
-            "mail": "andrej@gmail.com"
+            "mail": "andrej@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Lukas",
             "password": "Lukas",
-            "mail": "lukas@gmail.com"
+            "mail": "lukas@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Rene",
             "password": "Rene",
-            "mail": "rene@gmail.com"
+            "mail": "rene@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Sebastian",
             "password": "Sebastian",
-            "mail": "sebastian@gmail.com"
+            "mail": "sebastian@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Nikita",
             "password": "Nikita",
-            "mail": "nikita@gmail.com"
+            "mail": "nikita@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Livia",
             "password": "Livia",
-            "mail": "livia@gmail.com"
+            "mail": "livia@gmail.com",
+            "bio" : ""
         },
 
         {
             "username": "Julia",
             "password": "Julia",
-            "mail": "julia@gmail.com"
+            "mail": "julia@gmail.com",
+            "bio" : ""
         }
     ],
 

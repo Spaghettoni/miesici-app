@@ -9,7 +9,8 @@ class User extends Model {
             id: this.uid(),
             username: this.attr(''),
             password: this.attr(''),
-            email: this.attr('')
+            email: this.attr(''),
+            bio: this.attr('')
         }
     }
 }
