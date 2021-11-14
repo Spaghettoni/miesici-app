@@ -7,14 +7,14 @@
         &lt;&nbsp;back
       </div>
 
-      <div class="mt-6 flex justify-between items-center flex-wrap">
+      <div class="mt-6 flex justify-between items-center flex-wrap my-5">
         <h1 class="mb-4 mr-8 font-semibold text-6xl">
           My Profile
         </h1>
 
         <button
             type="button"
-            class="flex border items-center hover:bg-orange cursor-pointer pl-1 pr-3"
+            class="flex border items-center hover:bg-orange cursor-pointer pl-1 pr-3 mx-2"
             v-if="!this.updateInfo"
             @click="setUpdateInfo(true)">
           <img alt="" :src="'/pictures/create.png'" width="40">
@@ -40,32 +40,49 @@
 
           <div class="flex flex-col ml-5 w-3/4" v-if="this.updateInfo">
 
-            <div class="flex flex-row ml-5 text-left">
+            <div class="flex flex-row mb-1 ml-5 text-left">
               <div class="text-lg underline italic">
                 Username:
               </div>
 
-              <div class="font-semisolid text-lg ml-5">
-                Updatujeme !!!
-              </div>
+              <input type="text" id="username" name="username"
+                     :placeholder="this.username" v-model="this.username"
+                     class="px-3 font-semisolid text-lg ml-5 border-2 border-gray-light w-9/12"
+              />
 
             </div>
 
-            <div class="flex mr-5 flex-row ml-5">
-              <div class="text-lg underline italic text-left">
+            <div class="flex mr-3 flex-row ml-5">
+              <div class="text-lg underline italic ml-8">
                 Bio:
               </div>
 
-              <div class="font-semisolid text-lg ml-5">
-                Updatujeme !!!!
-              </div>
+              <textarea id="bio" v-model="this.bio"
+                     class="px-3 font-semisolid text-lg ml-5 border-2 border-gray-light w-10/12 max-h-30"
+              />
+            </div>
+
+            <div class="flex items-center mr-5 flex-row ml-10 mt-10">
+              <button
+                  type="button"
+                  class="flex border items-center hover:bg-orange cursor-pointer py-1 px-3 mr-10"
+                  @click="setUpdateInfo(false)">
+                Discard changes
+              </button>
+
+              <button
+                  type="button"
+                  class="flex border items-center hover:bg-orange cursor-pointer py-1 px-3"
+                  @click="saveChanges()">
+                Save changes
+              </button>
             </div>
 
           </div>
 
         <div class="flex flex-col ml-5 w-3/4" v-else>
 
-          <div class="flex flex-row ml-5 text-left">
+          <div class="flex flex-row ml-5 mb-2 text-left">
           <div class="text-lg underline italic">
             Username:
           </div>
@@ -76,8 +93,8 @@
 
             </div>
 
-          <div class="flex mr-5 flex-row ml-5">
-          <div class="text-lg underline italic text-left">
+          <div class="flex mr-3 flex-row ml-5">
+          <div class="text-lg underline italic ml-8">
             Bio:
           </div>
 
@@ -105,6 +122,10 @@ export default {
       username: null,
       bio: null,
       updateInfo: false,
+      items: [
+        { Username: this.username},
+        { Bio: this.bio},
+      ],
     }
   },
   methods: {
@@ -113,6 +134,10 @@ export default {
     },
     setUpdateInfo(value) {
       this.updateInfo = value;
+    },
+    saveChanges() {
+      //TODO: implement save data
+      this.setUpdateInfo(false);
     }
   },
 
