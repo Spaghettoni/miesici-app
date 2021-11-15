@@ -64,7 +64,7 @@ const routes = [
     name: "Registration",
     component: RegistrationComponent,
   },
-  { path: "/:catchAll(.*)", component: NotFoundComponent }
+  // { path: "/:catchAll(.*)", component: NotFoundComponent }
 ];
 
 const router = createRouter({
