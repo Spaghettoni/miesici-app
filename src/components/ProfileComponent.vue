@@ -52,6 +52,18 @@
 
             </div>
 
+            <div class="flex flex-row mb-1 ml-5 text-left">
+              <div class="text-lg underline italic ml-6">
+                Email:
+              </div>
+
+              <input type="text" id="email" name="email"
+                     :placeholder="this.email" v-model="this.email"
+                     class="px-3 font-semisolid text-lg ml-5 border-2 border-gray-light w-9/12"
+              />
+
+            </div>
+
             <div class="flex mr-3 flex-row ml-5">
               <div class="text-lg underline italic ml-8">
                 Bio:
@@ -66,14 +78,14 @@
               <button
                   type="button"
                   class="flex border items-center hover:bg-orange cursor-pointer py-1 px-3 mr-10"
-                  @click="setUpdateInfo(false)">
+                  @click="discardChanges">
                 Discard changes
               </button>
 
               <button
                   type="button"
                   class="flex border items-center hover:bg-orange cursor-pointer py-1 px-3"
-                  @click="saveChanges()">
+                  @click="saveChanges">
                 Save changes
               </button>
             </div>
@@ -82,7 +94,7 @@
 
         <div class="flex flex-col ml-5 w-3/4" v-else>
 
-          <div class="flex flex-row ml-5 mb-2 text-left">
+          <div class="flex flex-row ml-5 mb-2">
           <div class="text-lg underline italic">
             Username:
           </div>
@@ -93,14 +105,30 @@
 
             </div>
 
+          <div class="flex flex-row ml-5 mb-2">
+            <div class="text-lg underline italic ml-6">
+              Email:
+            </div>
+
+            <div class="font-semisolid text-lg ml-5">
+              {{this.email}}
+            </div>
+
+          </div>
+
           <div class="flex mr-3 flex-row ml-5">
           <div class="text-lg underline italic ml-8">
             Bio:
           </div>
 
-          <div class="font-semisolid text-lg ml-5">
+            <div class="font-semisolid text-lg ml-5" v-if="this.bio !== ''">
               {{ this.bio }}
-          </div>
+            </div>
+
+            <div class="font-semisolid text-lg ml-5 italic opacity-40" v-else>
+              Empty bio
+            </div>
+
           </div>
 
         </div>
@@ -113,6 +141,7 @@
 <script>
 import router from "../router";
 import LoginController from "../controllers/LoginController";
+import UsersController from "../controllers/UsersController";
 
 export default {
   name: "ProfileComponent",
@@ -120,12 +149,9 @@ export default {
     return {
       user: null,
       username: null,
+      email: null,
       bio: null,
       updateInfo: false,
-      items: [
-        { Username: this.username},
-        { Bio: this.bio},
-      ],
     }
   },
   methods: {
@@ -136,14 +162,24 @@ export default {
       this.updateInfo = value;
     },
     saveChanges() {
-      //TODO: implement save data
+      this.user.username = this.username;
+      this.user.email = this.email;
+      this.user.bio = this.bio;
+      UsersController.updateUserInformation(this.user);
       this.setUpdateInfo(false);
-    }
+    },
+    discardChanges() {
+      this.username = this.user.username;
+      this.email = this.user.email;
+      this.bio = this.user.bio;
+      this.setUpdateInfo(false);
+    },
   },
 
   mounted() {
     this.user = LoginController.getLoggedUser();
     this.username = this.user.username;
+    this.email = this.user.email;
     this.bio = this.user.bio;
   }
 }

@@ -30,10 +30,22 @@ const UsersController = (() => {
         }).get();
     }
 
+    function updateUserInformation(user){
+        console.log('volam sa');
+        User.update.whereId(user.id)({
+            data: {
+                username: user.username,
+                email: user.email,
+                bio: user.bio
+        }
+        });
+    }
+
     return {
         doesUsernameExist,
         findByUsernameAndPassword,
-        findByUsername
+        findByUsername,
+        updateUserInformation
     }
 })();
 
