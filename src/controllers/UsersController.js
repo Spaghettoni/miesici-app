@@ -31,8 +31,8 @@ const UsersController = (() => {
     }
 
     function updateUserInformation(user){
-        console.log('volam sa');
-        User.update.whereId(user.id)({
+        User.update({
+            where: user.id,
             data: {
                 username: user.username,
                 email: user.email,

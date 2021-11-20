@@ -29,12 +29,16 @@
           <div class="flex flex-col text-right border-r pr-2">
 
         <img alt="" :src="'/pictures/profile.png'" width="250">
-        <button
-            type="button"
-            class="my-4 flex border items-center hover:bg-orange cursor-pointer">
-          <img alt="" :src="'/pictures/create.png'" width="40">
-            Change profile picture
-        </button>
+
+            <label class="file-select" v-if="this.updateInfo">
+              <div class="my-4 flex border items-center hover:bg-orange cursor-pointer">
+                <img alt="" :src="'/pictures/create.png'" width="40">
+<!--                <span v-if="this.file!== null">{{ this.file.name }}</span>-->
+                Change profile picture
+              </div>
+              <input class="hidden" accept="image/*" type="file" @change="handleFileChange"/>
+            </label>
+
 
         </div>
 
@@ -140,7 +144,7 @@
 
 <script>
 import router from "../router";
-import LoginController from "../controllers/LoginController";
+import store from "../store";
 import UsersController from "../controllers/UsersController";
 
 export default {
@@ -152,6 +156,8 @@ export default {
       email: null,
       bio: null,
       updateInfo: false,
+
+      file: null,
     }
   },
   methods: {
@@ -174,10 +180,14 @@ export default {
       this.bio = this.user.bio;
       this.setUpdateInfo(false);
     },
+    handleFileChange(e) {
+      //this.$emit('input', e.target.files[0])
+      this.file = e.target.files[0];
+    },
   },
 
   mounted() {
-    this.user = LoginController.getLoggedUser();
+    this.user = store.state.loggedUser;
     this.username = this.user.username;
     this.email = this.user.email;
     this.bio = this.user.bio;
