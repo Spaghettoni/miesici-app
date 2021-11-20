@@ -1,6 +1,9 @@
 <template>
   <div id="nav"
        class="m-auto flex justify-end sm:px-0 sm:flex-row sm:justify-end py-3 sm:py-4 border-b-2 bg-white font-semibold">
+
+    <img alt="" :src="'/pictures/icon2.png'" width="85">
+
     <div @click="updatePath('/')"
          class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange hidden sm:block"
     >
@@ -59,7 +62,7 @@
       </div>
       <div v-if="this.state.loggedUser !== null"
            @click="updatePath('/profile')"
-           class="mx-4 border-2 py-2 px-5 text-center cursor-pointer bg-white hover:bg-orange relative"
+           class="mx-4 border-2 py-2 px-5 text-center cursor-pointer bg-white hover:bg-orange active:bg-white relative"
       >
         Profile
       </div>
@@ -71,25 +74,25 @@
       </div>
       <div v-if="this.state.loggedUser !== null"
            @click="updatePath('/events')"
-           class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
+           class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white "
       >
         Events
       </div>
       <div  v-if="this.state.loggedUser === null"
             @click="updatePath('/login')"
-            class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
+            class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white"
       >
         Login
       </div>
       <div  v-if="this.state.loggedUser === null"
             @click="updatePath('/register')"
-            class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
+            class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white"
       >
         Register
       </div>
       <div  v-if="this.state.loggedUser !== null"
             @click="this.logout()"
-            class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
+            class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white"
       >
         Logout
       </div>
@@ -134,4 +137,15 @@ export default {
 .burgir {
   box-shadow: 0 40px 50px rgba(0, 0, 0, 0.80);
 }
+
+#nav {
+  background-color: black;
+  color: white;
+}
+
+#nav :hover {
+  color: black;
+}
+
+
 </style>
