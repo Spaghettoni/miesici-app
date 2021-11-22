@@ -68,42 +68,48 @@
       >
         <div @click="updatePath('/')"
              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer bg-white hover:bg-orange relative"
+             v-bind:class="{active2: activePage === '/'}"
         >
           Home
         </div>
         <div v-if="this.state.loggedUser !== null"
              @click="updatePath('/profile')"
-             class="mx-4 border-2 py-2 px-5 text-center cursor-pointer bg-white hover:bg-orange active:bg-white relative"
+             class="mx-4 border-2 py-2 px-5 text-center cursor-pointer bg-white hover:bg-orange relative"
+             v-bind:class="{active2: activePage === '/profile'}"
         >
           Profile
         </div>
         <div v-if="this.state.loggedUser !== null"
              @click="updatePath('/teams')"
              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer bg-white hover:bg-orange"
+             v-bind:class="{active2: activePage === '/teams'}"
         >
           Teams
         </div>
         <div v-if="this.state.loggedUser !== null"
              @click="updatePath('/events')"
-             class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white "
+             class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange "
+             v-bind:class="{active2: activePage === '/events'}"
         >
           Events
         </div>
         <div  v-if="this.state.loggedUser === null"
               @click="updatePath('/login')"
-              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white"
+              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
+              v-bind:class="{active2: activePage === '/login'}"
         >
           Login
         </div>
         <div  v-if="this.state.loggedUser === null"
               @click="updatePath('/register')"
-              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white"
+              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
+              v-bind:class="{active2: activePage === '/register'}"
         >
           Register
         </div>
         <div  v-if="this.state.loggedUser !== null"
               @click="this.logout()"
-              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange active:bg-white"
+              class="mx-4 border-2 py-2 px-5 text-center cursor-pointer hover:bg-orange"
         >
           Logout
         </div>
@@ -179,7 +185,8 @@ export default {
 }
 
 .active2 {
-
+  background-color: black;
+  color: white;
 }
 
 </style>
