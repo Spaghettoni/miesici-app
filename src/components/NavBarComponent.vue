@@ -1,50 +1,58 @@
 <template>
   <div id="header" class="flex">
-    <div class="ml-10 self-start">
+    <div @click="updatePath('/')"
+          class="ml-10 self-start cursor-pointer">
       <img alt="" :src="'/pictures/icon2.png'" width="100">
+
     </div>
 
     <nav id="nav"
          class="self-end m-auto flex justify-end sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 bg-white font-semibold">
 
       <div @click="updatePath('/')"
-           class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           v-bind:class="{active: activePage === '/'}"
       >
         Home
       </div>
       <div v-if="this.state.loggedUser !== null"
            @click="updatePath('/profile')"
-           class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           v-bind:class="{active: activePage === '/profile'}"
       >
         Profile
       </div>
       <div v-if="this.state.loggedUser !== null"
            @click="updatePath('/teams')"
-           class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           v-bind:class="{active: activePage === '/teams'}"
       >
         Teams
       </div>
       <div v-if="this.state.loggedUser !== null"
            @click="updatePath('/events')"
-           class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange hidden sm:block"
+           v-bind:class="{active: activePage === '/events'}"
       >
         Events
       </div>
       <div  v-if="this.state.loggedUser === null"
             @click="updatePath('/login')"
-            class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange hidden sm:block"
+            class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange hidden sm:block"
+            v-bind:class="{active: activePage === '/login'}"
       >
         Login
       </div>
       <div  v-if="this.state.loggedUser === null"
             @click="updatePath('/register')"
-            class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange mr-10 hidden  sm:block"
+            class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange mr-10 hidden  sm:block"
+            v-bind:class="{active: activePage === '/register'}"
       >
         Register
       </div>
       <div  v-if="this.state.loggedUser !== null"
             @click="this.logout()"
-            class="mx-4 border-2 py-1 px-5 text-center cursor-pointer hover:bg-orange mr-10 hidden sm:block"
+            class="mx-4 border-2 py-1 px-7 text-center cursor-pointer hover:bg-orange mr-10 hidden sm:block"
       >
         Logout
       </div>
@@ -117,8 +125,9 @@ export default {
     return {
       router: router,
       state: store.state,
-      logout: LoginController.logout,
+      // logout: LoginController.logout,
       showMenu: false,
+      activePage: null,
     }
   },
   methods: {
@@ -128,12 +137,21 @@ export default {
       await router.push(target);
       console.log('path:', router.currentRoute);
       store.commit('setCurrentPath',target);
-
+      //TODO problem po login -> nezobrazi ako aktivnu stranku Upcoming events
+      this.activePage = target;
     },
     toggleNav() {
       this.showMenu = !this.showMenu;
+    },
+    logout() {
+      LoginController.logout();
+      this.activePage = '/';
     }
   },
+
+  mounted() {
+    this.activePage = store.state.currentPath;
+  }
 }
 </script>
 
@@ -154,4 +172,14 @@ export default {
 #nav :hover {
   color: black;
 }
+
+.active {
+  background-color: white;
+  color: black;
+}
+
+.active2 {
+
+}
+
 </style>
