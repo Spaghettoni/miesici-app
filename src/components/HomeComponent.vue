@@ -5,7 +5,7 @@
         <img class="px-10" alt="" v-bind:src="'/pictures/landing.png'">
       </div>
       <div class="px-5 sm:px-10 border-l-2 border-gray-light">
-        <h2 class="text-4xl sm:text-8xl font-bold underline z-0">
+        <h2 class="text-4xl sm:text-8xl font-bold z-0">
           Meet and play!
         </h2>
 

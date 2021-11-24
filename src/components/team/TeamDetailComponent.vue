@@ -13,10 +13,10 @@
       </div>
       <div class="flex flex-shrink">
         <div class="flex flex-col ">
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Team&nbsp;name:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Members:
           </div>
         </div>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="mt-5">
-        <div class="text-lg italic underline">
+        <div class="text-lg italic">
           Add new member:
         </div>
         <div class="flex">
