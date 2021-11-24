@@ -13,10 +13,10 @@
       </div>
       <div class="flex flex-shrink">
         <div class="flex flex-col ">
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Team&nbsp;name:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Members:
           </div>
         </div>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="mt-5">
-        <div class="text-lg italic underline">
+        <div class="text-lg italic">
           Add new member:
         </div>
         <div class="flex">
@@ -65,15 +65,14 @@ import {Team} from "../../store/Models";
 
 export default {
   name: "TeamDetailComponent",
-  props: {
-    teamId: String,
-  },
+
   data() {
     return {
       input: {
         member: '',
       },
-      team: null
+      team: null,
+      teamId: null
     }
   },
 
@@ -89,6 +88,16 @@ export default {
 
     loadTeam(){
       this.team = Team.query().whereId(this.teamId).with('members').first();
+      if(this.team === null){
+        this.team = {
+          id: "",
+          name: "",
+          members: [],
+          events: []
+        }
+        router.replace("/NotFound");
+      }
+      
     },
 
     memberNames(){
@@ -97,6 +106,7 @@ export default {
   },
 
   created(){
+    this.teamId = this.$route.query.teamId;
     this.loadTeam();
   }
 }

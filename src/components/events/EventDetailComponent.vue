@@ -15,22 +15,22 @@
 
       <div class="flex">
         <div class="flex flex-col text-right border-r pr-2">
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Event name:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Team:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Attendees:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Sport:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Place:
           </div>
-          <div class="text-lg underline italic">
+          <div class="text-lg italic">
             Date and time:
           </div>
         </div>
@@ -89,9 +89,7 @@ import {Event, Team} from "../../store/Models";
 
 export default {
   name: "EventDetailComponent",
-  props: {
-    eventId: String,
-  },
+
   data() {
     return {
       event: null
@@ -121,6 +119,19 @@ export default {
 
     loadEvent(){
       this.event = Event.query().whereId(this.eventId).with('attendees').first();
+      console.log("this event", this.event);
+      if(this.event === null){
+        this.event = {
+            id: "",
+            name: "",
+            place: "",
+            sport: "",
+            team_id: "",
+            datetime: "",
+            attendees: []
+        }
+        router.replace("/NotFound");
+      }
     },
 
     attendeeNames(){
@@ -128,11 +139,13 @@ export default {
     },
 
     teamName(){
-      return Team.query().whereId(this.event.team_id).first().name;
+      const team = Team.query().whereId(this.event.team_id).first();
+      return (team === null) ? "" : team.name;
     }
   },
 
   created(){
+    this.eventId = this.$route.query.eventId;
     this.loadEvent();
   }
 }

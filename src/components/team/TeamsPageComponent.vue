@@ -47,7 +47,7 @@
       <div class="flex flex-col">
         <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
                      v-bind:key=team v-for="team in this.selectedTeams"
-                     :to="{name: 'TeamDetail', params: {teamId: team.id}}">
+                     :to="{name: 'TeamDetail', query: {teamId: team.id}}">
           <team-component
               :team-name=team.name
               :members=this.memberNames(team)

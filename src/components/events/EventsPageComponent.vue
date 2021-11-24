@@ -23,7 +23,7 @@
         <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
                      v-bind:key=event v-for="event in this.events"
                      :to="{name: 'EventDetail',
-                     params: {
+                     query: {
                        eventId: event.id,
                      }}">
           <event-component

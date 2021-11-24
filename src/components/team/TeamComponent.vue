@@ -2,10 +2,10 @@
   <div class="p-2">
     <div class="flex flex-shrink">
       <div class="flex flex-col ">
-        <div class="text-lg underline italic">
+        <div class="text-lg italic">
           Team&nbsp;name:
         </div>
-        <div class="text-lg underline italic">
+        <div class="text-lg italic">
           Members:
         </div>
       </div>
