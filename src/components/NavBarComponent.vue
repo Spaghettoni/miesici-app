@@ -122,25 +122,23 @@ export default {
       state: store.state,
       // logout: LoginController.logout,
       showMenu: false,
-      activePage: null,
     }
   },
+
+  computed: {
+    activePage(){return store.state.currentPath}
+  },
+
   methods: {
     async updatePath(target) {
       this.showMenu = false;
       await router.push(target);
       store.commit('setCurrentPath',target);
-      //TODO problem po login -> nezobrazi ako aktivnu stranku Upcoming events
-      this.activePage = target;
     },
+
     logout() {
       LoginController.logout();
-      this.activePage = '/';
     }
-  },
-
-  mounted() {
-    this.activePage = store.state.currentPath;
   }
 }
 </script>
