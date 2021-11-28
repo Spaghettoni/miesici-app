@@ -18,8 +18,8 @@
         />
       </div>
       <input type="submit" v-on:click="this.login(input.username, input.password, '/events')"
-              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black
-                      hover:bg-orange "
+              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
+                       hover:bg-strongOrange rounded-xl cursor-pointer"
              value = "Login"
       />
 

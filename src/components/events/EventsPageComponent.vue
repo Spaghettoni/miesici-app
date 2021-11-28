@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 p-4 flex flex-col w-full max-w-3xl border-2">
+    <div class="p-4 flex flex-col w-full max-w-3xl border-2">
       <div class="cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
            @click="goBack"
       >

@@ -1,6 +1,6 @@
 <template>
 
-  <footer class="m-auto mt-8 flex flex-col sm:px-0 sm:flex-row justify-center flex-wrap py-4 border-2 bg-white font-semibold">
+  <footer class="mt-10 m-auto mb-16 flex flex-col sm:px-0 sm:flex-row justify-center flex-wrap py-4 border-2 bg-white font-semibold">
 
     <div>
 
@@ -14,8 +14,8 @@
 
 
     <nav id="nav"
-         class="m-auto flex flex-col sm:px-0 sm:flex-row justify-end flex-wrap py-4 bg-white font-semibold"
-         v-if="( this.windowWidth > 630 && !(['/login', '/register', '/'].includes(this.state.currentPath)))" >
+         class="m-auto flex-col sm:px-0 sm:flex-row justify-end flex-wrap py-4 bg-white font-semibold hidden sm:flex"
+         v-if="(!(['/login', '/register', '/'].includes(this.state.currentPath)))" >
 
 
       <div @click="updatePath('/')"

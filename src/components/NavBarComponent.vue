@@ -74,23 +74,33 @@
           </div>
         </div>
 
-    <div class="bottom-navbar self-end flex flex-row sm:hidden">
-      <div v-if="this.state.loggedUser !== null"
+    <div class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-10">
+      <button v-if="this.state.loggedUser !== null"
+           @click="updatePath('/')"
+           class="mobile-button-40"
+           v-bind:class="{active: this.state.currentPath === '/'}"
+      >
+        <i class="fas fa-home" style="font-size:16px; margin-right: 5px"></i>
+        <p>Home</p>
+      </button>
+
+      <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/teams')"
            class="mobile-button-40"
-           v-bind:class="{active: activePage === '/teams'}"
+           v-bind:class="{active: this.state.currentPath === '/teams'}"
       >
         <i class="fas fa-users" style="font-size:16px; margin-right: 5px"></i>
-        Teams
-      </div>
-      <div v-if="this.state.loggedUser !== null"
+        <p>Teams</p>
+      </button>
+      
+      <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/events')"
            class="mobile-button-40"
-           v-bind:class="{active: activePage === '/events'}"
+           v-bind:class="{active: this.state.currentPath === '/events'}"
       >
         <i class="far fa-calendar-alt" style="font-size:16px; margin-right: 5px"></i>
-        Events
-      </div>
+        <p>Events</p>
+      </button>
     </div>
     </div>
 
@@ -118,9 +128,7 @@ export default {
   methods: {
     async updatePath(target) {
       this.showMenu = false;
-      console.log('logged user:', this.state.loggedUser);
       await router.push(target);
-      console.log('path:', router.currentRoute);
       store.commit('setCurrentPath',target);
       //TODO problem po login -> nezobrazi ako aktivnu stranku Upcoming events
       this.activePage = target;
@@ -203,7 +211,7 @@ export default {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 50%;
+  width: 33.333333%;
 }
 
 .mobile-button-40:hover {
