@@ -8,16 +8,13 @@
       </div>
 
       <div>
-        <h1 class="mb-4 font-semibold text-6xl">
-          Event detail
+        <h1 class="ml-5 mb-4 font-semibold text-6xl">
+          {{ this.event.name }}
         </h1>
       </div>
 
       <div class="flex">
         <div class="flex flex-col ml-5 ">
-          <h2 class="text-3xl font-bold">
-            {{ this.event.name }}
-          </h2>
           <div class="font-semibold text-lg">
             <span class="font-bold"> Team: </span>
             {{ this.teamName()}}

@@ -7,26 +7,15 @@
         &lt;&nbsp;back
       </div>
       <div>
-        <h1 class="mb-4 font-semibold text-6xl">
-          Team detail
+        <h1 class="ml-5 mb-4 font-semibold text-6xl">
+          {{ this.team.name }}
         </h1>
       </div>
       <div class="flex flex-shrink">
-        <div class="flex flex-col ">
-          <div class="text-lg italic">
-            Team&nbsp;name:
-          </div>
-          <div class="text-lg italic">
-            Members:
-          </div>
-        </div>
         <div class="ml-5 flex flex-col ">
-          <h1 class="text-lg font-semibold">
-            {{ this.team.name }}
-            &nbsp;
-          </h1>
-          <div class="flex flex-wrap">
-            <div class="font-semibold text-lg mr-2 "
+          <div class="flex flex-wrap font-semibold text-lg">
+            <span class="font-bold"> members: &nbsp;</span>
+            <div class="mr-2"
                  v-bind:key=username v-for="username in this.memberNames()">
               {{ username }},
 

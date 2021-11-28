@@ -83,10 +83,9 @@ export default {
   },
   methods: {
     async updatePath(target) {
-      console.log('logged user:', this.state.loggedUser);
-      await router.push(target);
-      console.log('path:', router.currentRoute);
-      await store.setCurrentPathAction(target);
+    await router.push(target);
+    console.log('path:', router.currentRoute);
+    store.commit('setCurrentPath', target);
     }
   },
   mounted() {

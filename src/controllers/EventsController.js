@@ -24,6 +24,15 @@ const EventsController = (() => {
         for(let team of usersTeams){
             events.push(...team.events);
         }
+        events.sort((x,y) => {
+            if (x.datetime > y.datetime){
+                return 1
+            }
+            if(x.datetime === y.datetime){
+                return 0
+            }
+            return -1;
+        });
         return events;
     }
 
