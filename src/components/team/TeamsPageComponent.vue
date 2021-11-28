@@ -40,8 +40,8 @@
           />
         </div>
       </div>
-      <div class="flex flex-wrap justify-evenly">
-        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light w-5/12 min-w-full sm:min-w-min"
+      <div class="flex flex-wrap">
+        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light w-6/12 min-w-full sm:min-w-min"
                      v-bind:key=team v-for="team in this.selectedTeams"
                      :to="{name: 'TeamDetail', query: {teamId: team.id}}">
           <team-component
