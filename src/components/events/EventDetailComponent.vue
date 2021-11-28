@@ -66,6 +66,7 @@
 import router from "../../router";
 import EventsController from "@/controllers/EventsController";
 import {Event, Team} from "../../store/Models";
+import store from '../../store';
 
 export default {
   name: "EventDetailComponent",
@@ -99,7 +100,6 @@ export default {
 
     loadEvent(){
       this.event = Event.query().whereId(this.eventId).with('attendees').first();
-      console.log("this event", this.event);
       if(this.event === null){
         this.event = {
             id: "",

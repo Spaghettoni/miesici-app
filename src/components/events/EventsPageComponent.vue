@@ -1,11 +1,6 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 p-4 flex flex-col w-full max-w-3xl border-2">
-      <div class="cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
-           @click="goBack"
-      >
-        &lt;&nbsp;back
-      </div>
+    <div class="p-4 flex flex-col w-full max-w-3xl border-2">
       <div class="mt-6 flex justify-between items-center flex-wrap">
         <h1 class="mb-4 mr-8 font-semibold text-6xl">
           My Upcoming <br/>Events
@@ -13,7 +8,7 @@
         <router-link
             to="/create-event"
             class="flex border items-center border-black bg-orange
-                       hover:bg-strongOrange rounded-xl cursor-pointer">
+                       hover:bg-strongOrange rounded-xl cursor-pointer ml-auto">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
             Create new event
