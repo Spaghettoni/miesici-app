@@ -20,7 +20,7 @@
         </router-link>
       </div>
       <div class="flex flex-col">
-        <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
+        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light"
                      v-bind:key=event v-for="event in this.events"
                      :to="{name: 'EventDetail',
                      query: {
