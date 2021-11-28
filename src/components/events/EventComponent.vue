@@ -30,7 +30,7 @@
       <p class=" ml-auto text-xl sm:text-2xl text-green"
          v-if="this.userJoined"
       >
-        <span class="invisible sm:visible">JOINED </span>✓
+        <span class="hidden sm:inline">JOINED </span>✓
       </p>
     </div>
   </div>
