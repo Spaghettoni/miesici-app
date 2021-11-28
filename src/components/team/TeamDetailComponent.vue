@@ -4,6 +4,7 @@
       <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
            @click="goBack"
       >
+        <!-- <img alt="back" :src="'/pictures/backIcon.'" width="50"> -->
         &lt;&nbsp;back
       </div>
       <div>
@@ -34,8 +35,9 @@
                  placeholder="Tomero"
                  class="px-4 py-2 text-xl border-2 border-black"
           />
-          <div class="ml-4 text-center align-middle border hover:bg-orange">
-            <button class="h-full w-full px-4"
+          <div class="ml-4 text-center align-middle">
+            <button class="h-full w-full px-4 border-2 border-black bg-orange
+                       hover:bg-strongOrange rounded-xl font-semibold"
                     @click="addMember"
             >
               Add

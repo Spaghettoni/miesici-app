@@ -12,7 +12,8 @@
         </h1>
         <router-link
             to="/create-team"
-            class="my-4 flex border items-center hover:bg-orange cursor-pointer">
+            class="flex border items-center border-black bg-orange
+                       hover:bg-strongOrange rounded-xl cursor-pointer">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
             Create new team
