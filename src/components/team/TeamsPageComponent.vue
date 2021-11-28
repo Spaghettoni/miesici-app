@@ -12,7 +12,8 @@
         </h1>
         <router-link
             to="/create-team"
-            class="my-4 flex border items-center hover:bg-orange cursor-pointer">
+            class="flex border items-center border-black bg-orange
+                       hover:bg-strongOrange rounded-xl cursor-pointer">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
             Create new team
@@ -44,8 +45,8 @@
           />
         </div>
       </div>
-      <div class="flex flex-col">
-        <router-link class="mt-6 border cursor-pointer hover:shadow-xl hover:bg-orange"
+      <div class="flex flex-wrap justify-evenly">
+        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light w-5/12 min-w-full sm:min-w-min"
                      v-bind:key=team v-for="team in this.selectedTeams"
                      :to="{name: 'TeamDetail', query: {teamId: team.id}}">
           <team-component

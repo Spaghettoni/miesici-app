@@ -8,46 +8,26 @@
       </div>
 
       <div>
-        <h1 class="mb-4 font-semibold text-6xl">
-          Events detail
+        <h1 class="ml-5 mb-4 font-semibold text-6xl">
+          {{ this.event.name }}
         </h1>
       </div>
 
       <div class="flex">
-        <div class="flex flex-col text-right border-r pr-2">
-          <div class="text-lg italic">
-            Event name:
-          </div>
-          <div class="text-lg italic">
-            Team:
-          </div>
-          <div class="text-lg italic">
-            Attendees:
-          </div>
-          <div class="text-lg italic">
-            Sport:
-          </div>
-          <div class="text-lg italic">
-            Place:
-          </div>
-          <div class="text-lg italic">
-            Date and time:
-          </div>
-        </div>
         <div class="flex flex-col ml-5 ">
-          <div class="text-lg font-semibold">
-            {{ this.event.name }}
-          </div>
           <div class="font-semibold text-lg">
+            <span class="font-bold"> Team: </span>
             {{ this.teamName()}}
           </div>
-          <div class="flex flex-wrap">
-            <div class="mr-2 text-lg font-semibold" v-bind:key=username v-for="username in this.attendeeNames()">
+          <div class="flex flex-wrap text-lg font-semibold">
+            <span class="font-bold">Joined:&nbsp;</span>
+            <div class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
               {{ username }},
             </div>
             &nbsp;
           </div>
           <div class="font-semibold text-lg">
+            <span class="font-bold"> Sport: </span>
             {{ this.event.sport }}
           </div>
           <div class="font-semibold text-lg">
@@ -62,15 +42,15 @@
       <div>
 
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black
-                      hover:bg-orange" v-if="this.userJoined"
+                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
+                       hover:bg-strongOrange rounded-xl" v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
         </button>
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black
-                      hover:bg-orange" v-else
+                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
+                       hover:bg-strongOrange rounded-xl" v-else
                 @click="join"
         >
           JOIN
