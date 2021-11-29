@@ -3,18 +3,18 @@
     <div class="flex flex-col">
       <div>
           <div @click="updatePath('/')"
-               class="ml-10 float-left cursor-pointer" v-if="activePage !== '/'">
-            <img alt="" :src="'/pictures/icon2.png'" width="91">
+               class="logo mt-3.5 ml-5 cursor-pointer" v-if="activePage !== '/'">
+            <img alt="" :src="'/pictures/icon2.png'" width="75">
 
           </div>
           <div
-               class="ml-10 float-left" v-else>
-            <img alt="" :src="'/pictures/icon2.png'" width="91">
+               class="logo mt-3.5 ml-5" v-else>
+            <img alt="" :src="'/pictures/icon2.png'" width="75">
 
           </div>
 
           <nav id="nav"
-               class="float-left flex ml-5 justify-end sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
+               class="float-left flex ml-40 justify-end hidden sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
       <!--      <div @click="updatePath('/')"-->
       <!--           class="button-40 mx-1.5 hidden sm:block"-->
       <!--           v-bind:class="{active: activePage === '/'}"-->
@@ -40,10 +40,10 @@
 
           </nav>
 
-          <div class="float-right flex flex-row justify-end mr-5 sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
-            <div  v-if="this.state.loggedUser === null"
+          <div class="float-right flex flex-row justify-end mr-1 sm:mr-5 sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
+            <div v-if="this.state.loggedUser === null"
                   @click="updatePath('/login')"
-                  class="button-40 mx-1.5"
+                  class="button-40 mx-1.5 userbutton"
                   v-bind:class="{active: activePage === '/login'}"
             >
       <!--        <i class="fas fa-sign-in-alt" style="font-size:16px"></i>-->
@@ -51,14 +51,14 @@
             </div>
                   <div  v-if="this.state.loggedUser === null"
                         @click="updatePath('/register')"
-                        class="sign-up-button-40 mx-1.5"
+                        class="sign-up-button-40 mx-1.5 userbutton"
                         v-bind:class="{active: activePage === '/register'}"
                   >
                     Register
                   </div>
             <div v-if="this.state.loggedUser !== null"
                  @click="updatePath('/profile')"
-                 class="button-40 ml-10 mx-1.5"
+                 class="button-40 ml-10 mx-1.5 userbutton"
                  v-bind:class="{active: activePage === '/profile'}"
             >
               <i class="fas fa-user-alt" style="font-size:16px"></i>
@@ -66,7 +66,7 @@
             </div>
             <div  v-if="this.state.loggedUser !== null"
                   @click="this.logout()"
-                  class="logout-button-40 mx-1.5"
+                  class="logout-button-40 mx-1.5 userbutton"
             >
               <i class="fas fa-sign-out-alt" style="font-size:16px"></i>
       <!--                Logout-->
@@ -144,6 +144,31 @@ export default {
 </script>
 
 <style scoped>
+
+@media screen and (min-width: 385px) {
+  .logo {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+
+  .logo>img {
+    width: 91px;
+  }
+
+  #nav {
+    display: flex;
+  }
+
+}
+
+.logo {
+  position: absolute;
+}
+
+.logo>img {
+  position: relative;
+  bottom: 0;
+}
 
 #header {
   box-sizing: border-box;
@@ -309,6 +334,15 @@ export default {
 .bottom-navbar {
   background-color: #333;
   width: 100%;
+}
+
+@media screen and (max-width: 300px) {
+  .userbutton {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+  }
 }
 
 </style>
