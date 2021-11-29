@@ -78,7 +78,7 @@
       <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/')"
            class="mobile-button-40"
-           v-bind:class="{active: this.state.currentPath === '/'}"
+           v-bind:class="{mobileactive: this.state.currentPath === '/'}"
       >
         <i class="fas fa-home" style="font-size:16px; margin-right: 5px"></i>
         <p>Home</p>
@@ -87,7 +87,7 @@
       <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/teams')"
            class="mobile-button-40"
-           v-bind:class="{active: this.state.currentPath === '/teams'}"
+           v-bind:class="{mobileactive: this.state.currentPath === '/teams'}"
       >
         <i class="fas fa-users" style="font-size:16px; margin-right: 5px"></i>
         <p>Teams</p>
@@ -96,7 +96,7 @@
       <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/events')"
            class="mobile-button-40"
-           v-bind:class="{active: this.state.currentPath === '/events'}"
+           v-bind:class="{mobileactive: this.state.currentPath === '/events'}"
       >
         <i class="far fa-calendar-alt" style="font-size:16px; margin-right: 5px"></i>
         <p>Events</p>
@@ -192,7 +192,7 @@ export default {
 .mobile-button-40 {
   background-color: #111827;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   flex: 0 0 auto;
   font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -214,6 +214,7 @@ export default {
 
 .mobile-button-40:hover {
   background-color: orange;
+  color: black;
 }
 
 .mobile-button-40:focus {
@@ -296,13 +297,13 @@ export default {
   color: white;
 }
 
-#nav :hover {
-  color: black;
-}
-
 .active {
   background-color: white;
   color: black;
+}
+
+.mobileactive {
+  color: orange;
 }
 
 .bottom-navbar {
