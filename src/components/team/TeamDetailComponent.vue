@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 p-4 flex flex-col w-full max-w-3xl border-2">
+    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
       <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
            @click="goBack"
       >
@@ -8,12 +8,12 @@
         &lt;&nbsp;back
       </div>
       <div>
-        <h1 class="ml-5 mb-4 font-semibold text-6xl">
+        <h1 class="mb-4 font-semibold text-6xl">
           {{ this.team.name }}
         </h1>
       </div>
       <div class="flex flex-shrink">
-        <div class="ml-5 flex flex-col ">
+        <div class="flex flex-col">
           <div class="flex flex-wrap font-semibold text-lg">
             <span class="font-bold"> members: &nbsp;</span>
             <div class="mr-2"
@@ -29,15 +29,16 @@
         <div class="text-lg italic">
           Add new member:
         </div>
-        <div class="flex">
+        <div class="flex flex-col sm:flex-row">
           <input type="text" id="newMember" name="member"
                  v-model="input.member"
                  placeholder="Tomero"
-                 class="px-4 py-2 text-xl border-2 border-black"
+                 class="px-4 py-2 text-xl border-2 border-black max-w-sm"
           />
-          <div class="ml-4 text-center align-middle">
-            <button class="h-full w-full px-4 border-2 border-black bg-orange
-                       hover:bg-strongOrange rounded-xl font-semibold"
+          <div class="sm:ml-4 mt-4 sm:mt-0 text-center align-middle max-w-min">
+            <button class="h-full w-full px-6 py-2 border-2 border-black bg-orange
+                           rounded-xl font-semibold text-xl hover:shadow-xl
+                            hover:text-xl transition duration-100 transform hover:scale-105"
                     @click="addMember"
             >
               Add

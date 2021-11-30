@@ -1,22 +1,24 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="p-4 flex flex-col w-full max-w-3xl border-2">
-      <div class="mt-6 flex justify-between items-center flex-wrap">
+    <div class="px-4 flex flex-col w-full max-w-3xl">
+      <div class="mt-10 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
         <h1 class="mb-4 mr-8 font-semibold text-6xl">
           My Upcoming <br/>Events
         </h1>
         <router-link
             to="/create-event"
-            class="flex border items-center border-black bg-orange
-                       hover:bg-strongOrange rounded-xl cursor-pointer ml-auto">
+            class="flex items-center border-black bg-orange
+                   rounded-xl cursor-pointer hover:shadow-xl
+                   hover:text-xl transition duration-100 transform hover:scale-105">
           <img alt="" :src="'/pictures/create.png'" width="50">
           <div class="font-semibold pr-4">
             Create new event
           </div>
         </router-link>
       </div>
-      <div class="flex flex-col">
-        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light"
+      <div class="flex flex-col ">
+        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light
+                            transition duration-100 transform hover:scale-105"
                      v-bind:key=event v-for="event in this.events"
                      :to="{name: 'EventDetail',
                      query: {

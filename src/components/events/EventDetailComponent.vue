@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 p-4 flex flex-col w-full max-w-3xl border-2">
+    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
       <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
            @click="goBack"
       >
@@ -8,13 +8,13 @@
       </div>
 
       <div>
-        <h1 class="ml-5 mb-4 font-semibold text-6xl">
+        <h1 class="mb-4 font-semibold text-6xl">
           {{ this.event.name }}
         </h1>
       </div>
 
       <div class="flex">
-        <div class="flex flex-col ml-5 ">
+        <div class="flex flex-col">
           <div class="font-semibold text-lg">
             <span class="font-bold"> Team: </span>
             {{ this.teamName()}}
@@ -42,15 +42,16 @@
       <div>
 
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
-                       hover:bg-strongOrange rounded-xl" v-if="this.userJoined"
+                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 rounded-xl border-black bg-orange
+                       hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105" v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
         </button>
         <button type="button"
                 class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
-                       hover:bg-strongOrange rounded-xl" v-else
+                       rounded-xl hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+                v-else
                 @click="join"
         >
           JOIN
