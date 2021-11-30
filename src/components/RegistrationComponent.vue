@@ -1,7 +1,12 @@
 <template>
   <form id="login" class="w-full flex justify-center">
-    <div class="mx-6 mt-10 p-10 max-w-2xl border-2 flex flex-col w-full">
-      <div class="form-inputs flex flex-col">
+    <div class="mt-4 px-4 max-w-2xl flex flex-col w-full">
+      <div>
+        <h1 class="font-semibold text-6xl">
+          Register
+        </h1>
+      </div>
+      <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl" for="username">Username</label>
         <input type="text" id="username" name="username"
                v-model="input.username"
@@ -36,7 +41,7 @@
         />
       </div>
       <input type="submit" v-on:click="register(input.username, input.password, input.confirmPassword, input.email, '/')"
-              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black hover:bg-orange"
+              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black hover:bg-orange rounded-xl"
              value = "Register"
       />
 

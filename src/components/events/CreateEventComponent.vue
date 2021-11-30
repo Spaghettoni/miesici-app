@@ -1,6 +1,6 @@
 <template>
   <form class="w-full flex justify-center">
-    <div class="mt-10 p-4 flex flex-col w-full max-w-3xl border-2">
+    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
       <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min" @click="goBack">
         &lt;&nbsp;back
       </div>
@@ -62,8 +62,8 @@
       </div>
 
       <input type="submit"
-             class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black
-                      hover:bg-orange"
+             class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black rounded-xl
+                    bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              @click="createEvent"
              value="Create event"
       />
