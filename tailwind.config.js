@@ -7,9 +7,18 @@ module.exports = {
       strongOrange: '#e6ff2b',
       gray: {
         light: '#D1D1D1',
+        darker: '#797979'
       },
       green: "#10B981",
       white: '#FFF'
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xlg': '1110px',
+      'xl': '1280px',
+      '2xl': '1536px',
     },
     extend: {
       spacing: {
