@@ -7,7 +7,7 @@
         &lt;&nbsp;back
       </div>
       <div class="flex justify-between items-center">
-        <h1 class="mb-4 font-semibold text-6xl">
+        <h1 class="mb-4 text-heading">
           Create new team
         </h1>
       </div>
@@ -36,7 +36,7 @@
 
       <input type="submit"
               class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
-                    bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+                    bg-orange hover:shadow-xl hover:text-xl hover-zoom"
               @click="createTeam"
              value = "Create team"
       />
