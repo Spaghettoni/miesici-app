@@ -17,8 +17,7 @@ const LoginController = (() => {
     async function login(username, password, targetPath) {
         let foundUsers = UsersController.findByUsernameAndPassword(username, password);
 
-        if(foundUsers.length === 0){
-            await router.push(targetPath); 
+        if(foundUsers.length === 0){ 
             return;
         }
 
