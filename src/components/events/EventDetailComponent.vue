@@ -1,11 +1,7 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
-           @click="goBack"
-      >
-        &lt;&nbsp;back
-      </div>
+      <back-button></back-button>
 
       <div class="text-info">
           <div>
@@ -72,13 +68,10 @@
 import router from "../../router";
 import EventsController from "@/controllers/EventsController";
 import {Event, Team} from "../../store/Models";
-import store from '../../store';
-import ZellersCongruence from "zeller";
 import DateController from "@/controllers/DateController";
 
 export default {
   name: "EventDetailComponent",
-
   data() {
     return {
       event: null
@@ -147,6 +140,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>

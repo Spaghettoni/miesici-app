@@ -1,11 +1,7 @@
 <template>
   <form class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
-           @click="goBack"
-      >
-        &lt;&nbsp;back
-      </div>
+      <back-button></back-button>
       <div class="flex justify-between items-center">
         <h1 class="mb-4 text-heading">
           Create new team

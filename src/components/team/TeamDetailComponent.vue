@@ -1,12 +1,7 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
-           @click="goBack"
-      >
-        <!-- <img alt="back" :src="'/pictures/backIcon.'" width="50"> -->
-        &lt;&nbsp;back
-      </div>
+      <back-button></back-button>
       <div>
         <h1 class="mb-4 font-semibold text-6xl">
           {{ this.team.name }}
@@ -54,6 +49,7 @@
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
+import BackButton from "@/components/events/BackButton";
 
 export default {
   name: "TeamDetailComponent",
