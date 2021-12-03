@@ -8,6 +8,16 @@
       </div>
 
       <div>
+          <div class="font-semibold text-lg">
+            <i class="far fa-clock"></i>
+            {{ getDateTimeString() }}
+          </div>
+
+          <div class="font-semibold text-lg">
+            <i class="fas fa-map-marker-alt"></i>
+            {{ this.event.place }}
+          </div>
+
         <h1 class="mb-4 font-semibold text-6xl">
           {{ this.event.name }}
         </h1>
@@ -15,6 +25,10 @@
 
       <div class="flex">
         <div class="flex flex-col">
+          <div class="font-semibold text-lg">
+            <span class="font-bold"> Sport: </span>
+            {{ this.event.sport }}
+          </div>
           <div class="font-semibold text-lg">
             <span class="font-bold"> Team: </span>
             {{ this.teamName()}}
@@ -26,30 +40,20 @@
             </div>
             &nbsp;
           </div>
-          <div class="font-semibold text-lg">
-            <span class="font-bold"> Sport: </span>
-            {{ this.event.sport }}
-          </div>
-          <div class="font-semibold text-lg">
-            {{ this.event.place }}
-          </div>
-          <div class="font-semibold text-lg">
-            {{ this.event.datetime }}
-          </div>
         </div>
       </div>
 
       <div>
 
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 rounded-xl border-black bg-orange
+                class="mt-12 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
                        hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105" v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
         </button>
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
+                class="mt-12 mx-auto px-10 py-4 text-white text-3xl border-black bg-brightgreen
                        rounded-xl hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
                 v-else
                 @click="join"
@@ -122,7 +126,19 @@ export default {
     teamName(){
       const team = Team.query().whereId(this.event.team_id).first();
       return (team === null) ? "" : team.name;
-    }
+    },
+
+    getDateTimeString() {
+      let date = new Date(this.event.datetime);
+      const timeOptions = { hour: '2-digit', minute: '2-digit' };
+      const weekDayOptions = {weekday: 'long'};
+      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
+
+      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
+      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
+      let dateString = date.toLocaleDateString("en-UK", dateOptions);
+      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+    },
   },
 
   created(){

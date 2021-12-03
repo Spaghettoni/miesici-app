@@ -16,7 +16,7 @@
         <input type="text" id="name" name="name"
                v-model="input.name"
                placeholder="miesici"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
 
@@ -25,7 +25,7 @@
         <input type="text" id="place" name="place"
                v-model="input.place"
                placeholder="place"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
 
@@ -34,7 +34,7 @@
         <input type="text" id="sport" name="sport"
                v-model="input.sport"
                placeholder="sport"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
 
@@ -44,7 +44,7 @@
           <input type="datetime-local" id="datetime" name="datetime"
                  v-model="input.datetime"
                  placeholder="datetime"
-                 class="px-4 py-2 text-3xl flex appearance-none bg-white"
+                 class="px-4 py-2 text-3xl flex appearance-none bg-white rounded"
           />
         </div>
       </div>
@@ -53,7 +53,7 @@
         <label class="text-2xl">Team</label>
 
         <select v-model="input.team" id="team" name="team" @change="saveTeamIdOnChange($event)"
-                class="border-2 px-4 py-2 text-2xl">
+                class="border-2 px-4 py-2 text-2xl rounded">
           <option v-for="option in this.teams" v-bind:value="option.id" v-bind:key="option">
             {{ option.name }}
           </option>
@@ -62,7 +62,7 @@
       </div>
 
       <input type="submit"
-             class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black rounded-xl
+             class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
                     bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              @click="createEvent"
              value="Create event"

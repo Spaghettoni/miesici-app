@@ -6,11 +6,14 @@ module.exports = {
       orange: '#FCA311',
       strongOrange: '#e6ff2b',
       darkRed: '#6f0f16',
+      brightred: "#d21b1b",
       gray: {
         light: '#D1D1D1',
         darker: '#797979'
       },
       green: "#10B981",
+      darkgreen: "#0e521c",
+      brightgreen: "#589d25",
       white: '#FFF'
     },
     screens: {

@@ -16,12 +16,12 @@
         <input type="text" id="teamName" name="teamName"
                v-model="input.teamName"
                placeholder="miesici"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
       <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl" for="avatar">Team picture:</label>
-        <input class="mt-2 " type="file"
+        <input class="mt-2 rounded" type="file"
                id="avatar" name="avatar"
                accept="image/png, image/jpeg">
       </div>
@@ -30,13 +30,13 @@
         <textarea type="text"
                   v-model="input.description"
                   placeholder="Description"
-                  class="px-4 py-2 text-4xl border-2 border-black"
+                  class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
 
       <input type="submit"
-              class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black rounded-xl
-                     bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+              class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
+                    bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
               @click="createTeam"
              value = "Create team"
       />
