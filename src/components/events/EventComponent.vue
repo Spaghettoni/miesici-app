@@ -27,10 +27,12 @@
         </div>
       </div>
 
-      <p class=" ml-auto text-xl sm:text-2xl text-green"
+      <p class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl"
          v-if="this.userJoined"
       >
-        <span class="hidden sm:inline">JOINED </span>✓
+        <i class="far fa-check-square"></i>
+        <span class="hidden sm:inline ml-3">JOINED </span>
+<!--        ✓-->
       </p>
     </div>
   </div>
