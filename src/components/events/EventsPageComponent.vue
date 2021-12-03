@@ -10,7 +10,8 @@
             class="flex items-center border-black bg-orange
                    rounded-xl cursor-pointer hover:shadow-xl
                    hover:text-xl transition duration-100 transform hover:scale-105">
-          <img alt="" :src="'/pictures/create.png'" width="50">
+<!--          <img alt="" :src="'/pictures/create.png'" width="50">-->
+          <i class="fas fa-plus-circle text-2xl p-2.5"></i>
           <div class="font-semibold pr-4">
             Create new event
           </div>

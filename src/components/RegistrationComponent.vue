@@ -11,7 +11,7 @@
         <input type="text" id="username" name="username"
                v-model="input.username"
                placeholder="username"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
 
@@ -20,7 +20,7 @@
         <input type="text" id="email" name="email"
                v-model="input.email"
                placeholder="email@mail.com"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
 
@@ -29,7 +29,7 @@
         <input type="password" id="password" name="password"
                v-model="input.password"
                placeholder="password"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
       <div class="mt-6 form-inputs  flex flex-col">
@@ -37,11 +37,12 @@
         <input type="password" id="confirm-password" name="password"
                v-model="input.confirmPassword"
                placeholder="password"
-               class="px-4 py-2 text-4xl border-2 border-black"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
       <input type="submit" v-on:click="register(input.username, input.password, input.confirmPassword, input.email, '/')"
-              class="mt-14 mx-auto px-10 py-4 text-3xl border-2 border-black bg-black hover:bg-orange rounded-xl"
+             class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
+                    bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              value = "Register"
       />
 

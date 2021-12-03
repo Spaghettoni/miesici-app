@@ -42,14 +42,14 @@
       <div>
 
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 rounded-xl border-black bg-orange
+                class="mt-12 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
                        hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105" v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
         </button>
         <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-3xl border-2 border-black bg-orange
+                class="mt-12 mx-auto px-10 py-4 text-white text-3xl border-black bg-brightgreen
                        rounded-xl hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
                 v-else
                 @click="join"
