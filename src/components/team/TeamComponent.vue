@@ -1,7 +1,7 @@
 <template>
-  <div class="p-2">
+  <div class="p-0.5">
     <div class="flex flex-shrink">
-      <div class="ml-5 flex flex-col ">
+      <div class="ml-2 flex flex-col ">
         <h1 class="text-xl font-bold">
           {{ teamName }}
           &nbsp;
