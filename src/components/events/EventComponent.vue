@@ -5,7 +5,12 @@
 
       <div class="flex flex-col ml-5 relative">
         <div class="font-semibold text-lg italic">
-          {{ getDateTimeString()}}, {{ this.place }}
+          <i class="far fa-clock"></i>
+          {{ getDateTimeString()}}
+        </div>
+        <div class="font-semibold text-lg italic">
+          <i class="fas fa-map-marker-alt"></i>
+          {{ this.place }}
         </div>
 
         <h2 class="text-2xl font-bold">
@@ -61,10 +66,15 @@ export default {
   methods: {
     getDateTimeString() {
       let date = new Date(this.datetime);
-      const options = {hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'short', day: 'numeric', weekday: 'long',};
+      const timeOptions = { hour: '2-digit', minute: '2-digit' };
+      const weekDayOptions = {weekday: 'long'};
+      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
-      return date.toLocaleDateString("en-UK", options);
-    }
+      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
+      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
+      let dateString = date.toLocaleDateString("en-UK", dateOptions);
+      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+    },
   }
 }
 </script>

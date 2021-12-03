@@ -130,10 +130,15 @@ export default {
 
     getDateTimeString() {
       let date = new Date(this.event.datetime);
-      const options = {hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'short', day: 'numeric', weekday: 'long',};
+      const timeOptions = { hour: '2-digit', minute: '2-digit' };
+      const weekDayOptions = {weekday: 'long'};
+      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
-      return date.toLocaleDateString("en-UK", options);
-    }
+      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
+      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
+      let dateString = date.toLocaleDateString("en-UK", dateOptions);
+      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+    },
   },
 
   created(){
