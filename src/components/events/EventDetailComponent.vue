@@ -7,34 +7,34 @@
         &lt;&nbsp;back
       </div>
 
-      <div>
-        <div class="font-semibold text-lg">
-          <i class="far fa-clock"></i>
-          {{ getDateTimeString() }}
-        </div>
+      <div class="text-info">
+          <div>
+            <i class="far fa-clock"></i>
+            {{ getDateTimeString() }}
+          </div>
 
-        <div class="font-semibold text-lg">
-          <i class="fas fa-map-marker-alt"></i>
-          {{ this.event.place }}
-        </div>
+          <div>
+            <i class="fas fa-map-marker-alt"></i>
+            {{ this.event.place }}
+          </div>
 
-        <h1 class="mb-4 font-semibold text-6xl">
+        <h1 class="text-subheading">
           {{ this.event.name }}
         </h1>
       </div>
 
       <div class="flex">
         <div class="flex flex-col">
-          <div class="font-semibold text-lg">
-            <span class="font-bold"> Sport: </span>
+          <div class="text-info">
+            <span class="text-label"> Sport: </span>
             {{ this.event.sport }}
           </div>
-          <div class="font-semibold text-lg">
-            <span class="font-bold"> Team: </span>
-            {{ this.teamName() }}
+          <div class="text-info">
+            <span class="text-label"> Team: </span>
+            {{ this.teamName()}}
           </div>
-          <div class="flex flex-wrap text-lg font-semibold">
-            <span class="font-bold">Joined:&nbsp;</span>
+          <div class="flex flex-wrap text-info">
+            <span class="text-label">Joined:&nbsp;</span>
             <div class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
               {{ username }},
             </div>

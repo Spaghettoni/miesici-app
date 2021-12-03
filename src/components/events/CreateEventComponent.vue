@@ -5,7 +5,7 @@
         &lt;&nbsp;back
       </div>
       <div class="flex justify-between items-center">
-        <h1 class="mb-4 font-semibold text-6xl">
+        <h1 class="mb-4 text-heading">
           Create new event
         </h1>
       </div>
