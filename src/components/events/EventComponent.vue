@@ -4,9 +4,17 @@
 <!--         v-bind:class="this.userJoined && 'bg-green border-2 border-green'"-->
 
       <div class="flex flex-col ml-5 relative">
+        <div class="font-semibold text-lg italic">
+          {{ getDateTimeString()}}, {{ this.place }}
+        </div>
+
         <h2 class="text-2xl font-bold">
           {{ this.name }}
         </h2>
+        <div class="font-semibold text-lg">
+          <span class="font-bold"> Sport: </span>
+          {{ this.sport }}
+        </div>
         <div class="font-semibold text-lg">
           <span class="font-bold"> Team: </span>
           {{ this.team }}
@@ -14,16 +22,6 @@
         <div class="font-semibold text-lg">
           <span class="font-bold"> Joined: </span>
           {{ this.attendees.length }}
-        </div>
-        <div class="font-semibold text-lg">
-          <span class="font-bold"> Sport: </span>
-          {{ this.sport }}
-        </div>
-        <div class="font-semibold text-lg">
-          {{ this.place }}
-        </div>
-        <div class="font-semibold text-lg">
-          {{ this.datetime }}
         </div>
       </div>
 
@@ -57,6 +55,15 @@ export default {
   computed: {
     userJoined() {
       return EventsController.didUserJoinEvent(this.eventId);
+    }
+  },
+
+  methods: {
+    getDateTimeString() {
+      let date = new Date(this.datetime);
+      const options = {hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'short', day: 'numeric', weekday: 'long',};
+
+      return date.toLocaleDateString("en-UK", options);
     }
   }
 }

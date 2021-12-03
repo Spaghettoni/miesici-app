@@ -8,6 +8,16 @@
       </div>
 
       <div>
+          <div class="font-semibold text-lg">
+            <i class="far fa-clock"></i>
+            {{ getDateTimeString() }}
+          </div>
+
+          <div class="font-semibold text-lg">
+            <i class="fas fa-map-marker-alt"></i>
+            {{ this.event.place }}
+          </div>
+
         <h1 class="mb-4 font-semibold text-6xl">
           {{ this.event.name }}
         </h1>
@@ -15,6 +25,10 @@
 
       <div class="flex">
         <div class="flex flex-col">
+          <div class="font-semibold text-lg">
+            <span class="font-bold"> Sport: </span>
+            {{ this.event.sport }}
+          </div>
           <div class="font-semibold text-lg">
             <span class="font-bold"> Team: </span>
             {{ this.teamName()}}
@@ -25,16 +39,6 @@
               {{ username }},
             </div>
             &nbsp;
-          </div>
-          <div class="font-semibold text-lg">
-            <span class="font-bold"> Sport: </span>
-            {{ this.event.sport }}
-          </div>
-          <div class="font-semibold text-lg">
-            {{ this.event.place }}
-          </div>
-          <div class="font-semibold text-lg">
-            {{ this.event.datetime }}
           </div>
         </div>
       </div>
@@ -122,6 +126,13 @@ export default {
     teamName(){
       const team = Team.query().whereId(this.event.team_id).first();
       return (team === null) ? "" : team.name;
+    },
+
+    getDateTimeString() {
+      let date = new Date(this.event.datetime);
+      const options = {hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'short', day: 'numeric', weekday: 'long',};
+
+      return date.toLocaleDateString("en-UK", options);
     }
   },
 
