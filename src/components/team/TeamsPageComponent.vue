@@ -18,10 +18,10 @@
       </div>
       <div class="mt-6">
         <div class="font-semibold text-create-button">
-          Search teams
+          Search by member
         </div>
-        <div class="border flex max-w-min flex-col sm:flex-row">
-          <select class="px-4 py-2"
+        <div class="flex max-w-min flex-col sm:flex-row">
+          <!-- <select class="border px-4 py-2 rounded-xl cursor-pointer"
                   v-model="selected"
           >
             <option value="all-teams" class="" @click="filterTeams">
@@ -33,9 +33,9 @@
             >
               {{ team.name }}
             </option>
-          </select>
-          <input type="text" class="px-4 py-2"
-                 placeholder="search by member"
+          </select> -->
+          <input type="text" class="border px-4 py-2 rounded"
+                 placeholder="username"
                  v-model="member"
                  @input="filterTeams"
           />

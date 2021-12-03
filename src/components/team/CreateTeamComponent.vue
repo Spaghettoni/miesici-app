@@ -15,12 +15,12 @@
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
-      <div class="mt-6 form-inputs flex flex-col">
+      <!-- <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl" for="avatar">Team picture:</label>
         <input class="mt-2 rounded" type="file"
                id="avatar" name="avatar"
                accept="image/png, image/jpeg">
-      </div>
+      </div> -->
       <div class="mt-6 form-inputs  flex flex-col">
         <label class="text-2xl">Description</label>
         <textarea type="text"
@@ -32,7 +32,7 @@
 
       <input type="submit"
               class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
-                    bg-orange hover:shadow-xl hover:text-xl hover-zoom"
+                    hover:shadow-xl hover:text-xl hover-zoom"
               @click="createTeam"
              value = "Create team"
       />
