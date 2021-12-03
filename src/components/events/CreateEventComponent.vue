@@ -14,7 +14,7 @@
         <label class="text-2xl" for="name">Event name</label>
         <input type="text" id="name" name="name"
                v-model="input.name"
-               placeholder="miesici"
+               placeholder="miesenie"
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>

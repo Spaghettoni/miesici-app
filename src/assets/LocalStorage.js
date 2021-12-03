@@ -99,12 +99,12 @@ const storage = {
 
         {
             "name": "Experti",
-            "members": ["Andrej", "Dynamo", "Slavo", "Janko", "Peter", "Julia", "Hrusky", "Rene"]
+            "members": ["Andrej", "Dynamo", "Janko", "Peter", "Julia", "Hrusky", "Rene"]
         },
 
         {
             "name": "Sportovci",
-            "members": ["Slavo", "Janko", "Hrusky", "Nikita", "Sebastian", "Peter", "Dynamo", "Andrej"]
+            "members": ["Janko", "Hrusky", "Nikita", "Sebastian", "Peter", "Dynamo", "Andrej"]
         },
 
         {

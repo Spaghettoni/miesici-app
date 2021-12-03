@@ -72,6 +72,7 @@ export default {
     addMember() {
       TeamsController.addMember(this.teamId, this.input.member);
       this.loadTeam();
+      this.input.member = "";
     },
 
     loadTeam(){
