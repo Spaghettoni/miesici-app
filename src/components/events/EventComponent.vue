@@ -1,12 +1,14 @@
 <template>
   <div class="p-0.5">
     <div class="flex">
-<!--         v-bind:class="this.userJoined && 'bg-green border-2 border-green'"-->
+      <!--         v-bind:class="this.userJoined && 'bg-green border-2 border-green'"-->
 
       <div class="flex flex-col ml-2 relative">
         <div class="font-semibold text-lg italic">
           <i class="far fa-clock"></i>
-          {{ getDateTimeString()}}
+          {{
+            getDateTimeString()
+          }}
         </div>
         <div class="font-semibold text-lg italic">
           <i class="fas fa-map-marker-alt"></i>
@@ -36,7 +38,7 @@
       >
         <i class="far fa-check-square"></i>
         <span class="hidden sm:inline ml-3">JOINED </span>
-<!--        ✓-->
+        <!--        ✓-->
       </p>
     </div>
   </div>
@@ -44,6 +46,8 @@
 
 <script>
 import EventsController from '../../controllers/EventsController';
+import DateController from "@/controllers/DateController";
+
 
 export default {
   name: "EventComponent",
@@ -66,35 +70,12 @@ export default {
 
   methods: {
     getDateTimeString() {
-      let date = new Date(this.datetime);
 
-      let timeString = this.format(date.getHours()) + ":" + this.format(date.getMinutes());
-      let weekDayString = this.getWeekDay(date.getUTCDay());
-      let dateString = this.getDateString(date);
-      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+      return DateController.getDateTimeString(this.datetime);
+
     },
 
-    format(number){
-      return number < 10? "0" + number : number;
-    },
 
-    getWeekDay(number){
-      switch(number){
-        case 0 : return "Sunday";
-        case 1 : return "Monday";
-        case 2 : return "Tuesday";
-        case 3 : return "Wednesday";
-        case 4 : return "Thursday";
-        case 5 : return "Friday";
-        case 6 : return "Saturday";
-        default: return "Friday";
-      }
-    },
-
-    getDateString(date){
-      let yearString = (date.getFullYear() + "").slice(2);
-      return date.getDate() + "/" + (date.getMonth()+1) + "/" + yearString;
-    }
   }
 }
 </script>

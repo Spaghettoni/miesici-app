@@ -8,15 +8,15 @@
       </div>
 
       <div>
-          <div class="font-semibold text-lg">
-            <i class="far fa-clock"></i>
-            {{ getDateTimeString() }}
-          </div>
+        <div class="font-semibold text-lg">
+          <i class="far fa-clock"></i>
+          {{ getDateTimeString() }}
+        </div>
 
-          <div class="font-semibold text-lg">
-            <i class="fas fa-map-marker-alt"></i>
-            {{ this.event.place }}
-          </div>
+        <div class="font-semibold text-lg">
+          <i class="fas fa-map-marker-alt"></i>
+          {{ this.event.place }}
+        </div>
 
         <h1 class="mb-4 font-semibold text-6xl">
           {{ this.event.name }}
@@ -31,7 +31,7 @@
           </div>
           <div class="font-semibold text-lg">
             <span class="font-bold"> Team: </span>
-            {{ this.teamName()}}
+            {{ this.teamName() }}
           </div>
           <div class="flex flex-wrap text-lg font-semibold">
             <span class="font-bold">Joined:&nbsp;</span>
@@ -47,7 +47,8 @@
 
         <button type="button"
                 class="mt-12 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
-                       hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105" v-if="this.userJoined"
+                       hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+                v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
@@ -72,6 +73,8 @@ import router from "../../router";
 import EventsController from "@/controllers/EventsController";
 import {Event, Team} from "../../store/Models";
 import store from '../../store';
+import ZellersCongruence from "zeller";
+import DateController from "@/controllers/DateController";
 
 export default {
   name: "EventDetailComponent",
@@ -103,45 +106,41 @@ export default {
       this.loadEvent();
     },
 
-    loadEvent(){
+    loadEvent() {
       this.event = Event.query().whereId(this.eventId).with('attendees').first();
-      if(this.event === null){
+      if (this.event === null) {
         this.event = {
-            id: "",
-            name: "",
-            place: "",
-            sport: "",
-            team_id: "",
-            datetime: "",
-            attendees: []
+          id: "",
+          name: "",
+          place: "",
+          sport: "",
+          team_id: "",
+          datetime: "",
+          attendees: []
         }
         router.replace("/NotFound");
       }
     },
 
-    attendeeNames(){
-       return this.event.attendees.map(a => a.username);
+    attendeeNames() {
+      return this.event.attendees.map(a => a.username);
     },
 
-    teamName(){
+    teamName() {
       const team = Team.query().whereId(this.event.team_id).first();
       return (team === null) ? "" : team.name;
     },
 
     getDateTimeString() {
-      let date = new Date(this.event.datetime);
-      const timeOptions = { hour: '2-digit', minute: '2-digit' };
-      const weekDayOptions = {weekday: 'long'};
-      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
-      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
-      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
-      let dateString = date.toLocaleDateString("en-UK", dateOptions);
-      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+      return DateController.getDateTimeString(this.event.datetime);
+
     },
+
+
   },
 
-  created(){
+  created() {
     this.eventId = this.$route.query.eventId;
     this.loadEvent();
   }
