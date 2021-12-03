@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="px-4 flex flex-col w-full max-w-3xl">
-      <div class="mt-10 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
+    <div class="px-2 flex flex-col w-full max-w-3xl">
+      <div class="mt-2 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
         <h1 class="mb-4 mr-8 font-semibold text-6xl">
           My Upcoming <br/>Events
         </h1>

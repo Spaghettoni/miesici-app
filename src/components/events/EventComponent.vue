@@ -1,9 +1,9 @@
 <template>
-  <div class="p-2">
+  <div class="p-0.5">
     <div class="flex">
 <!--         v-bind:class="this.userJoined && 'bg-green border-2 border-green'"-->
 
-      <div class="flex flex-col ml-5 relative">
+      <div class="flex flex-col ml-2 relative">
         <div class="font-semibold text-lg italic">
           <i class="far fa-clock"></i>
           {{ getDateTimeString()}}
@@ -16,15 +16,16 @@
         <h2 class="text-2xl font-bold">
           {{ this.name }}
         </h2>
-        <div class="font-semibold text-lg">
+
+        <div class="font-semibold text-lg hidden sm:block">
           <span class="font-bold"> Sport: </span>
           {{ this.sport }}
         </div>
-        <div class="font-semibold text-lg">
+        <div class="font-semibold text-lg hidden sm:block">
           <span class="font-bold"> Team: </span>
           {{ this.team }}
         </div>
-        <div class="font-semibold text-lg">
+        <div class="font-semibold text-lg hidden sm:block">
           <span class="font-bold"> Joined: </span>
           {{ this.attendees.length }}
         </div>
