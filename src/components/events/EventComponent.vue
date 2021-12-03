@@ -67,15 +67,34 @@ export default {
   methods: {
     getDateTimeString() {
       let date = new Date(this.datetime);
-      const timeOptions = { hour: '2-digit', minute: '2-digit' };
-      const weekDayOptions = {weekday: 'long'};
-      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
-      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
-      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
-      let dateString = date.toLocaleDateString("en-UK", dateOptions);
+      let timeString = this.format(date.getHours()) + ":" + this.format(date.getMinutes());
+      let weekDayString = this.getWeekDay(date.getUTCDay());
+      let dateString = this.getDateString(date);
       return timeString + ', ' + dateString + ' (' + weekDayString + ')';
     },
+
+    format(number){
+      return number < 10? "0" + number : number;
+    },
+
+    getWeekDay(number){
+      switch(number){
+        case 0 : return "Sunday";
+        case 1 : return "Monday";
+        case 2 : return "Tuesday";
+        case 3 : return "Wednesday";
+        case 4 : return "Thursday";
+        case 5 : return "Friday";
+        case 6 : return "Saturday";
+        default: return "Friday";
+      }
+    },
+
+    getDateString(date){
+      let yearString = (date.getFullYear() + "").slice(2);
+      return date.getDate() + "/" + (date.getMonth()+1) + "/" + yearString;
+    }
   }
 }
 </script>
