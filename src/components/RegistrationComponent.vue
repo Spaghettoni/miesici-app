@@ -1,8 +1,8 @@
 <template>
   <form id="login" class="w-full flex justify-center">
-    <div class="mt-4 px-4 max-w-2xl flex flex-col w-full">
+    <div class="mt-6 px-4 max-w-2xl flex flex-col w-full">
       <div>
-        <h1 class="font-semibold text-6xl">
+        <h1 class="text-heading">
           Register
         </h1>
       </div>

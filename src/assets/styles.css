@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .text-heading { /* Page headings */
+        @apply font-bold text-5xl sm:text-6xl
+    }
+
+    .text-subheading { /* List item headings */
+        @apply text-2xl font-bold
+    }
+
+    .text-create-button { /* Create button texts */
+        @apply font-semibold text-lg
+    }
+
+    .text-label { /* List item labels */
+        @apply font-bold text-lg
+    }
+
+    .text-info { /* List item info text */
+        @apply text-lg
+    }
+
+    .hover-zoom { /* Zoom animation item on hover */
+        @apply transition duration-100 transform hover:scale-105
+    }
+
+}

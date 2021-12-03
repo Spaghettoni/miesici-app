@@ -2,13 +2,13 @@
   <div class="p-2">
     <div class="flex flex-shrink">
       <div class="ml-5 flex flex-col ">
-        <h1 class="text-xl font-bold">
+        <h1 class="text-2xl font-bold">
           {{ teamName }}
           &nbsp;
         </h1>
         <div class="flex flex-wrap">
-          <div class="font-semibold text-lg mr-2 ">
-            <span class="font-semibold italic"> members: </span>
+          <div class="text-info mr-2">
+            <span class="text-label"> members: </span>
             {{ members.length }}
           </div>
         </div>
