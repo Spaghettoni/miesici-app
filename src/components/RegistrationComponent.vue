@@ -48,7 +48,7 @@
 
       <div class="mt-5 mx-auto text-xl flex flex-col items-center">
         <p>Already have an account?</p>
-        <router-link to="/login" class="font-semibold underline">Login</router-link>
+        <router-link to="/login" class="font-semibold underline hover:text-orange">Login</router-link>
       </div>
     </div>
   </form>

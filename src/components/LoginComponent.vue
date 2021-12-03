@@ -31,7 +31,7 @@
 
       <div class="mt-5 mx-auto text-xl flex flex-col items-center">
         <p>Don't have an account yet?</p>
-        <router-link to="/register" class="font-semibold underline rounded-xl">Register here!</router-link>
+        <router-link to="/register" class="font-semibold underline hover:text-orange">Register here!</router-link>
       </div>
     </div>
   </form>
