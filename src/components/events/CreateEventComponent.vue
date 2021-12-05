@@ -1,11 +1,10 @@
 <template>
   <form class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min" @click="goBack">
-        &lt;&nbsp;back
-      </div>
+      <back-button></back-button>
+
       <div class="flex justify-between items-center">
-        <h1 class="mb-4 font-semibold text-6xl">
+        <h1 class="mb-4 text-heading">
           Create new event
         </h1>
       </div>
@@ -15,7 +14,7 @@
         <label class="text-2xl" for="name">Event name</label>
         <input type="text" id="name" name="name"
                v-model="input.name"
-               placeholder="miesici"
+               placeholder="miesenie"
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
@@ -97,9 +96,10 @@ export default {
   },
 
   methods: {
-    goBack() {
-      router.back()
-    },
+    // goBack() {
+    //   console.log("back button called")
+    //   router.back()
+    // },
 
     createEvent() {
       if (!this.input.selectedTeamId) {

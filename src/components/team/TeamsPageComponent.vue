@@ -1,28 +1,27 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="px-4 flex flex-col w-full max-w-3xl">
-      <div class="mt-10 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
-        <h1 class="mb-4 mr-8 font-semibold text-6xl">
-          My Teams
+      <div class="mt-6 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
+        <h1 class="mb-4 mr-8 text-heading">
+          Teams
         </h1>
         <router-link
             to="/create-team"
-            class="my-4 flex items-center border-black bg-orange
+            class="px-4 py-2 flex items-center border-black bg-orange
                    rounded-xl cursor-pointer hover:shadow-xl
-                   transition duration-100 transform hover:scale-105">
-<!--          <img alt="" :src="'/pictures/create.png'" width="50">-->
-          <i class="fas fa-plus-circle text-2xl p-2.5"></i>
-          <div class="font-semibold pr-4">
+                   hover-zoom">
+          <i class="fas fa-plus-circle text-2xl"></i>
+          <div class="ml-2 font-semibold text-lg">
             Create new team
           </div>
         </router-link>
       </div>
-      <div>
-        <div class="font-semibold">
-          Search teams
+      <div class="mt-6">
+        <div class="font-semibold text-create-button">
+          Search by member
         </div>
-        <div class="border flex max-w-min flex-col sm:flex-row">
-          <select class="px-4 py-2"
+        <div class="flex max-w-min flex-col sm:flex-row">
+          <!-- <select class="border px-4 py-2 rounded-xl cursor-pointer"
                   v-model="selected"
           >
             <option value="all-teams" class="" @click="filterTeams">
@@ -34,9 +33,9 @@
             >
               {{ team.name }}
             </option>
-          </select>
-          <input type="text" class="px-4 py-2"
-                 placeholder="search by member"
+          </select> -->
+          <input type="text" class="border px-4 py-2 rounded"
+                 placeholder="username"
                  v-model="member"
                  @input="filterTeams"
           />
@@ -44,7 +43,7 @@
       </div>
       <div class="teams-container flex flex-wrap justify-between">
         <router-link class="team mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light min-w-full sm:min-w-min
-                            transition duration-100 transform hover:scale-105"
+                            hover-zoom"
                      v-bind:key=team v-for="team in this.selectedTeams"
                      :to="{name: 'TeamDetail', query: {teamId: team.id}}">
           <team-component

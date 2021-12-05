@@ -1,12 +1,7 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
-           @click="goBack"
-      >
-        <!-- <img alt="back" :src="'/pictures/backIcon.'" width="50"> -->
-        &lt;&nbsp;back
-      </div>
+      <back-button></back-button>
       <div>
         <h1 class="mb-4 font-semibold text-6xl">
           {{ this.team.name }}
@@ -35,10 +30,10 @@
                  placeholder="Tomero"
                  class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
           />
-          <div class="sm:ml-4 mt-4 sm:mt-0 text-center align-middle max-w-min">
+          <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
             <button class="h-full w-full px-6 py-2 border-black bg-orange
-                           rounded-xl font-semibold text-xl hover:shadow-xl
-                            hover:text-xl transition duration-100 transform hover:scale-105"
+                           rounded-xl font-semibold text-lg hover:shadow-xl
+                            hover-zoom"
                     @click="addMember"
             >
               Add
@@ -54,6 +49,7 @@
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
+import BackButton from "@/components/events/BackButton";
 
 export default {
   name: "TeamDetailComponent",
@@ -76,6 +72,7 @@ export default {
     addMember() {
       TeamsController.addMember(this.teamId, this.input.member);
       this.loadTeam();
+      this.input.member = "";
     },
 
     loadTeam(){

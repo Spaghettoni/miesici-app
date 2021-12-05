@@ -1,31 +1,31 @@
 <template>
-  <div class="p-2">
+  <div class="p-0.5">
     <div class="flex">
-<!--         v-bind:class="this.userJoined && 'bg-green border-2 border-green'"-->
-
       <div class="flex flex-col ml-5 relative">
-        <div class="font-semibold text-lg italic">
+        <div class="text-info italic">
           <i class="far fa-clock"></i>
-          {{ getDateTimeString()}}
+          {{
+            getDateTimeString()
+          }}
         </div>
-        <div class="font-semibold text-lg italic">
+        <div class="text-info italic">
           <i class="fas fa-map-marker-alt"></i>
           {{ this.place }}
         </div>
 
-        <h2 class="text-2xl font-bold">
+        <h2 class="text-subheading">
           {{ this.name }}
         </h2>
-        <div class="font-semibold text-lg">
-          <span class="font-bold"> Sport: </span>
+        <div class="text-info">
+          <span class="text-label"> Sport: </span>
           {{ this.sport }}
         </div>
-        <div class="font-semibold text-lg">
-          <span class="font-bold"> Team: </span>
+        <div class="text-info">
+          <span class="text-label"> Team: </span>
           {{ this.team }}
         </div>
-        <div class="font-semibold text-lg">
-          <span class="font-bold"> Joined: </span>
+        <div class="text-info">
+          <span class="text-label"> Joined: </span>
           {{ this.attendees.length }}
         </div>
       </div>
@@ -35,7 +35,7 @@
       >
         <i class="far fa-check-square"></i>
         <span class="hidden sm:inline ml-3">JOINED </span>
-<!--        ✓-->
+        <!--        ✓-->
       </p>
     </div>
   </div>
@@ -43,6 +43,8 @@
 
 <script>
 import EventsController from '../../controllers/EventsController';
+import DateController from "@/controllers/DateController";
+
 
 export default {
   name: "EventComponent",
@@ -65,16 +67,12 @@ export default {
 
   methods: {
     getDateTimeString() {
-      let date = new Date(this.datetime);
-      const timeOptions = { hour: '2-digit', minute: '2-digit' };
-      const weekDayOptions = {weekday: 'long'};
-      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
-      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
-      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
-      let dateString = date.toLocaleDateString("en-UK", dateOptions);
-      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+      return DateController.getDateTimeString(this.datetime);
+
     },
+
+
   }
 }
 </script>

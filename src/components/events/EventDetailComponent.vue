@@ -1,40 +1,36 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <div class="mb-6 cursor-pointer font-semibold hover:text-orange px-5 py-3 border max-w-min"
-           @click="goBack"
-      >
-        &lt;&nbsp;back
-      </div>
+      <back-button></back-button>
 
-      <div>
-          <div class="font-semibold text-lg">
+      <div class="text-info">
+          <div>
             <i class="far fa-clock"></i>
             {{ getDateTimeString() }}
           </div>
 
-          <div class="font-semibold text-lg">
+          <div>
             <i class="fas fa-map-marker-alt"></i>
             {{ this.event.place }}
           </div>
 
-        <h1 class="mb-4 font-semibold text-6xl">
+        <h1 class="text-subheading">
           {{ this.event.name }}
         </h1>
       </div>
 
       <div class="flex">
         <div class="flex flex-col">
-          <div class="font-semibold text-lg">
-            <span class="font-bold"> Sport: </span>
+          <div class="text-info">
+            <span class="text-label"> Sport: </span>
             {{ this.event.sport }}
           </div>
-          <div class="font-semibold text-lg">
-            <span class="font-bold"> Team: </span>
+          <div class="text-info">
+            <span class="text-label"> Team: </span>
             {{ this.teamName()}}
           </div>
-          <div class="flex flex-wrap text-lg font-semibold">
-            <span class="font-bold">Joined:&nbsp;</span>
+          <div class="flex flex-wrap text-info">
+            <span class="text-label">Joined:&nbsp;</span>
             <div class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
               {{ username }},
             </div>
@@ -47,7 +43,8 @@
 
         <button type="button"
                 class="mt-12 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
-                       hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105" v-if="this.userJoined"
+                       hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+                v-if="this.userJoined"
                 @click="leave"
         >
           LEAVE
@@ -71,11 +68,10 @@
 import router from "../../router";
 import EventsController from "@/controllers/EventsController";
 import {Event, Team} from "../../store/Models";
-import store from '../../store';
+import DateController from "@/controllers/DateController";
 
 export default {
   name: "EventDetailComponent",
-
   data() {
     return {
       event: null
@@ -103,51 +99,44 @@ export default {
       this.loadEvent();
     },
 
-    loadEvent(){
+    loadEvent() {
       this.event = Event.query().whereId(this.eventId).with('attendees').first();
-      if(this.event === null){
+      if (this.event === null) {
         this.event = {
-            id: "",
-            name: "",
-            place: "",
-            sport: "",
-            team_id: "",
-            datetime: "",
-            attendees: []
+          id: "",
+          name: "",
+          place: "",
+          sport: "",
+          team_id: "",
+          datetime: "",
+          attendees: []
         }
         router.replace("/NotFound");
       }
     },
 
-    attendeeNames(){
-       return this.event.attendees.map(a => a.username);
+    attendeeNames() {
+      return this.event.attendees.map(a => a.username);
     },
 
-    teamName(){
+    teamName() {
       const team = Team.query().whereId(this.event.team_id).first();
       return (team === null) ? "" : team.name;
     },
 
     getDateTimeString() {
-      let date = new Date(this.event.datetime);
-      const timeOptions = { hour: '2-digit', minute: '2-digit' };
-      const weekDayOptions = {weekday: 'long'};
-      const dateOptions = {year: 'numeric', month: 'short', day: 'numeric'};
 
-      let timeString = date.toLocaleTimeString("en-UK",timeOptions);
-      let weekDayString = date.toLocaleDateString("en-UK", weekDayOptions);
-      let dateString = date.toLocaleDateString("en-UK", dateOptions);
-      return timeString + ', ' + dateString + ' (' + weekDayString + ')';
+      return DateController.getDateTimeString(this.event.datetime);
+
     },
+
+
   },
 
-  created(){
+  created() {
     this.eventId = this.$route.query.eventId;
     this.loadEvent();
   }
 }
 </script>
 
-<style scoped>
-
-</style>

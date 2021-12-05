@@ -1,23 +1,22 @@
 <template>
   <div class="w-full flex justify-center">
     <div class="px-4 flex flex-col w-full max-w-3xl">
-      <div class="mt-10 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
-        <h1 class="mb-4 mr-8 font-semibold text-6xl">
-          My Upcoming <br/>Events
+      <div class="mt-6 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
+        <h1 class="mb-4 mr-8 text-heading">
+          Events
         </h1>
         <router-link
             to="/create-event"
-            class="flex items-center border-black bg-orange
+            class="px-4 py-2 flex items-center border-black bg-orange
                    rounded-xl cursor-pointer hover:shadow-xl
-                   hover:text-xl transition duration-100 transform hover:scale-105">
-<!--          <img alt="" :src="'/pictures/create.png'" width="50">-->
-          <i class="fas fa-plus-circle text-2xl p-2.5"></i>
-          <div class="font-semibold pr-4">
+                   hover-zoom">
+          <i class="fas fa-plus-circle text-2xl"></i>
+          <div class="ml-2 text-create-button">
             Create new event
           </div>
         </router-link>
       </div>
-      <div class="flex flex-col ">
+      <div class="flex flex-col">
         <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light
                             transition duration-100 transform hover:scale-105"
                      v-bind:key=event v-for="event in this.events"
@@ -72,5 +71,7 @@ export default {
 </script>
 
 <style scoped>
-
+.heading {
+  /*font-size: 2.7rem;*/
+}
 </style>
