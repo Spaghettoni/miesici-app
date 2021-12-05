@@ -7,18 +7,19 @@
           <img alt="" v-bind:src="'/pictures/im1.png'">
         </div>
         <div class="px-5 sm:px-10 my-auto mx-auto">
-          <h2 class="mx-auto mt-7 mb-2 text-3xl md:text-6xl font-bold z-0">
+          <h2 class="mx-auto mt-7 mb-2 text-3xl sm:text-6xl font-bold z-0">
             Meet and play!
           </h2>
           <p>Do you want to easily manage matches with friends?</p>
           <p><b>Log in, create team and manage your sport events with ease!</b></p>
 
-          <div class="flex-col md:space-x-2.5 md:flex-row">
+          <div class="flex-col sm:space-x-2.5 sm:flex-row">
             <router-link
                 to="/login">
               <button
                   class="mt-5 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl cursor-pointer hover:shadow-xl
-                   hover:text-xl transition duration-100 transform hover:scale-105">
+                   hover:text-xl transition duration-100 transform hover:scale-105"
+                   @click="updatePath('/login')">
                 Login
               </button>
             </router-link>
@@ -27,7 +28,8 @@
                 to="/register">
               <button
                   class="mt-5 mx-auto px-10 py-4 text-3xl border-black bg-brightgreen rounded-xl cursor-pointer hover:shadow-xl
-                   hover:text-xl transition duration-100 transform hover:scale-105">
+                   hover:text-xl transition duration-100 transform hover:scale-105"
+                   @click="updatePath('/register')">
                 Register
               </button>
             </router-link>
@@ -43,7 +45,7 @@
           <img alt="" v-bind:src="'/pictures/review.png'">
         </div>
         <div class="px-5 sm:px-10 my-auto mx-auto">
-          <h2 class="mx-auto mt-7 mb-2 text-3xl md:text-6xl font-bold z-0">
+          <h2 class="mx-auto mt-7 mb-2 text-3xl sm:text-6xl font-bold z-0">
             Review our app
           </h2>
           <p><b>Help us improve your experience!</b></p>
@@ -62,12 +64,12 @@
     </article>
 
     <article class="border-black bg-gray-light">
-      <div class="flex flex-col md:flex-row justify-center">
-        <div class="mt-3 mx-auto w-1/4 md:w-1/6 md:mx-0 md:my-auto">
+      <div class="flex flex-col sm:flex-row justify-center">
+        <div class="mt-3 mx-auto w-1/4 sm:w-1/6 sm:mx-0 sm:my-auto">
           <img alt="" v-bind:src="'/pictures/stats1.png'">
         </div>
         <div class="px-5 sm:px-10 my-auto">
-          <h2 class="mx-auto text-center mt-2 mb-2 text-3xl md:text-6xl md:mt-7 font-bold z-0">
+          <h2 class="mx-auto text-center mt-2 mb-2 text-3xl sm:text-6xl sm:mt-7 font-bold z-0">
             App in numbers
           </h2>
 
@@ -159,6 +161,7 @@
 
 <script>
 import store from "../store";
+import router from "../router";
 
 export default {
   name: "HomeComponent",
@@ -167,6 +170,14 @@ export default {
       state: store.state,
     }
   },
+
+  methods: {
+  async updatePath(target) {
+    this.showMenu = false;
+    await router.push(target);
+    store.commit('setCurrentPath',target);
+  }
+}
 
 }
 </script>
