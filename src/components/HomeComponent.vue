@@ -172,10 +172,9 @@ export default {
   },
 
   methods: {
-  async updatePath(target) {
-    this.showMenu = false;
-    await router.push(target);
-    store.commit('setCurrentPath',target);
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
   }
 }
 
