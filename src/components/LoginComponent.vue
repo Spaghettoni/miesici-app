@@ -14,9 +14,9 @@
                required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
-        <span class="text-darkRed" :class="[this.errors.username ? 'block' : 'hidden']">
-          <i class="fa fas fa-solid fa-triangle-exclamation text-darkRed"></i>
-          Vyplň username
+        <span class="text-brightred font-semibold" :class="[this.errors.username ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please fill in your username!
         </span>
       </div>
       <div class="mt-6 form-inputs  flex flex-col">
@@ -27,9 +27,9 @@
                required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
-        <span class="text-darkRed" :class="[this.errors.password ? 'block' : 'hidden']">
-          <i class="fa fas fa-solid fa-triangle-exclamation text-darkRed"></i>
-          Vyplň password
+        <span class="text-brightred font-semibold" :class="[this.errors.password ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please fill in your password!
         </span>
       </div>
       <input type="submit" v-on:click="checkForm"
