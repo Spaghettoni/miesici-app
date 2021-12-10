@@ -11,8 +11,13 @@
         <input type="text" id="username" name="username"
                v-model="input.username"
                placeholder="username"
+               required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
+        <span class="text-brightred font-semibold" :class="[this.errors.username ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please fill in your username!
+        </span>
       </div>
 
       <div class="mt-6 form-inputs flex flex-col">
@@ -20,8 +25,13 @@
         <input type="text" id="email" name="email"
                v-model="input.email"
                placeholder="email@mail.com"
+               required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
+        <span class="text-brightred font-semibold" :class="[this.errors.email ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please fill in your email!
+        </span>
       </div>
 
       <div class="mt-6 form-inputs  flex flex-col">
@@ -31,6 +41,10 @@
                placeholder="password"
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
+        <span class="text-brightred font-semibold" :class="[this.errors.password ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please fill in your password!
+        </span>
       </div>
       <div class="mt-6 form-inputs  flex flex-col">
         <label class="text-2xl" for="password">Confirm password</label>
@@ -40,7 +54,11 @@
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
       </div>
-      <input type="submit" v-on:click="register(input.username, input.password, input.confirmPassword, input.email, '/')"
+      <span class="text-brightred font-semibold" :class="[this.errors.confirmPassword ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please confirm your password!
+        </span>
+      <input type="submit" v-on:click="checkForm"
              class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
                     bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              value = "Register"
@@ -69,9 +87,27 @@ export default {
         confirmPassword: "",
         email: ""
       },
+      errors: {
+        username: false,
+        password: false,
+        confirmPassword: false,
+        email: false
+      },
       route: router.currentRoute,
     }
   },
+  methods: {
+    checkForm() {
+      this.errors.username = !this.input.username;
+      this.errors.password = !this.input.password;
+      this.errors.confirmPassword = !this.input.confirmPassword;
+      this.errors.email = !this.input.email;
+
+      if (!this.errors.username && !this.errors.password && !this.errors.confirmPassword && !this.errors.email) {
+        this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/');
+      }
+    }
+  }
 }
 </script>
 

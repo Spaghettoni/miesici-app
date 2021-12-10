@@ -23,6 +23,10 @@
         @apply text-lg
     }
 
+    .text-simple-text { /* Normal text */
+        @apply text-lg
+    }
+
     .hover-zoom { /* Zoom animation item on hover */
         @apply transition duration-100 transform hover:scale-105
     }
