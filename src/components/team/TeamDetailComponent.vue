@@ -28,16 +28,17 @@
           <div>
             <input type="text" id="newMember" name="member"
                    v-model="input.member"
-                   placeholder="User name"
-                   required
+                   placeholder="Tomero"
                    class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
+                   required
+                   list="allUsernames"
+                   autocomplete="on"
             />
             <span class="text-brightred font-semibold" :class="[this.errors.member ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
           Please fill in user name!
           </span>
           </div>
-
           <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
             <input type="submit" class="w-full px-6 py-2.5 border-black bg-orange
                            rounded-xl font-semibold text-lg hover:shadow-xl
@@ -48,6 +49,12 @@
           </div>
         </form>
       </div>
+
+      <datalist id="allUsernames">
+          <option v-for="username in this.allUsernames"
+           :key="username" :value="username">
+          </option>
+      </datalist>
     </div>
   </div>
 </template>
@@ -57,6 +64,7 @@ import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
 import BackButton from "@/components/events/BackButton";
+import UsersController from '../../controllers/UsersController';
 
 export default {
   name: "TeamDetailComponent",
@@ -70,7 +78,8 @@ export default {
         member: false,
       },
       team: null,
-      teamId: null
+      teamId: null,
+      allUsernames: []
     }
   },
 
@@ -98,7 +107,6 @@ export default {
       }
 
     },
-
     memberNames() {
       return this.team.members.map(a => a.username);
     },
@@ -114,6 +122,8 @@ export default {
   created() {
     this.teamId = this.$route.query.teamId;
     this.loadTeam();
+
+    this.allUsernames = UsersController.allUsernames();
   }
 }
 </script>

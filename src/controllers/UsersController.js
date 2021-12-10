@@ -30,10 +30,15 @@ const UsersController = (() => {
         }).get();
     }
 
+    function allUsernames(){
+        return User.query().all().map((u) => u.username);
+    }
+
     return {
         doesUsernameExist,
         findByUsernameAndPassword,
-        findByUsername
+        findByUsername,
+        allUsernames
     }
 })();
 
