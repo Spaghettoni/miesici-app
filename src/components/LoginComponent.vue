@@ -1,5 +1,5 @@
 <template>
-  <form id="login" class="w-full flex justify-center">
+  <form id="login" class="w-full flex justify-center" @submit.prevent="checkForm">
     <div class="mt-6 px-4 max-w-2xl flex flex-col w-full">
       <div>
         <h1 class="text-heading">
@@ -11,12 +11,12 @@
         <input type="text" id="username" name="username"
                v-model="input.username"
                placeholder="username"
-               required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
+               @input="() => {this.errors.username = ''}"
         />
-        <p class="text-brightred font-semibold" :class="[this.errors.username ? 'block' : 'hidden']">
+        <p class="text-brightred font-semibold" :class="[!!this.errors.username ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
-          Please fill in your username!
+          {{ this.errors.username }}
         </p>
       </div>
       <div class="mt-6 form-inputs  flex flex-col">
@@ -24,16 +24,16 @@
         <input type="password" id="password" name="password"
                v-model="input.password"
                placeholder="password"
-               required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
+               @input="() => {this.errors.password = ''}"
         />
-        <p class="text-brightred font-semibold" :class="[this.errors.password ? 'block' : 'hidden']">
+        <p class="text-brightred font-semibold" :class="[!!this.errors.password ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
-          Please fill in your password!
+          {{ this.errors.password }}
         </p>
       </div>
-      <input type="submit" v-on:click="checkForm"
-              class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
+      <input type="submit"
+             class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
                     bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              value = "Login"
       />
@@ -50,6 +50,7 @@
 <script>
 import LoginController from "../controllers/LoginController";
 import router from "../router";
+import UsersController from "../controllers/UsersController";
 
 export default {
   name: 'LoginComponent',
@@ -62,20 +63,29 @@ export default {
       },
       route: router.currentRoute,
       errors: {
-        username: false,
-        password: false
+        username: "",
+        password: ""
       }
     }
   },
   methods: {
     checkForm(){
-      this.errors.username = !this.input.username;
-      this.errors.password = !this.input.password;
+      console.log('yaas?')
 
-      if (!this.errors.username && !this.errors.password) {
-        this.login(this.input.username, this.input.password, '/events');
+      if (this.input.username && this.input.password) {
+        let foundUsers = UsersController.findByUsernameAndPassword(this.input.username, this.input.password);
+
+        if(foundUsers.length === 0) {
+          this.errors.username = "Invalid credentials!";
+          this.errors.password = "Invalid credentials!";
+        } else {
+          this.login(this.input.username, this.input.password, '/events');
+        }
+      } else {
+        this.errors.username = !this.input.username ? "Please fill in your username!" : "";
+        this.errors.password = !this.input.password ? "Please fill in your password!" : "";
       }
-    }
+    },
   }
 }
 </script>
