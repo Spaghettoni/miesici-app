@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex justify-center">
+  <section class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
       <back-button></back-button>
       <div>
@@ -56,7 +56,7 @@
         </option>
       </datalist>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

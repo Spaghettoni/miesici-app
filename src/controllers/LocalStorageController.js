@@ -1,4 +1,4 @@
-import storage from "@/assets/LocalStorage";
+import storage from "@/assets/InitialValues";
 
 const LocalStorageController = {
     constructor: () => {

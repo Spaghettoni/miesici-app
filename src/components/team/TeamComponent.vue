@@ -1,6 +1,6 @@
 <template>
-  <div class="p-0.5">
-    <div class="flex flex-shrink">
+  <section class="p-0.5 flex flex-shrink">
+
       <div class="ml-5 flex flex-col ">
         <h1 class="text-2xl font-bold">
           {{ teamName }}
@@ -13,8 +13,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
+  </section>
 </template>
 
 <script>

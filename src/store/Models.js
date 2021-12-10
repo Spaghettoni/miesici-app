@@ -1,5 +1,5 @@
 import { Model, use } from '@vuex-orm/core'
-import storage from '../assets/LocalStorage.js'
+import storage from '../assets/InitialValues.js'
 
 class User extends Model {
     static entity = 'users'

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex justify-center">
+  <article class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
       <back-button></back-button>
 
@@ -61,7 +61,7 @@
       </div>
 
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
