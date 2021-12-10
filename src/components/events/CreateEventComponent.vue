@@ -42,7 +42,7 @@
         <label class="text-2xl">Sport</label>
 
         <select v-model="input.sport" id="sport" name="team"
-                class="border-2 px-4 py-2 text-2xl rounded">
+                class="border-2 px-4 py-3.5 text-2xl rounded bg-white">
           <option v-for="item in this.sports" v-bind:value="item" v-bind:key="item">
             {{ item }}
           </option>
@@ -75,7 +75,7 @@
         <label class="text-2xl">Team</label>
 
         <select v-model="input.team" id="team" name="team" @change="saveTeamIdOnChange($event)"
-                class="border-2 px-4 py-2 text-2xl rounded">
+                class="border-2 px-4 py-3.5 text-2xl rounded bg-white">
           <option v-for="option in this.teams" v-bind:value="option.id" v-bind:key="option">
             {{ option.name }}
           </option>
