@@ -4,14 +4,14 @@
     <article class="border-black" v-if="this.state.loggedUser === null">
       <div class="flex flex-col-reverse lg:flex-row">
         <div class="w-full mt-5 lg:w-1/2 lg:mt-0">
-          <img alt="" v-bind:src="'/pictures/im1.png'">
+          <img alt="Young people having fun playing football." v-bind:src="'/pictures/im1.png'">
         </div>
         <div class="px-5 sm:px-10 my-auto mx-auto">
-          <h2 class="mx-auto mt-7 mb-2 text-3xl sm:text-6xl font-bold z-0">
+          <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
             Meet and play!
           </h2>
-          <p>Do you want to easily manage matches with friends?</p>
-          <p><b>Log in, create team and manage your sport events with ease!</b></p>
+          <p class="text-simple-text">Do you want to easily manage matches with friends?<br>
+            <b>Log in, create team and manage your sport events with ease!</b></p>
 
           <div class="flex-col sm:space-x-2.5 sm:flex-row">
             <router-link
@@ -45,11 +45,11 @@
           <img alt="" v-bind:src="'/pictures/review.png'">
         </div>
         <div class="px-5 sm:px-10 my-auto mx-auto">
-          <h2 class="mx-auto mt-7 mb-2 text-3xl sm:text-6xl font-bold z-0">
+          <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
             Review our app
           </h2>
-          <p><b>Help us improve your experience!</b></p>
-          <p>Tell us how satisfied you are with our application.</p>
+          <p class="text-simple-text"><b>Help us improve your experience!</b><br>
+            Tell us how satisfied you are with our application.</p>
           <div class="flex my-2">
             <i class="fas fa-star text-2xl text-gray-light hover:text-orange"></i>
             <i class="fas fa-star text-2xl text-gray-light hover:text-orange"></i>
@@ -57,7 +57,7 @@
             <i class="fas fa-star text-2xl text-gray-light hover:text-orange"></i>
             <i class="fas fa-star text-2xl text-gray-light hover:text-orange"></i>
           </div>
-          <p>If you have any issues or ideas for improvement, feel free to contact us!</p>
+          <p class="text-simple-text"> If you have any issues or ideas for improvement, feel free to contact us!</p>
 
         </div>
       </div>
@@ -69,7 +69,7 @@
           <img alt="" v-bind:src="'/pictures/stats1.png'">
         </div>
         <div class="px-5 sm:px-10 my-auto">
-          <h2 class="mx-auto text-center mt-2 mb-2 text-3xl sm:text-6xl sm:mt-7 font-bold z-0">
+          <h2 class="mx-auto text-center mt-2 mb-2 text-heading sm:mt-7 z-0">
             App in numbers
           </h2>
 
@@ -105,56 +105,6 @@
         </div>
       </div>
     </article>
-
-<!--    <article class="border-black">-->
-<!--      <div class="flex flex-col-reverse sm:flex-col">-->
-<!--        <div class="px-5 sm:px-10 my-auto">-->
-<!--          <h2 class="mx-auto mt-7 mb-2 text-4xl sm:text-6xl font-bold z-0">-->
-<!--            What can you do?-->
-<!--          </h2>-->
-<!--          </div>-->
-
-<!--          <div class="flex">-->
-<!--          <h1 class="mx-auto mt-7 mb-2 text-2xl sm:text-3xl font-bold z-0">-->
-<!--            Teams-->
-<!--          </h1>-->
-<!--          </div>-->
-
-<!--          <div class="flex">-->
-<!--          <h1 class="mx-auto mt-7 mb-2 text-2xl sm:text-3xl font-bold z-0">-->
-<!--            Events-->
-<!--          </h1>-->
-
-<!--          <p>You have an overview of all events.-->
-<!--          Events are sorted by date and time.-->
-<!--          You can create an event for any of your teams.-->
-<!--            You can also joined or leave events of the teams you are a member of. </p>-->
-
-<!--            <div class="my-3 w-1/3">-->
-<!--              <img alt="" v-bind:src="'/pictures/teams.png'">-->
-<!--            </div>-->
-
-<!--          </div>-->
-
-
-<!--          <div class="my-3 w-1/3">-->
-<!--            <img alt="" v-bind:src="'/pictures/search.png'">-->
-<!--          </div>-->
-
-<!--          <div class="my-3 w-1/3">-->
-<!--            <img alt="" v-bind:src="'/pictures/addmember.png'">-->
-<!--          </div>-->
-
-<!--          <div class="my-3 w-1/3">-->
-<!--            <img alt="" v-bind:src="'/pictures/events.png'">-->
-<!--          </div>-->
-
-<!--          <div class="my-3 w-1/3">-->
-<!--            <img alt="" v-bind:src="'/pictures/eventdetail.png'">-->
-<!--          </div>-->
-
-<!--      </div>-->
-<!--    </article>-->
 
   </div>
 </template>
