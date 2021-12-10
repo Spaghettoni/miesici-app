@@ -1,65 +1,65 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <back-button></back-button>
+    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl sm:flex-row">
+      <div>
+        <back-button></back-button>
 
-      <div class="text-info">
-          <div>
-            <i class="far fa-clock"></i>
-            {{ getDateTimeString() }}
-          </div>
-
-          <div>
-            <i class="fas fa-map-marker-alt"></i>
-            {{ this.event.place }}
-          </div>
-
-        <h1 class="text-subheading">
-          {{ this.event.name }}
-        </h1>
-      </div>
-
-      <div class="flex">
-        <div class="flex flex-col">
-          <div class="text-info">
-            <span class="text-label"> Sport: </span>
-            {{ this.event.sport }}
-          </div>
-          <div class="text-info">
-            <span class="text-label"> Team: </span>
-            {{ this.teamName()}}
-          </div>
-          <div class="flex flex-wrap text-info">
-            <span class="text-label">Joined:&nbsp;</span>
-            <div class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
-              {{ username }},
+        <div class="text-info">
+            <div>
+              <i class="far fa-clock"></i>
+              {{ getDateTimeString() }}
             </div>
-            &nbsp;
+
+            <div>
+              <i class="fas fa-map-marker-alt"></i>
+              {{ this.event.place }}
+            </div>
+
+          <h1 class="text-subheading">
+            {{ this.event.name }}
+          </h1>
+        </div>
+
+        <div class="flex">
+          <div class="flex flex-col">
+            <div class="text-info">
+              <span class="text-label"> Sport: </span>
+              {{ this.event.sport }}
+            </div>
+            <div class="text-info">
+              <span class="text-label"> Team: </span>
+              {{ this.teamName()}}
+            </div>
+
+            <div>
+            <button type="button"
+                    class="my-5 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
+                          hover:shadow-xl hover:text-xl hover-zoom"
+                    v-if="this.userJoined"
+                    @click="leave"
+            >
+              LEAVE
+            </button>
+            <button type="button"
+                    class="my-5 mx-auto px-10 py-4 text-white text-3xl border-black bg-brightgreen
+                          rounded-xl hover:shadow-xl hover:text-xl hover-zoom"
+                    v-else
+                    @click="join"
+            >
+              JOIN
+            </button>
+          </div>
           </div>
         </div>
       </div>
 
-      <div>
-
-        <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
-                       hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
-                v-if="this.userJoined"
-                @click="leave"
-        >
-          LEAVE
-        </button>
-        <button type="button"
-                class="mt-12 mx-auto px-10 py-4 text-white text-3xl border-black bg-brightgreen
-                       rounded-xl hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
-                v-else
-                @click="join"
-        >
-          JOIN
-        </button>
-
-      </div>
-
+      <div class="flex flex-wrap flex-col text-info sm:ml-10 sm:border-l-2 sm:pl-10">
+            <span class="text-label">Joined:&nbsp;</span>
+            <div class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
+              {{ username }}
+            </div>
+            &nbsp;
+          </div>
     </div>
   </div>
 </template>

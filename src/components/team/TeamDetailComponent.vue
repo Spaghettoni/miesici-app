@@ -42,7 +42,7 @@
 
       <div class="flex flex-shrink mt-10 sm:mt-0 sm:ml-10 sm:border-l-2 sm:pl-10">
         <div class="flex flex-col font-semibold text-lg">
-          <span class="font-bold"> members: &nbsp;</span>
+          <span class="font-bold"> Members: &nbsp;</span>
           <div class="mr-2"
               v-bind:key=username v-for="username in this.memberNames()">
             {{ username }}
