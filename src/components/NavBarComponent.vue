@@ -15,18 +15,13 @@
 
           <nav id="nav"
                class="float-left flex ml-40 justify-end hidden sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
-      <!--      <div @click="updatePath('/')"-->
-      <!--           class="button-40 mx-1.5 hidden sm:block"-->
-      <!--           v-bind:class="{active: activePage === '/'}"-->
-      <!--      >-->
-      <!--        Home-->
-      <!--      </div>-->
+
             <div v-if="this.state.loggedUser !== null"
                  @click="updatePath('/teams')"
                  class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/teams'}"
             >
-              <i class="fas fa-users" style="font-size:16px; margin-right: 5px"></i>
+              <i class="fas fa-users mr-2"></i>
               Teams
             </div>
             <div v-if="this.state.loggedUser !== null"
@@ -34,7 +29,7 @@
                  class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/events'}"
             >
-              <i class="far fa-calendar-alt" style="font-size:16px; margin-right: 5px"></i>
+              <i class="far fa-calendar-alt mr-2"></i>
               Events
             </div>
 
@@ -46,7 +41,6 @@
                   class="button-40 mx-1.5 userbutton"
                   v-bind:class="{active: activePage === '/login'}"
             >
-      <!--        <i class="fas fa-sign-in-alt" style="font-size:16px"></i>-->
                       Login
             </div>
                   <div  v-if="this.state.loggedUser === null"
@@ -61,14 +55,14 @@
                  class="button-40 ml-10 mx-1.5 userbutton"
                  v-bind:class="{active: activePage === '/profile'}"
             >
-              <i class="fas fa-user-alt md:mr-2" style="font-size:16px"></i>
+              <i class="fas fa-user-alt md:mr-2"></i>
               <span class="hidden md:inline-block">Profile</span>
             </div>
             <div  v-if="this.state.loggedUser !== null"
                   @click="this.logout()"
                   class="logout-button-40 mx-1.5 userbutton"
             >
-              <i class="fas fa-sign-out-alt md:mr-2" style="font-size:16px"></i>
+              <i class="fas fa-sign-out-alt md:mr-2"></i>
               <span class="hidden md:inline-block">Logout</span>
             </div>
           </div>
@@ -80,7 +74,7 @@
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/'}"
       >
-        <i class="fas fa-home" style="font-size:16px; margin-right: 5px"></i>
+        <i class="fas fa-home mr-2"></i>
         <p>Home</p>
       </button>
 
@@ -89,7 +83,7 @@
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/teams'}"
       >
-        <i class="fas fa-users" style="font-size:16px; margin-right: 5px"></i>
+        <i class="fas fa-users mr-2"></i>
         <p>Teams</p>
       </button>
       
@@ -98,7 +92,7 @@
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/events'}"
       >
-        <i class="far fa-calendar-alt" style="font-size:16px; margin-right: 5px"></i>
+        <i class="far fa-calendar-alt mr-2"></i>
         <p>Events</p>
       </button>
     </div>
