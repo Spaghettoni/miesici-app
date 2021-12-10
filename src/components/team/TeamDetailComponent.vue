@@ -29,6 +29,8 @@
                  v-model="input.member"
                  placeholder="Tomero"
                  class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
+                 list="allUsernames"
+                 autocomplete="on"
           />
           <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
             <button class="h-full w-full px-6 py-2 border-black bg-orange
@@ -41,6 +43,12 @@
           </div>
         </div>
       </div>
+
+      <datalist id="allUsernames">
+          <option v-for="username in this.allUsernames"
+           :key="username" :value="username">
+          </option>
+      </datalist>
     </div>
   </div>
 </template>
@@ -50,6 +58,7 @@ import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
 import BackButton from "@/components/events/BackButton";
+import UsersController from '../../controllers/UsersController';
 
 export default {
   name: "TeamDetailComponent",
@@ -60,7 +69,8 @@ export default {
         member: '',
       },
       team: null,
-      teamId: null
+      teamId: null,
+      allUsernames: []
     }
   },
 
@@ -91,12 +101,14 @@ export default {
 
     memberNames(){
        return this.team.members.map(a => a.username);
-    },
+    }
   },
 
   created(){
     this.teamId = this.$route.query.teamId;
     this.loadTeam();
+
+    this.allUsernames = UsersController.allUsernames();
   }
 }
 </script>
