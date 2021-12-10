@@ -24,30 +24,36 @@
         <div class="text-lg italic">
           Add new member:
         </div>
-        <div class="flex flex-col sm:flex-row">
-          <input type="text" id="newMember" name="member"
-                 v-model="input.member"
-                 placeholder="Tomero"
-                 class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
-                 list="allUsernames"
-                 autocomplete="on"
-          />
+        <form class="flex flex-col sm:flex-row">
+          <div>
+            <input type="text" id="newMember" name="member"
+                   v-model="input.member"
+                   placeholder="Tomero"
+                   class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
+                   required
+                   list="allUsernames"
+                   autocomplete="on"
+            />
+            <span class="text-brightred font-semibold" :class="[this.errors.member ? 'block' : 'hidden']">
+              <i class="fas fa-exclamation-triangle"></i>
+              Please fill in user name!
+            </span>
+          </div>
           <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
-            <button class="h-full w-full px-6 py-2 border-black bg-orange
+            <input type="submit" class="w-full px-6 py-2.5 border-black bg-orange
                            rounded-xl font-semibold text-lg hover:shadow-xl
                             hover-zoom"
-                    @click="addMember"
+                   @click="checkForm"
+                   value="Add"
             >
-              Add
-            </button>
           </div>
-        </div>
+        </form>
       </div>
 
       <datalist id="allUsernames">
-          <option v-for="username in this.allUsernames"
-           :key="username" :value="username">
-          </option>
+        <option v-for="username in this.allUsernames"
+                :key="username" :value="username">
+        </option>
       </datalist>
     </div>
   </div>
@@ -57,7 +63,6 @@
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
-import BackButton from "@/components/events/BackButton";
 import UsersController from '../../controllers/UsersController';
 
 export default {
@@ -67,6 +72,9 @@ export default {
     return {
       input: {
         member: '',
+      },
+      errors: {
+        member: false,
       },
       team: null,
       teamId: null,
@@ -85,9 +93,9 @@ export default {
       this.input.member = "";
     },
 
-    loadTeam(){
+    loadTeam() {
       this.team = Team.query().whereId(this.teamId).with('members').first();
-      if(this.team === null){
+      if (this.team === null) {
         this.team = {
           id: "",
           name: "",
@@ -96,15 +104,21 @@ export default {
         }
         router.replace("/NotFound");
       }
-      
-    },
 
-    memberNames(){
-       return this.team.members.map(a => a.username);
+    },
+    memberNames() {
+      return this.team.members.map(a => a.username);
+    },
+    checkForm() {
+      this.errors.member = !this.input.member;
+
+      if (!this.errors.member) {
+        this.addMember();
+      }
     }
   },
 
-  created(){
+  created() {
     this.teamId = this.$route.query.teamId;
     this.loadTeam();
 
