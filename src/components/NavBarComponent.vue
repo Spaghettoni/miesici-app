@@ -2,11 +2,11 @@
   <div id="header">
     <div class="flex flex-col">
       <div>
-          <button @click="updatePath('/')"
+          <figure @click="updatePath('/')"
                class="logo mt-3.5 ml-5 cursor-pointer" v-if="activePage !== '/'">
             <img alt="" :src="'/pictures/icon2.png'" width="75">
 
-          </button>
+          </figure>
           <figure
                class="logo mt-3.5 ml-5" v-else>
             <img alt="" :src="'/pictures/icon2.png'" width="75">
