@@ -134,7 +134,7 @@ const storage = {
             "place": "Bernolakovo",
             "sport": "Tenis",
             "team": "Miesici",
-            "datetime": "2021-11-05 12:00",
+            "datetime": "2022-05-05 12:00",
             "attendees": ["Ondrej", "Slavo", "Livia"],
         },
 
@@ -143,7 +143,7 @@ const storage = {
             "place": "Bratislava",
             "sport": "Futbal",
             "team": "Miesici",
-            "datetime": "2021-11-06 20:00",
+            "datetime": "2022-07-06 20:00",
             "attendees": ["Ondrej", "Slavo", "Livia"],
         },
         
@@ -152,7 +152,7 @@ const storage = {
             "place": "Bratislava",
             "sport": "Futbal",
             "team": "Futbalisti",
-            "datetime": "2021-11-07 15:00",
+            "datetime": "2022-02-07 15:00",
             "attendees": ["Sebastian", "Nikita", "Livia", "Julia"],
         },
 
@@ -161,7 +161,7 @@ const storage = {
             "place": "Vrakuna",
             "sport": "Petang",
             "team": "Barcelona",
-            "datetime": "2021-11-07 15:00",
+            "datetime": "2022-04-07 15:00",
             "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita"],
         },
 
@@ -170,7 +170,7 @@ const storage = {
             "place": "Bratislava",
             "sport": "Hokejbal",
             "team": "Barcelona",
-            "datetime": "2021-11-10 15:00",
+            "datetime": "2022-02-10 15:00",
             "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita", "Livia", "Julia", "Rene"],
         },
 
@@ -179,7 +179,7 @@ const storage = {
             "place": "Bratislava",
             "sport": "Curling",
             "team": "Sportovci",
-            "datetime": "2021-11-10 15:00",
+            "datetime": "2022-11-10 15:00",
             "attendees": [],
         },
 
@@ -188,7 +188,7 @@ const storage = {
             "place": "Bratislava",
             "sport": "Tenis",
             "team": "Sportovci",
-            "datetime": "2021-11-22 16:00",
+            "datetime": "2022-03-22 16:00",
             "attendees": [],
         },
 
@@ -197,7 +197,7 @@ const storage = {
             "place": "Tokyo",
             "sport": "Hod ostepom",
             "team": "Experti",
-            "datetime": "2021-12-08 12:21",
+            "datetime": "2022-02-08 12:21",
             "attendees": [],
         },
 
@@ -206,7 +206,7 @@ const storage = {
             "place": "Unispace",
             "sport": "Esport",
             "team": "Experti",
-            "datetime": "2021-12-06 14:40",
+            "datetime": "2022-02-06 14:40",
             "attendees": [],
         }
     ],
