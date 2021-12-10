@@ -79,7 +79,7 @@ export default {
           this.errors.username = "Invalid credentials!";
           this.errors.password = "Invalid credentials!";
         } else {
-          this.login(this.input.username, this.input.password, '/events');
+          this.login(this.input.username, this.input.password, '/');
         }
       } else {
         this.errors.username = !this.input.username ? "Please fill in your username!" : "";
