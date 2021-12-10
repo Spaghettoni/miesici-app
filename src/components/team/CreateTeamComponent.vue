@@ -12,8 +12,13 @@
         <input type="text" id="teamName" name="teamName"
                v-model="input.teamName"
                placeholder="miesici"
+               required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
+        <span class="text-brightred font-semibold" :class="[this.errors.teamName ? 'block' : 'hidden']">
+          <i class="fas fa-exclamation-triangle"></i>
+          Please fill in team name!
+        </span>
       </div>
       <!-- <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl" for="avatar">Team picture:</label>
@@ -33,7 +38,7 @@
       <input type="submit"
               class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
                     hover:shadow-xl hover:text-xl hover-zoom"
-              @click="createTeam"
+              @click="checkForm"
              value = "Create team"
       />
 
@@ -53,6 +58,9 @@ export default {
       input: {
         teamName: '',
         description: '',
+      },
+      errors:{
+        teamName: false,
       }
     }
   },
@@ -63,6 +71,13 @@ export default {
     createTeam() {
       TeamsController.createTeam(this.input.teamName);
       router.push('/teams');
+    },
+    checkForm() {
+      this.errors.teamName = !this.input.teamName;
+
+      if (!this.errors.teamName) {
+        this.createTeam(this.input.teamName);
+      }
     }
   },
 }
