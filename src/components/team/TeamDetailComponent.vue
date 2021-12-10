@@ -35,9 +35,9 @@
                    autocomplete="on"
             />
             <span class="text-brightred font-semibold" :class="[this.errors.member ? 'block' : 'hidden']">
-          <i class="fas fa-exclamation-triangle"></i>
-          Please fill in user name!
-          </span>
+              <i class="fas fa-exclamation-triangle"></i>
+              Please fill in user name!
+            </span>
           </div>
           <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
             <input type="submit" class="w-full px-6 py-2.5 border-black bg-orange
@@ -51,9 +51,9 @@
       </div>
 
       <datalist id="allUsernames">
-          <option v-for="username in this.allUsernames"
-           :key="username" :value="username">
-          </option>
+        <option v-for="username in this.allUsernames"
+                :key="username" :value="username">
+        </option>
       </datalist>
     </div>
   </div>
@@ -63,7 +63,6 @@
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
-import BackButton from "@/components/events/BackButton";
 import UsersController from '../../controllers/UsersController';
 
 export default {
