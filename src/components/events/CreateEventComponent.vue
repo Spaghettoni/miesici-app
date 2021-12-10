@@ -39,17 +39,19 @@
       </div>
 
       <div class="mt-6 form-inputs flex flex-col">
-        <label class="text-2xl" for="sport">Sport</label>
-        <input type="text" id="sport" name="sport"
-               v-model="input.sport"
-               placeholder="sport"
-               required
-               class="px-4 py-2 text-4xl border-2 border-black rounded"
-        />
+        <label class="text-2xl">Sport</label>
+
+        <select v-model="input.sport" id="sport" name="team"
+                class="border-2 px-4 py-2 text-2xl rounded">
+          <option v-for="item in this.sports" v-bind:value="item" v-bind:key="item">
+            {{ item }}
+          </option>
+        </select>
         <span class="text-brightred font-semibold" :class="[this.errors.sport ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
           Please fill in sport!
         </span>
+
       </div>
 
       <div class="mt-6 form-inputs flex flex-col">
@@ -117,6 +119,7 @@ export default {
         selectedTeamId: null
       },
       teams: [],
+      sports: ['Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis', 'Other'],
       errors: {
           name: false,
           place: false,

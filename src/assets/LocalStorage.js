@@ -132,27 +132,27 @@ const storage = {
         {
             "name": "Veľký šampionát v Bernolákove",
             "place": "Bernolakovo",
-            "sport": "Tenis",
+            "sport": "Tennis",
             "team": "Miesici",
-            "datetime": "2021-11-05 12:00",
+            "datetime": "2022-05-05 12:00",
             "attendees": ["Ondrej", "Slavo", "Livia"],
         },
 
         {
             "name": "DL Boyz derby",
             "place": "Bratislava",
-            "sport": "Futbal",
+            "sport": "Football",
             "team": "Miesici",
-            "datetime": "2021-11-06 20:00",
+            "datetime": "2022-07-06 20:00",
             "attendees": ["Ondrej", "Slavo", "Livia"],
         },
         
         {
             "name": "Račiansky playoff",
             "place": "Bratislava",
-            "sport": "Futbal",
+            "sport": "Football",
             "team": "Futbalisti",
-            "datetime": "2021-11-07 15:00",
+            "datetime": "2022-02-07 15:00",
             "attendees": ["Sebastian", "Nikita", "Livia", "Julia"],
         },
 
@@ -161,16 +161,16 @@ const storage = {
             "place": "Vrakuna",
             "sport": "Petang",
             "team": "Barcelona",
-            "datetime": "2021-11-07 15:00",
+            "datetime": "2022-04-07 15:00",
             "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita"],
         },
 
         {
             "name": "Hokejbalek",
             "place": "Bratislava",
-            "sport": "Hokejbal",
+            "sport": "Street hockey",
             "team": "Barcelona",
-            "datetime": "2021-11-10 15:00",
+            "datetime": "2022-02-10 15:00",
             "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita", "Livia", "Julia", "Rene"],
         },
 
@@ -179,34 +179,34 @@ const storage = {
             "place": "Bratislava",
             "sport": "Curling",
             "team": "Sportovci",
-            "datetime": "2021-11-10 15:00",
+            "datetime": "2022-11-10 15:00",
             "attendees": [],
         },
 
         {
             "name": "Grandslam",
             "place": "Bratislava",
-            "sport": "Tenis",
+            "sport": "Tennis",
             "team": "Sportovci",
-            "datetime": "2021-11-22 16:00",
+            "datetime": "2022-03-22 16:00",
             "attendees": [],
         },
 
         {
             "name": "Olympiada",
             "place": "Tokyo",
-            "sport": "Hod ostepom",
+            "sport": "Javelin throw",
             "team": "Experti",
-            "datetime": "2021-12-08 12:21",
+            "datetime": "2022-02-08 12:21",
             "attendees": [],
         },
 
         {
             "name": "Turnaj v lolku",
             "place": "Unispace",
-            "sport": "Esport",
+            "sport": "E-sport",
             "team": "Experti",
-            "datetime": "2021-12-06 14:40",
+            "datetime": "2022-02-06 14:40",
             "attendees": [],
         }
     ],
