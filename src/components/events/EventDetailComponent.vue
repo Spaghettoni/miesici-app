@@ -1,37 +1,37 @@
 <template>
-  <div class="w-full flex justify-center">
-    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl sm:flex-row">
+  <article class="w-full flex justify-center">
+    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div>
         <back-button></back-button>
 
         <div class="text-info">
-            <div>
-              <i class="far fa-clock"></i>
-              {{ getDateTimeString() }}
-            </div>
+          <p>
+            <i class="far fa-clock"></i>
+            {{ getDateTimeString() }}
+          </p>
 
-            <div>
-              <i class="fas fa-map-marker-alt"></i>
-              {{ this.event.place }}
-            </div>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            {{ this.event.place }}
+          </p>
 
           <h1 class="text-subheading">
             {{ this.event.name }}
           </h1>
         </div>
 
-        <div class="flex">
-          <div class="flex flex-col">
-            <div class="text-info">
-              <span class="text-label"> Sport: </span>
-              {{ this.event.sport }}
-            </div>
-            <div class="text-info">
-              <span class="text-label"> Team: </span>
-              {{ this.teamName()}}
-            </div>
+        <!--        <div class="flex">-->
+        <div class="flex flex-col">
+          <p class="text-info">
+            <b class="text-label"> Sport: </b>
+            {{ this.event.sport }}
+          </p>
+          <p class="text-info">
+            <b class="text-label"> Team: </b>
+            {{ this.teamName() }}
+          </p>
 
-            <div>
+          <div>
             <button type="button"
                     class="my-5 mx-auto px-10 py-4 text-white text-3xl rounded-xl border-black bg-brightred
                           hover:shadow-xl hover:text-xl hover-zoom"
@@ -49,19 +49,19 @@
               JOIN
             </button>
           </div>
-          </div>
         </div>
+        <!--        </div>-->
       </div>
 
-      <div class="flex flex-wrap flex-col text-info sm:ml-10 sm:border-l-2 sm:pl-10">
-            <span class="text-label">Joined:&nbsp;</span>
-            <div class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
-              {{ username }}
-            </div>
-            &nbsp;
-          </div>
+      <ul class="flex flex-wrap flex-col text-info sm:ml-10 sm:border-l-2 sm:pl-10">
+        <b class="text-label">Joined:&nbsp;</b>
+        <li class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
+          {{ username }}
+        </li>
+        &nbsp;
+      </ul>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>

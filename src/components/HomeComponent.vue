@@ -3,9 +3,9 @@
 
     <article class="border-black" v-if="this.state.loggedUser === null">
       <div class="flex flex-col-reverse lg:flex-row">
-        <div class="w-full mt-5 lg:w-1/2 lg:mt-0">
+        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0">
           <img alt="Young people having fun playing football." v-bind:src="'/pictures/im1.png'">
-        </div>
+        </figure>
         <div class="px-5 sm:px-10 my-auto mx-auto">
           <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
             Meet and play!
@@ -41,9 +41,9 @@
 
     <article class="border-black" v-if="this.state.loggedUser !== null">
       <div class="flex flex-col-reverse lg:flex-row">
-        <div class="w-full mt-5 lg:w-1/2 lg:mt-0">
+        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0">
           <img alt="" v-bind:src="'/pictures/review.png'">
-        </div>
+        </figure>
         <div class="px-5 sm:px-10 my-auto mx-auto">
           <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
             Review our app
@@ -65,9 +65,9 @@
 
     <article class="border-black bg-gray-light">
       <div class="flex flex-col sm:flex-row justify-center">
-        <div class="mt-3 mx-auto w-1/4 sm:w-1/6 sm:mx-0 sm:my-auto">
+        <figure class="mt-3 mx-auto w-1/4 sm:w-1/6 sm:mx-0 sm:my-auto">
           <img alt="" v-bind:src="'/pictures/stats1.png'">
-        </div>
+        </figure>
         <div class="px-5 sm:px-10 my-auto">
           <h2 class="mx-auto text-center mt-2 mb-2 text-heading sm:mt-7 z-0">
             App in numbers

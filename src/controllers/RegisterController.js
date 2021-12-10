@@ -1,4 +1,4 @@
-import storage from "@/assets/LocalStorage";
+import storage from "@/assets/InitialValues";
 
 export class RegisterController {
 

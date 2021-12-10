@@ -15,10 +15,10 @@
                required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
-        <span class="text-brightred font-semibold" :class="[this.errors.teamName ? 'block' : 'hidden']">
+        <b class="text-brightred font-semibold" :class="[this.errors.teamName ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
           Please fill in team name!
-        </span>
+        </b>
       </div>
       <!-- <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl" for="avatar">Team picture:</label>
