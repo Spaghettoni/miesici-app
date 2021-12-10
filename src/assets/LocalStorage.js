@@ -132,7 +132,7 @@ const storage = {
         {
             "name": "Veľký šampionát v Bernolákove",
             "place": "Bernolakovo",
-            "sport": "Tenis",
+            "sport": "Tennis",
             "team": "Miesici",
             "datetime": "2021-11-05 12:00",
             "attendees": ["Ondrej", "Slavo", "Livia"],
@@ -141,7 +141,7 @@ const storage = {
         {
             "name": "DL Boyz derby",
             "place": "Bratislava",
-            "sport": "Futbal",
+            "sport": "Football",
             "team": "Miesici",
             "datetime": "2021-11-06 20:00",
             "attendees": ["Ondrej", "Slavo", "Livia"],
@@ -150,7 +150,7 @@ const storage = {
         {
             "name": "Račiansky playoff",
             "place": "Bratislava",
-            "sport": "Futbal",
+            "sport": "Football",
             "team": "Futbalisti",
             "datetime": "2021-11-07 15:00",
             "attendees": ["Sebastian", "Nikita", "Livia", "Julia"],
@@ -168,7 +168,7 @@ const storage = {
         {
             "name": "Hokejbalek",
             "place": "Bratislava",
-            "sport": "Hokejbal",
+            "sport": "Street hockey",
             "team": "Barcelona",
             "datetime": "2021-11-10 15:00",
             "attendees": ["Slavo", "Ondrej","Sebastian", "Nikita", "Livia", "Julia", "Rene"],
@@ -186,7 +186,7 @@ const storage = {
         {
             "name": "Grandslam",
             "place": "Bratislava",
-            "sport": "Tenis",
+            "sport": "Tennis",
             "team": "Sportovci",
             "datetime": "2021-11-22 16:00",
             "attendees": [],
@@ -195,7 +195,7 @@ const storage = {
         {
             "name": "Olympiada",
             "place": "Tokyo",
-            "sport": "Hod ostepom",
+            "sport": "Javelin throw",
             "team": "Experti",
             "datetime": "2021-12-08 12:21",
             "attendees": [],
@@ -204,7 +204,7 @@ const storage = {
         {
             "name": "Turnaj v lolku",
             "place": "Unispace",
-            "sport": "Esport",
+            "sport": "E-sport",
             "team": "Experti",
             "datetime": "2021-12-06 14:40",
             "attendees": [],
