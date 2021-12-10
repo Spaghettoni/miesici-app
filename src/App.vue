@@ -20,4 +20,7 @@ export default {
 </script>
 
 <style>
+body {
+  font-family: "Segoe UI", "Roboto", "Tahoma", sans-serif;
+}
 </style>
