@@ -19,11 +19,11 @@ const EventsController = (() => {
     */
     function getUsersEvents() {
         const usersTeams = TeamsController.getUsersTeams();
-
         let events = [];
         for(let team of usersTeams){
             events.push(...team.events);
         }
+        events = events.filter((e) => this.isUpToDate(e));
         events.sort((x,y) => {
             if (x.datetime > y.datetime){
                 return 1
@@ -60,11 +60,16 @@ const EventsController = (() => {
         return EventUser.query().whereId([eventId, loggedUser.id]).exists();
     }
 
+    function isUpToDate(event){ 
+        return Date.parse(event.datetime) >= Date.now();
+    }
+
     return {
         getUsersEvents,
         joinEvent,
         leaveEvent,
-        didUserJoinEvent
+        didUserJoinEvent,
+        isUpToDate
     }
 })();
 
