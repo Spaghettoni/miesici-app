@@ -1,26 +1,15 @@
 <template>
   <div class="w-full flex justify-center">
-    <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <back-button></back-button>
-      <div>
-        <h1 class="mb-4 font-semibold text-6xl">
-          {{ this.team.name }}
-        </h1>
-      </div>
-      <div class="flex flex-shrink">
-        <div class="flex flex-col">
-          <div class="flex flex-wrap font-semibold text-lg">
-            <span class="font-bold"> members: &nbsp;</span>
-            <div class="mr-2"
-                 v-bind:key=username v-for="username in this.memberNames()">
-              {{ username }},
-
-            </div>
-          </div>
+    <div class="mt-10 px-4 flex flex-wrap flex-col w-full max-w-3xl sm:flex-row">
+      <div class="flex flex-col">
+        <back-button></back-button>
+        <div>
+          <h1 class="mb-4 font-semibold text-6xl">
+            {{ this.team.name }}
+          </h1>
         </div>
-      </div>
 
-      <div class="mt-5">
+        <div class="mt-5">
         <div class="text-lg italic">
           Add new member:
         </div>
@@ -48,6 +37,17 @@
             >
           </div>
         </form>
+      </div>
+      </div>
+
+      <div class="flex flex-shrink mt-10 sm:mt-0 sm:ml-10 sm:border-l-2 sm:pl-10">
+        <div class="flex flex-col font-semibold text-lg">
+          <span class="font-bold"> members: &nbsp;</span>
+          <div class="mr-2"
+              v-bind:key=username v-for="username in this.memberNames()">
+            {{ username }}
+          </div>
+        </div>
       </div>
 
       <datalist id="allUsernames">
