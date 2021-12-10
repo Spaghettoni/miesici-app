@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex justify-center">
+  <article class="w-full flex justify-center">
     <div class="px-4 flex flex-col w-full max-w-3xl">
       <div class="mt-6 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
         <h1 class="mb-4 mr-8 text-heading">
@@ -36,7 +36,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>

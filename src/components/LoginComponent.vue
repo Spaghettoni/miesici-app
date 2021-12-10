@@ -14,10 +14,10 @@
                required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
-        <span class="text-brightred font-semibold" :class="[this.errors.username ? 'block' : 'hidden']">
+        <p class="text-brightred font-semibold" :class="[this.errors.username ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
           Please fill in your username!
-        </span>
+        </p>
       </div>
       <div class="mt-6 form-inputs  flex flex-col">
         <label class="text-2xl" for="password">Password</label>
@@ -27,10 +27,10 @@
                required
                class="px-4 py-2 text-4xl border-2 border-black rounded"
         />
-        <span class="text-brightred font-semibold" :class="[this.errors.password ? 'block' : 'hidden']">
+        <p class="text-brightred font-semibold" :class="[this.errors.password ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
           Please fill in your password!
-        </span>
+        </p>
       </div>
       <input type="submit" v-on:click="checkForm"
               class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl

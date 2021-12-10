@@ -68,7 +68,7 @@
           </div>
         </div>
 
-    <div class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-10">
+    <nav class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-10">
       <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/')"
            class="mobile-button-40"
@@ -95,7 +95,7 @@
         <i class="far fa-calendar-alt mr-2"></i>
         <p>Events</p>
       </button>
-    </div>
+    </nav>
     </div>
 
   </div>
