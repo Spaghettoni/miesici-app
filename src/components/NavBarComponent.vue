@@ -61,15 +61,15 @@
                  class="button-40 ml-10 mx-1.5 userbutton"
                  v-bind:class="{active: activePage === '/profile'}"
             >
-              <i class="fas fa-user-alt" style="font-size:16px"></i>
-      <!--                Profile-->
+              <i class="fas fa-user-alt md:mr-2" style="font-size:16px"></i>
+              <span class="hidden md:inline-block">Profile</span>
             </div>
             <div  v-if="this.state.loggedUser !== null"
                   @click="this.logout()"
                   class="logout-button-40 mx-1.5 userbutton"
             >
-              <i class="fas fa-sign-out-alt" style="font-size:16px"></i>
-      <!--                Logout-->
+              <i class="fas fa-sign-out-alt md:mr-2" style="font-size:16px"></i>
+              <span class="hidden md:inline-block">Logout</span>
             </div>
           </div>
         </div>
@@ -187,7 +187,6 @@ export default {
   color: #FFFFFF;
   cursor: pointer;
   flex: 0 0 auto;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: 1.000rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -220,7 +219,6 @@ export default {
   color: #ffffff;
   cursor: pointer;
   flex: 0 0 auto;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: 1.000rem;
   font-weight: 600;
   line-height: 1.5rem;
