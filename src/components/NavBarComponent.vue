@@ -2,69 +2,69 @@
   <div id="header">
     <div class="flex flex-col">
       <div>
-          <div @click="updatePath('/')"
+          <button @click="updatePath('/')"
                class="logo mt-3.5 ml-5 cursor-pointer" v-if="activePage !== '/'">
             <img alt="" :src="'/pictures/icon2.png'" width="75">
 
-          </div>
-          <div
+          </button>
+          <figure
                class="logo mt-3.5 ml-5" v-else>
             <img alt="" :src="'/pictures/icon2.png'" width="75">
 
-          </div>
+          </figure>
 
           <nav id="nav"
                class="float-left flex ml-40 justify-end hidden sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
 
-            <div v-if="this.state.loggedUser !== null"
+            <button v-if="this.state.loggedUser !== null"
                  @click="updatePath('/teams')"
                  class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/teams'}"
             >
               <i class="fas fa-users mr-2"></i>
               Teams
-            </div>
-            <div v-if="this.state.loggedUser !== null"
+            </button>
+            <button v-if="this.state.loggedUser !== null"
                  @click="updatePath('/events')"
                  class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/events'}"
             >
               <i class="far fa-calendar-alt mr-2"></i>
               Events
-            </div>
+            </button>
 
           </nav>
 
           <div class="float-right flex flex-row justify-end mr-1 sm:mr-5 sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
-            <div v-if="this.state.loggedUser === null"
+            <button v-if="this.state.loggedUser === null"
                   @click="updatePath('/login')"
                   class="button-40 mx-1.5 userbutton"
                   v-bind:class="{active: activePage === '/login'}"
             >
                       Login
-            </div>
-                  <div  v-if="this.state.loggedUser === null"
+            </button>
+                  <button  v-if="this.state.loggedUser === null"
                         @click="updatePath('/register')"
                         class="sign-up-button-40 mx-1.5 userbutton"
                         v-bind:class="{active: activePage === '/register'}"
                   >
                     Register
-                  </div>
-            <div v-if="this.state.loggedUser !== null"
+                  </button>
+            <button v-if="this.state.loggedUser !== null"
                  @click="updatePath('/profile')"
                  class="button-40 ml-10 mx-1.5 userbutton"
                  v-bind:class="{active: activePage === '/profile'}"
             >
               <i class="fas fa-user-alt md:mr-2"></i>
               <span class="hidden md:inline-block">Profile</span>
-            </div>
-            <div  v-if="this.state.loggedUser !== null"
+            </button>
+            <button  v-if="this.state.loggedUser !== null"
                   @click="this.logout()"
                   class="logout-button-40 mx-1.5 userbutton"
             >
               <i class="fas fa-sign-out-alt md:mr-2"></i>
               <span class="hidden md:inline-block">Logout</span>
-            </div>
+            </button>
           </div>
         </div>
 
