@@ -104,7 +104,6 @@ export default {
         }
         router.replace("/NotFound");
       }
-
     },
     memberNames() {
       return this.team.members.map(a => a.username);
