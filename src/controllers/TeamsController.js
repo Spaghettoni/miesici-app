@@ -1,7 +1,7 @@
 import store from "../store";
-import LocalStorageController from "./LocalStorageController";
 import UsersController from "./UsersController";
-import { Team, TeamUser } from "../store/Models";
+import LoginController from "./LoginController";
+import { Team, TeamUser, Request } from "../store/Models";
 
 const TeamsController = (() => {
     function constructor() {
@@ -19,6 +19,10 @@ const TeamsController = (() => {
         .where((team) => TeamUser.query()
             .where((tu) => tu.team_id === team.id && tu.user_id === loggedUser.id).exists())
         .get();
+    }
+
+    function getAllTeams(){
+        return Team.query().withAllRecursive().get();
     }
 
     function createTeam(name) {
@@ -53,10 +57,31 @@ const TeamsController = (() => {
         });
     }
 
+    function createJoinRequest(teamId){
+        const loggedUser = LoginController.getLoggedUser();
+        if(!loggedUser){
+            return;
+        }
+        if(!teamId){
+            throw new Error('Please choose a team');
+        }
+        if(Request.query().whereId([teamId, loggedUser.id]).exists()){
+            throw new Error('Request already sent');
+        }
+        Request.insert({
+            data: {
+                team_id: teamId,
+                user_id: loggedUser.id
+            }
+        });
+    }
+
     return {
         getUsersTeams,
         createTeam,
         addMember,
+        getAllTeams,
+        createJoinRequest
     }
 })();
 

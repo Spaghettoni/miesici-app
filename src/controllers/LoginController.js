@@ -37,8 +37,9 @@ const LoginController = (() => {
     }
 
     function getLoggedUser() {
-        return JSON.parse(localStorage.getItem("loggedUser"));
+        return store.state.loggedUser;
     }
+
 
     return {
         login,
