@@ -1,7 +1,7 @@
 import store from "../store";
 import UsersController from "./UsersController";
 import LoginController from "./LoginController";
-import { Team, TeamUser, Request } from "../store/Models";
+import { Team, TeamUser, Request, User } from "../store/Models";
 
 const TeamsController = (() => {
     function constructor() {
@@ -14,7 +14,7 @@ const TeamsController = (() => {
     }
 
     function getUsersTeams() {
-        const loggedUser = store.state.loggedUser;
+        const loggedUser = LoginController.getLoggedUser();
         return Team.query().withAllRecursive()  //with('events.attendees').with('members') 
         .where((team) => TeamUser.query()
             .where((tu) => tu.team_id === team.id && tu.user_id === loggedUser.id).exists())
@@ -25,8 +25,25 @@ const TeamsController = (() => {
         return Team.query().withAllRecursive().get();
     }
 
+    function getTeamsToJoin(){
+        const loggedUser = LoginController.getLoggedUser();
+        return Team.query().withAllRecursive()   
+        .where((team) => !TeamUser.query()      //je tam vykricnik !
+            .where((tu) => tu.team_id === team.id && tu.user_id === loggedUser.id).exists())
+        .get();
+    }
+
+    function getJoinRequesters(teamId){
+        const joinRequests = Request.query().where((req) => req.team_id === teamId).get();
+        const userIds = [];
+        for(let request of joinRequests){
+            userIds.push(request.user_id);
+        }
+        return User.query().whereIdIn(userIds).get();
+    }
+
     function createTeam(name) {
-        const loggedUser = store.state.loggedUser;
+        const loggedUser = LoginController.getLoggedUser();
         Team.insert({
             data: {
               name: name,
@@ -76,12 +93,31 @@ const TeamsController = (() => {
         });
     }
 
+    function acceptJoinRequest(teamId, userId){
+        //nechce sa mi kontroly robit 
+        Request.delete([teamId, userId]);
+        TeamUser.insert({
+            data: {
+                team_id: teamId,
+                user_id: userId
+            }
+        });
+    }
+
+    function rejectJoinRequest(teamId, userId){
+        Request.delete([teamId, userId]);
+    }
+
     return {
         getUsersTeams,
         createTeam,
         addMember,
         getAllTeams,
-        createJoinRequest
+        createJoinRequest,
+        getTeamsToJoin,
+        getJoinRequesters,
+        acceptJoinRequest,
+        rejectJoinRequest
     }
 })();
 

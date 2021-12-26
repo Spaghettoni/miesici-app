@@ -19,14 +19,14 @@
     <input
         type="text"
         id="search"
+        autocomplete="off"
         v-model="this.input.searchTerm"
         placeholder="Team name"
         class="border rounded-xl py-1 px-2"
         @input="show"
-        @click="show"
     >
-    <ul
-        v-if="this.filteredTeams().length && showTeams"
+    <ul 
+        v-if="this.filteredTeams().length && this.showTeams === true"
         class="w-full rounded bg-white border border-gray-300 py-1 space-y-1 absolute z-10 top-20"
       >
         <li
@@ -59,7 +59,6 @@ export default {
 
   data() {
     return {
-      teams: [],
       errorMsg: '',
       requestSent: false,
       showTeams: false,
@@ -67,6 +66,12 @@ export default {
         selectedTeamId: null,
         searchTerm: ''
       }
+    }
+  },
+
+  computed: {
+    teams() {
+      return TeamsController.getTeamsToJoin();
     }
   },
 
@@ -110,11 +115,7 @@ export default {
       catch(e){
           this.errorMsg = e.message;
       }
-    }
-  },
-
-  mounted(){
-    this.teams = TeamsController.getAllTeams();
+    },
   }
 }
 </script>
