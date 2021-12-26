@@ -2,7 +2,7 @@ import {reactive} from "vue";
 import LocalStorageController from "../controllers/LocalStorageController";
 import Vuex from 'vuex';
 import VuexORM from '@vuex-orm/core';
-import {User, Team, TeamUser, Event, EventUser, initModels} from './Models';
+import {User, Team, TeamUser, Event, EventUser, initModels, Request} from './Models';
 import VuexPersistence from 'vuex-persist';
 
 LocalStorageController.constructor();
@@ -21,6 +21,7 @@ database.register(Team);
 database.register(TeamUser);
 database.register(Event);
 database.register(EventUser);
+database.register(Request);
 
 // Create Vuex Store and register database through Vuex ORM.
 const store = new Vuex.Store({

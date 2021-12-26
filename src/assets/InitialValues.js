@@ -211,6 +211,22 @@ const storage = {
         }
     ],
 
+    "requests": [
+        {
+            "team": "Kolegovci",
+            "requesters": ["Sebastian", "Nikita"]
+        },
+
+        {
+            "team": "Futbalisti",
+            "requesters": ["Janko"]
+        },
+
+        {
+            "team": "Barcelona",
+            "requesters": ["Janko", "Hrusky", "Dynamo", "Adnrej"]
+        },
+    ],
 }
 
 export default storage;

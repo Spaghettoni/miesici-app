@@ -89,7 +89,7 @@
 
       <input type="submit"
              class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
-                    bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+                    hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              @click="checkForm"
              value="Create event"
       />
