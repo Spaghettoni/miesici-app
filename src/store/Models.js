@@ -97,6 +97,7 @@ function initModels(){
     initUsers();
     initTeams();
     initEvents();
+    initRequests();
 }
 
 
@@ -139,6 +140,22 @@ function initEvents(){
               attendees: users
             }
         })
+    }
+}
+
+function initRequests(){
+    const requests = storage["requests"];
+    for(let request of requests){
+        let team = Team.query().where('name', request.team).first();
+        let users = usersFromUsernames(request.requesters);
+        for(let user of users){
+            Request.insert({
+                data: {
+                    team_id: team.id,
+                    user_id: user.id
+                }
+            });
+        }
     }
 }
 
