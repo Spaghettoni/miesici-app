@@ -2,7 +2,12 @@
   <article class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div>
-        <back-button></back-button>
+        <router-link
+            class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+            to="/events"
+        >
+          <i class="fas fa-solid fa-arrow-left mr-2"></i> Events
+        </router-link>
 
         <div class="text-info">
           <p>
@@ -28,7 +33,9 @@
           </p>
           <p class="text-info">
             <b class="text-label"> Team: </b>
-            {{ this.teamName() }}
+            <router-link class="underline hover:text-orange" :to="{name: 'TeamDetail', query: {teamId: this.event.team_id}}">
+              {{ this.teamName() }}
+            </router-link>
           </p>
 
           <div>

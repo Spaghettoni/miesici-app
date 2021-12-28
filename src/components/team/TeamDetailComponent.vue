@@ -2,7 +2,12 @@
   <section class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-wrap flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div class="flex flex-col">
-        <back-button></back-button>
+        <router-link
+            class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+            to="/teams"
+        >
+          <i class="fas fa-solid fa-arrow-left mr-2"></i> Teams
+        </router-link>
         <div>
           <h1 class="mb-4 font-semibold text-6xl">
             {{ this.team.name }}
