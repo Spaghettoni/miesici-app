@@ -2,7 +2,27 @@
   <article class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div>
-        <back-button></back-button>
+
+        <div class="flex flex-row">
+
+          <router-link
+              class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+              to="/events"
+              @click="updatePath('/events')"
+          >
+            <i class="fas fa-solid fa-arrow-left mr-2"></i> Events
+          </router-link>
+
+          <button type="button"
+                  class="ml-auto mr-2 mb-6 px-2 py-1 text-white text-1xl rounded-xl border-black bg-brightred
+                         sm:hidden"
+                  @click="deleteEvent"
+          >
+            <i class="fas fa-trash-alt"></i> DELETE EVENT
+          </button>
+
+
+        </div>
 
         <div class="text-info">
           <p>
@@ -28,7 +48,11 @@
           </p>
           <p class="text-info" v-if="this.isPrivate()">
             <b class="text-label"> Team: </b>
-            {{ this.teamName() }}
+            <router-link class="underline hover:text-orange"
+                         :to="{name: 'TeamDetail', query: {teamId: this.event.team_id}}"
+                         @click="updateTeamPath('/teams')">
+              {{ this.teamName() }}
+            </router-link>
           </p>
 
           <div>
@@ -53,13 +77,24 @@
         <!--        </div>-->
       </div>
 
-      <ul class="flex flex-wrap flex-col text-info sm:ml-10 sm:border-l-2 sm:pl-10">
-        <b class="text-label">Joined:&nbsp;</b>
-        <li class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
-          {{ username }}
-        </li>
-        &nbsp;
-      </ul>
+      <div class="sm:ml-10 sm:border-l-2  sm:pl-10">
+        <button type="button"
+                class="mb-10 mx-auto px-2 py-4 text-white text-1xl rounded-xl border-black bg-brightred
+                          hover:shadow-xl hover:text-xl hover-zoom hidden sm:block"
+                @click="deleteEvent"
+        >
+          <i class="fas fa-trash-alt"></i> DELETE EVENT
+        </button>
+
+        <ul class="flex flex-wrap flex-col text-info">
+          <b class="text-label">Joined:&nbsp;</b>
+          <li class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
+            {{ username }}
+          </li>
+          &nbsp;
+        </ul>
+      </div>
+
     </div>
   </article>
 </template>
@@ -69,6 +104,7 @@ import router from "../../router";
 import EventsController from "@/controllers/EventsController";
 import {Event, Team} from "../../store/Models";
 import DateController from "@/controllers/DateController";
+import store from "../../store";
 
 export default {
   name: "EventDetailComponent",
@@ -89,6 +125,16 @@ export default {
       router.back();
     },
 
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
+    },
+
+    async updateTeamPath(target) {
+      //await router.push(target);
+      store.commit('setCurrentPath',target);
+    },
+
     join() {
       EventsController.joinEvent(this.eventId);
       this.loadEvent();
@@ -97,6 +143,11 @@ export default {
     leave() {
       EventsController.leaveEvent(this.eventId);
       this.loadEvent();
+    },
+
+    deleteEvent() {
+      EventsController.deleteEvent(this.eventId)
+      router.back()
     },
 
     loadEvent() {

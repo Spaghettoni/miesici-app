@@ -70,8 +70,17 @@ const EventsController = (() => {
         return EventUser.query().whereId([eventId, loggedUser.id]).exists();
     }
 
-    function isUpToDate(event){ 
-        return Date.parse(event.datetime) >= Date.now();
+    function isUpToDate(event){
+
+        if(Date.parse(event.datetime).compareTo(Date.today()) >= 0){
+            return true;
+        }
+        return false;
+
+    }
+
+    function deleteEvent(eventId) {
+        Event.delete(eventId);
     }
 
     return {
@@ -80,7 +89,8 @@ const EventsController = (() => {
         leaveEvent,
         didUserJoinEvent,
         isUpToDate,
-        getPublicEvents
+        getPublicEvents,
+        deleteEvent
     }
 })();
 

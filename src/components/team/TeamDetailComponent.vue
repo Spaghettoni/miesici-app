@@ -2,7 +2,26 @@
   <section class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-wrap flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div class="flex flex-col">
-        <back-button></back-button>
+
+
+        <div class="flex flex-row">
+          <router-link
+              class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+              to="/teams"
+              @click="updatePath('/teams')"
+          >
+            <i class="fas fa-solid fa-arrow-left mr-2"></i> Teams
+          </router-link>
+
+          <button type="button"
+                  class="mb-6 ml-auto mr-2 px-5 py-4 text-white text-1xl rounded-xl border-black bg-brightred
+                          hover:shadow-xl hover:text-xl hover-zoom sm:hidden"
+                  @click="deleteTeam"
+          >
+            <i class="fas fa-trash-alt"></i> DELETE TEAM
+          </button>
+        </div>
+
         <div>
           <h1 class="mb-4 font-semibold text-6xl">
             {{ this.team.name }}
@@ -10,42 +29,51 @@
         </div>
 
         <div class="mt-5">
-        <i class="text-lg italic">
-          Add new member:
-        </i>
-        <form class="flex flex-col sm:flex-row">
-          <div>
-            <input type="text" id="newMember" name="member"
-                   v-model="input.member"
-                   placeholder="Tomero"
-                   class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
-                   required
-                   list="allUsernames"
-                   autocomplete="on"
-            />
-            <strong class="text-brightred font-semibold" :class="[this.errors.member ? 'block' : 'hidden']">
-              <i class="fas fa-exclamation-triangle"></i>
-              Please fill in user name!
-            </strong>
-            <datalist id="allUsernames">
-              <option v-for="username in this.allUsernames"
-                      :key="username" :value="username">
-              </option>
-            </datalist>
-          </div>
-          <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
-            <input type="submit" class="w-full px-6 py-2.5 border-black bg-orange
+          <i class="text-lg italic">
+            Add new member:
+          </i>
+          <form class="flex flex-col sm:flex-row">
+            <div>
+              <input type="text" id="newMember" name="member"
+                     v-model="input.member"
+                     placeholder="Tomero"
+                     class="px-4 py-2 text-xl border-2 border-black max-w-sm rounded"
+                     required
+                     list="allUsernames"
+                     autocomplete="on"
+              />
+              <strong class="text-brightred font-semibold" :class="[this.errors.member ? 'block' : 'hidden']">
+                <i class="fas fa-exclamation-triangle"></i>
+                Please fill in user name!
+              </strong>
+              <datalist id="allUsernames">
+                <option v-for="username in this.allUsernames"
+                        :key="username" :value="username">
+                </option>
+              </datalist>
+            </div>
+            <div class="sm:ml-4 mt-4 sm:mt-0 text-center max-w-min">
+              <input type="submit" class="w-full px-6 py-2.5 border-black bg-orange
                            rounded-xl font-semibold text-lg hover:shadow-xl
                             hover-zoom"
-                   @click="checkForm"
-                   value="Add"
-            >
-          </div>
-        </form>
-      </div>
+                     @click="checkForm"
+                     value="Add"
+              >
+            </div>
+          </form>
+        </div>
       </div>
 
       <div class="flex flex-col flex-shrink mt-10 sm:mt-0 sm:ml-10 sm:border-l-2 sm:pl-10">
+
+        <button type="button"
+                class="mb-6 ml-auto mr-2 px-5 py-4 text-white text-1xl rounded-xl border-black bg-brightred
+                          hover:shadow-xl hover:text-xl hover-zoom hidden sm:block"
+                @click="deleteTeam"
+        >
+          <i class="fas fa-trash-alt"></i> DELETE TEAM
+        </button>
+
         <ul id="members" class="flex flex-col font-semibold text-lg">
           <b class="font-bold"> Members: &nbsp;</b>
           <li class="mr-2"
@@ -58,28 +86,28 @@
 
         <ul id="requesters" class="flex flex-col font-semibold text-lg">
           <b class="font-bold"> Join requests: &nbsp;</b>
-          <li class="flex justify-between my-1" 
-              :key=user.id 
+          <li class="flex justify-between my-1"
+              :key=user.id
               v-for="user in this.requesters">
             <span class="">{{ user.username }}</span>
 
             <div class="ml-2">
               <button class="border-black bg-brightgreen w-7
-                            rounded font-semibold text-lg hover:shadow-xl hover-zoom"
+                            rounded font-semibold text-lg hover:shadow-xl hover-zoom text-white"
                       @click="accept(user.id)">
-                  <i class="fas fa-check"></i>
+                <i class="fas fa-check"></i>
               </button>
               <button class="border-black bg-brightred w-7 ml-5
-                            rounded font-semibold text-lg hover:shadow-xl hover-zoom"
+                            rounded font-semibold text-lg hover:shadow-xl hover-zoom text-white"
                       @click="reject(user.id)">
-                  <i class="fa fa-times" aria-hidden="true"></i>
+                <i class="fa fa-times" aria-hidden="true"></i>
               </button>
             </div>
           </li>
         </ul>
       </div>
 
-      
+
     </div>
   </section>
 </template>
@@ -89,6 +117,7 @@ import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
 import UsersController from '../../controllers/UsersController';
+import store from "../../store";
 
 export default {
   name: "TeamDetailComponent",
@@ -108,7 +137,7 @@ export default {
   },
 
   computed: {
-    requesters(){
+    requesters() {
       return TeamsController.getJoinRequesters(this.teamId);
     },
 
@@ -149,14 +178,23 @@ export default {
       }
     },
 
-    accept(userId){
-        TeamsController.acceptJoinRequest(this.teamId, userId);
-        this.loadTeam();
+    accept(userId) {
+      TeamsController.acceptJoinRequest(this.teamId, userId);
+      this.loadTeam();
     },
 
-    reject(userId){
-        TeamsController.rejectJoinRequest(this.teamId, userId);
+    reject(userId) {
+      TeamsController.rejectJoinRequest(this.teamId, userId);
     },
+    deleteTeam() {
+      TeamsController.deleteTeam(this.teamId);
+      router.back()
+    },
+
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath', target);
+    }
   },
 
   created() {
@@ -164,7 +202,7 @@ export default {
     this.loadTeam();
 
     this.allUsernames = UsersController.allUsernames();
-  }
+  },
 }
 </script>
 
