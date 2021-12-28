@@ -4,6 +4,7 @@ import LoginController from "@/controllers/LoginController";
 import TeamsController from "./TeamsController";
 import { EventUser } from "../store/Models";
 
+
 const EventsController = (() => {
     function constructor() {
 
@@ -60,8 +61,13 @@ const EventsController = (() => {
         return EventUser.query().whereId([eventId, loggedUser.id]).exists();
     }
 
-    function isUpToDate(event){ 
-        return Date.parse(event.datetime) >= Date.now();
+    function isUpToDate(event){
+
+        if(Date.parse(event.datetime).compareTo(Date.today()) >= 0){
+            return true;
+        }
+        return false;
+
     }
 
     return {
