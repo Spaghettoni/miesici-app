@@ -1,6 +1,7 @@
 <template>
-  <article class="p-0.5 flex">
-
+  <div class="flex flex-col">
+    <router-link :to="{name: 'EventDetail', query: {eventId: this.eventId}}">
+  <div class="p-0.5 flex">
       <div class="flex flex-col ml-5 relative">
         <time class="text-info italic">
           <i class="far fa-clock"></i>
@@ -30,16 +31,57 @@
         </p>
       </div>
 
-      <div class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl flex flex-col">
+      <div class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl flex flex-col z-10">
         <div v-if="this.userJoined">
           <i class="far fa-check-square"></i>
           <span class="hidden sm:inline ml-3">JOINED </span>
         </div>
         <i v-if="this.isPrivate()" class="fas fa-user-lock ml-auto"></i>
-      </div>
-      
 
-  </article>
+      </div>
+
+  </div>
+    </router-link>
+
+    <div class="flex w-full mt-2">
+      <button type="button"
+              class="w-full py-1 text-white text-2xl rounded-b-xl border-black bg-brightred
+                              hover:shadow-xl hover:text-xl z-10"
+              v-if="this.userJoined"
+              @click="leave"
+      >
+        LEAVE
+      </button>
+      <button type="button"
+              class="w-full py-1 text-white text-2xl rounded-b-xl border-black bg-brightgreen
+                              hover:shadow-xl hover:text-xl z-10"
+              v-else
+              @click="join"
+      >
+        JOIN
+      </button>
+    </div>
+
+<!--    <div class="sm:block hidden absolute bottom-0 right-2">-->
+<!--      <button type="button"-->
+<!--              class="my-4 px-10 py-2 text-white text-2xl rounded-xl border-black bg-brightred-->
+<!--                              hover:shadow-xl hover:text-xl hover-zoom z-10"-->
+<!--              v-if="this.userJoined"-->
+<!--              @click="leave"-->
+<!--      >-->
+<!--        LEAVE-->
+<!--      </button>-->
+<!--      <button type="button"-->
+<!--              class="my-4 px-10 py-2 text-white text-2xl rounded-xl border-black bg-brightgreen-->
+<!--                              hover:shadow-xl hover:text-xl hover-zoom z-10"-->
+<!--              v-else-->
+<!--              @click="join"-->
+<!--      >-->
+<!--        JOIN-->
+<!--      </button>-->
+<!--    </div>-->
+
+  </div>
 </template>
 
 <script>
@@ -74,6 +116,16 @@ export default {
 
     isPrivate(){
       return this.teamId !== null;
+    },
+
+    join() {
+      EventsController.joinEvent(this.eventId);
+      this.loadEvent();
+    },
+
+    leave() {
+      EventsController.leaveEvent(this.eventId);
+      this.loadEvent();
     }
   },
 

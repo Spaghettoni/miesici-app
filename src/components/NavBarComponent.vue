@@ -68,7 +68,7 @@
           </div>
         </div>
 
-    <nav class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-10">
+    <nav class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-20">
       <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/')"
            class="mobile-button-40"

@@ -23,13 +23,10 @@
         </router-link>
       </div>
       <div class="flex flex-col">
-        <router-link class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light
+        <article class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light
                             transition duration-100 transform hover:scale-105"
                      v-bind:key=event v-for="event in this.events"
-                     :to="{name: 'EventDetail',
-                     query: {
-                       eventId: event.id,
-                     }}">
+                     >
           <event-component
               :teamId=event.team_id
               :eventId=event.id
@@ -40,7 +37,7 @@
               :datetime=event.datetime
               :sport=event.sport
           ></event-component>
-        </router-link>
+        </article>
       </div>
     </div>
   </article>
