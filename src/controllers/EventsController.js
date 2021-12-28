@@ -3,6 +3,7 @@ import LocalStorageController from "./LocalStorageController";
 import LoginController from "@/controllers/LoginController";
 import TeamsController from "./TeamsController";
 import { EventUser } from "../store/Models";
+import { Event } from "../store/Models";
 
 
 const EventsController = (() => {
@@ -70,12 +71,17 @@ const EventsController = (() => {
 
     }
 
+    function deleteEvent(eventId) {
+        Event.delete(eventId);
+    }
+
     return {
         getUsersEvents,
         joinEvent,
         leaveEvent,
         didUserJoinEvent,
-        isUpToDate
+        isUpToDate,
+        deleteEvent
     }
 })();
 
