@@ -5,6 +5,7 @@
         <router-link
             class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
             to="/teams"
+            @click="updatePath('/teams')"
         >
           <i class="fas fa-solid fa-arrow-left mr-2"></i> Teams
         </router-link>
@@ -94,6 +95,7 @@ import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
 import UsersController from '../../controllers/UsersController';
+import store from "../../store";
 
 export default {
   name: "TeamDetailComponent",
@@ -162,6 +164,11 @@ export default {
     reject(userId){
         TeamsController.rejectJoinRequest(this.teamId, userId);
     },
+
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
+    }
   },
 
   created() {
@@ -169,7 +176,7 @@ export default {
     this.loadTeam();
 
     this.allUsernames = UsersController.allUsernames();
-  }
+  },
 }
 </script>
 
