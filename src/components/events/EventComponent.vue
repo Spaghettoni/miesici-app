@@ -29,7 +29,7 @@
         </p>
       </div>
 
-      <div class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl flex flex-col justify-start z-10">
+      <div class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl flex flex-col z-10">
         <div v-if="this.userJoined">
           <i class="far fa-check-square"></i>
           <span class="hidden sm:inline ml-3">JOINED </span>
