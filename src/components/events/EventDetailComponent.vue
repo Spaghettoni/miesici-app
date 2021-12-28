@@ -2,7 +2,21 @@
   <article class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div>
-        <back-button></back-button>
+
+        <div class="flex flex-row">
+
+          <back-button></back-button>
+
+          <button type="button"
+                  class="ml-auto mr-2 mb-6 px-2 py-1 text-white text-1xl rounded-xl border-black bg-brightred
+                         sm:hidden"
+                  @click="deleteEvent"
+          >
+            <i class="fas fa-trash-alt"></i> DELETE EVENT
+          </button>
+
+
+        </div>
 
         <div class="text-info">
           <p>
@@ -53,13 +67,24 @@
         <!--        </div>-->
       </div>
 
-      <ul class="flex flex-wrap flex-col text-info sm:ml-10 sm:border-l-2 sm:pl-10">
-        <b class="text-label">Joined:&nbsp;</b>
-        <li class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
-          {{ username }}
-        </li>
-        &nbsp;
-      </ul>
+      <div class="sm:ml-10 sm:border-l-2  sm:pl-10">
+        <button type="button"
+                class="mb-10 mx-auto px-2 py-4 text-white text-1xl rounded-xl border-black bg-brightred
+                          hover:shadow-xl hover:text-xl hover-zoom hidden sm:block"
+                @click="deleteEvent"
+        >
+          <i class="fas fa-trash-alt"></i> DELETE EVENT
+        </button>
+
+        <ul class="flex flex-wrap flex-col text-info">
+          <b class="text-label">Joined:&nbsp;</b>
+          <li class="mr-2" v-bind:key=username v-for="username in this.attendeeNames()">
+            {{ username }}
+          </li>
+          &nbsp;
+        </ul>
+      </div>
+
     </div>
   </article>
 </template>
@@ -97,6 +122,11 @@ export default {
     leave() {
       EventsController.leaveEvent(this.eventId);
       this.loadEvent();
+    },
+
+    deleteEvent() {
+      EventsController.deleteEvent(this.eventId)
+      router.back()
     },
 
     loadEvent() {

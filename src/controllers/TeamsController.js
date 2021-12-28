@@ -1,7 +1,7 @@
 import store from "../store";
 import UsersController from "./UsersController";
 import LoginController from "./LoginController";
-import { Team, TeamUser, Request, User } from "../store/Models";
+import {Team, TeamUser, Request, User, Event} from "../store/Models";
 
 const TeamsController = (() => {
     function constructor() {
@@ -108,6 +108,10 @@ const TeamsController = (() => {
         Request.delete([teamId, userId]);
     }
 
+    function deleteTeam(teamId){
+        Team.delete(teamId);
+    }
+
     return {
         getUsersTeams,
         createTeam,
@@ -117,7 +121,8 @@ const TeamsController = (() => {
         getTeamsToJoin,
         getJoinRequesters,
         acceptJoinRequest,
-        rejectJoinRequest
+        rejectJoinRequest,
+        deleteTeam
     }
 })();
 
