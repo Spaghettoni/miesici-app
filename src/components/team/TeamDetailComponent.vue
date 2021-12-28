@@ -189,19 +189,11 @@ export default {
     deleteTeam() {
       TeamsController.deleteTeam(this.teamId);
       router.back()
-<<<<<<< HEAD
     },
-    async updatePath(target) {
-      await router.push(target);
-      store.commit('setCurrentPath',target);
-=======
-      },
 
     async updatePath(target) {
       await router.push(target);
-      store.commit('setCurrentPath',target);
-
->>>>>>> 3aaea787f9201f575f8433914cf25411c102da3b
+      store.commit('setCurrentPath', target);
     }
   },
 
