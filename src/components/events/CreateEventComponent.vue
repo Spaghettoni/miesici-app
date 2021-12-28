@@ -1,7 +1,13 @@
 <template>
   <form class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <back-button></back-button>
+      <router-link
+          class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+          to="/events"
+          @click="updatePath('/events')"
+      >
+        <i class="fas fa-solid fa-arrow-left mr-2"></i> Events
+      </router-link>
 
       <div class="flex justify-between items-center">
         <h1 class="mb-4 text-heading">
@@ -135,6 +141,10 @@ export default {
     //   console.log("back button called")
     //   router.back()
     // },
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
+    },
 
     createEvent() {
       if (!this.input.selectedTeamId) {

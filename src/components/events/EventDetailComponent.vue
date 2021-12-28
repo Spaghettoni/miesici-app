@@ -5,7 +5,13 @@
 
         <div class="flex flex-row">
 
-          <back-button></back-button>
+          <router-link
+              class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+              to="/events"
+              @click="updatePath('/events')"
+          >
+            <i class="fas fa-solid fa-arrow-left mr-2"></i> Events
+          </router-link>
 
           <button type="button"
                   class="ml-auto mr-2 mb-6 px-2 py-1 text-white text-1xl rounded-xl border-black bg-brightred
@@ -42,7 +48,11 @@
           </p>
           <p class="text-info">
             <b class="text-label"> Team: </b>
-            {{ this.teamName() }}
+            <router-link class="underline hover:text-orange"
+                         :to="{name: 'TeamDetail', query: {teamId: this.event.team_id}}"
+                         @click="updateTeamPath('/teams')">
+              {{ this.teamName() }}
+            </router-link>
           </p>
 
           <div>
@@ -94,6 +104,7 @@ import router from "../../router";
 import EventsController from "@/controllers/EventsController";
 import {Event, Team} from "../../store/Models";
 import DateController from "@/controllers/DateController";
+import store from "../../store";
 
 export default {
   name: "EventDetailComponent",
@@ -112,6 +123,16 @@ export default {
   methods: {
     goBack() {
       router.back();
+    },
+
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
+    },
+
+    async updateTeamPath(target) {
+      //await router.push(target);
+      store.commit('setCurrentPath',target);
     },
 
     join() {
