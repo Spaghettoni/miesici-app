@@ -3,6 +3,7 @@
     <div class="mt-10 px-4 flex flex-wrap flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div class="flex flex-col">
 
+
         <div class="flex flex-row">
           <back-button></back-button>
 
@@ -14,6 +15,15 @@
             <i class="fas fa-trash-alt"></i> DELETE TEAM
           </button>
         </div>
+
+
+        <router-link
+            class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+            to="/teams"
+            @click="updatePath('/teams')"
+        >
+          <i class="fas fa-solid fa-arrow-left mr-2"></i> Teams
+        </router-link>
 
         <div>
           <h1 class="mb-4 font-semibold text-6xl">
@@ -86,12 +96,12 @@
 
             <div class="ml-2">
               <button class="border-black bg-brightgreen w-7
-                            rounded font-semibold text-lg hover:shadow-xl hover-zoom"
+                            rounded font-semibold text-lg hover:shadow-xl hover-zoom text-white"
                       @click="accept(user.id)">
                 <i class="fas fa-check"></i>
               </button>
               <button class="border-black bg-brightred w-7 ml-5
-                            rounded font-semibold text-lg hover:shadow-xl hover-zoom"
+                            rounded font-semibold text-lg hover:shadow-xl hover-zoom text-white"
                       @click="reject(user.id)">
                 <i class="fa fa-times" aria-hidden="true"></i>
               </button>
@@ -110,6 +120,7 @@ import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
 import {Team} from "../../store/Models";
 import UsersController from '../../controllers/UsersController';
+import store from "../../store";
 
 export default {
   name: "TeamDetailComponent",
@@ -181,6 +192,12 @@ export default {
     deleteTeam() {
       TeamsController.deleteTeam(this.teamId);
       router.back()
+      },
+
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
+
     }
   },
 
@@ -189,7 +206,7 @@ export default {
     this.loadTeam();
 
     this.allUsernames = UsersController.allUsernames();
-  }
+  },
 }
 </script>
 
