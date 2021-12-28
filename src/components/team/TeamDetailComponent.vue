@@ -70,12 +70,12 @@
 
             <div class="ml-2">
               <button class="border-black bg-brightgreen w-7
-                            rounded font-semibold text-lg hover:shadow-xl hover-zoom"
+                            rounded font-semibold text-lg hover:shadow-xl hover-zoom text-white"
                       @click="accept(user.id)">
                   <i class="fas fa-check"></i>
               </button>
               <button class="border-black bg-brightred w-7 ml-5
-                            rounded font-semibold text-lg hover:shadow-xl hover-zoom"
+                            rounded font-semibold text-lg hover:shadow-xl hover-zoom text-white"
                       @click="reject(user.id)">
                   <i class="fa fa-times" aria-hidden="true"></i>
               </button>
