@@ -46,7 +46,7 @@
             <b class="text-label"> Sport: </b>
             {{ this.event.sport }}
           </p>
-          <p class="text-info">
+          <p class="text-info" v-if="this.isPrivate()">
             <b class="text-label"> Team: </b>
             <router-link class="underline hover:text-orange"
                          :to="{name: 'TeamDetail', query: {teamId: this.event.team_id}}"
@@ -176,17 +176,18 @@ export default {
     },
 
     getDateTimeString() {
-
       return DateController.getDateTimeString(this.event.datetime);
-
     },
 
-
+    isPrivate(){
+      return this.event.team_id !== null;
+    }
   },
 
   created() {
     this.eventId = this.$route.query.eventId;
     this.loadEvent();
+    console.log(this.event.team_id)
   }
 }
 </script>

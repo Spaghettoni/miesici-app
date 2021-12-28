@@ -20,7 +20,7 @@
           <b class="text-label"> Sport: </b>
           {{ this.sport }}
         </p>
-        <p class="text-info">
+        <p class="text-info" v-if="this.isPrivate()">
           <b class="text-label"> Team: </b>
           {{ this.team }}
         </p>
@@ -30,13 +30,14 @@
         </p>
       </div>
 
-      <p class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl"
-         v-if="this.userJoined"
-      >
-        <i class="far fa-check-square"></i>
-        <span class="hidden sm:inline ml-3">JOINED </span>
-      </p>
-
+      <div class=" ml-auto mt-2 mr-2 text-xl sm:text-2xl flex flex-col">
+        <div v-if="this.userJoined">
+          <i class="far fa-check-square"></i>
+          <span class="hidden sm:inline ml-3">JOINED </span>
+        </div>
+        <i v-if="this.isPrivate()" class="fas fa-user-lock ml-auto"></i>
+      </div>
+      
 
   </article>
 </template>
@@ -49,6 +50,7 @@ import DateController from "@/controllers/DateController";
 export default {
   name: "EventComponent",
   props: {
+    teamId: String,
     eventId: String,
     name: String,
     team: String,
@@ -67,12 +69,17 @@ export default {
 
   methods: {
     getDateTimeString() {
-
       return DateController.getDateTimeString(this.datetime);
-
     },
 
+    isPrivate(){
+      return this.teamId !== null;
+    }
+  },
 
+  created(){
+    console.log("creted team id " + this.teamId)
+    console.log("is private "+ this.isPrivate())
   }
 }
 </script>

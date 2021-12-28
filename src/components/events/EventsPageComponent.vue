@@ -5,6 +5,12 @@
         <h1 class="mb-4 mr-8 text-heading">
           Events
         </h1>
+        <div class="text-2xl" v-if="this.isUserLoggedIn">
+          <label class="mx-2" for="showPublic">Public</label>
+          <input id="showPublic" type="checkbox" v-model="this.input.showPublic" />
+          <label class="mx-2" for="showPrivate">Private</label>
+          <input id="showPrivate" type="checkbox" v-model="this.input.showPrivate" checked/>
+        </div>
         <router-link
             to="/create-event"
             class="px-4 py-2 flex items-center border-black bg-orange
@@ -25,6 +31,7 @@
                        eventId: event.id,
                      }}">
           <event-component
+              :teamId=event.team_id
               :eventId=event.id
               :name=event.name
               :team=teamName(event)
@@ -43,29 +50,55 @@
 import router from "../../router";
 import EventsController from "../../controllers/EventsController";
 import { Team } from "../../store/Models";
+import LoginController from '../../controllers/LoginController';
 
 export default {
   name: "EventsComponent",
   data() {
     return {
-      events: null,
+      input: {
+        showPrivate: true,
+        showPublic: false
+      },
     }
   },
+
+  computed: {
+    events(){
+      let events = [];
+      if(this.input.showPrivate){
+        events.push(...EventsController.getUsersEvents());
+      }
+      if(this.input.showPublic){
+        events.push(...EventsController.getPublicEvents());
+      }
+      return events;
+    }
+  },
+
   methods: {
     goBack() {
       router.back()
     },
 
     teamName(event){
-      return Team.query().whereId(event.team_id).first().name;
+      const team = Team.query().whereId(event.team_id).first();
+      if(! team){
+        return '';
+      }
+      return team.name;
     },
 
     attendeeNames(event){
        return event.attendees.map(a => a.username);
-    }
+    },
+
+    isUserLoggedIn(){
+      return LoginController.getLoggedUser() !== null;
+    },
   },
   mounted() {
-    this.events = EventsController.getUsersEvents();
+    //this.events = EventsController.getUsersEvents();
   }
 }
 </script>
