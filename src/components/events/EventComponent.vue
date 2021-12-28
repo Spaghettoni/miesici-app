@@ -5,7 +5,9 @@
       <div class="flex flex-col ml-5 relative">
         <time class="text-info italic">
           <i class="far fa-clock"></i>
-          {{getDateTimeString()}}
+          {{
+            getDateTimeString()
+          }}
         </time>
         <p class="text-info italic">
           <i class="fas fa-map-marker-alt"></i>
