@@ -3,6 +3,7 @@
     <div class="mt-10 px-4 flex flex-wrap flex-col w-full max-w-3xl sm:flex-row justify-center">
       <div class="flex flex-col">
 
+
         <div class="flex flex-row">
           <router-link
               class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
@@ -188,10 +189,19 @@ export default {
     deleteTeam() {
       TeamsController.deleteTeam(this.teamId);
       router.back()
+<<<<<<< HEAD
     },
     async updatePath(target) {
       await router.push(target);
       store.commit('setCurrentPath',target);
+=======
+      },
+
+    async updatePath(target) {
+      await router.push(target);
+      store.commit('setCurrentPath',target);
+
+>>>>>>> 3aaea787f9201f575f8433914cf25411c102da3b
     }
   },
 
