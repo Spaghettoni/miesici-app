@@ -2,7 +2,7 @@ import store from "../store";
 import LocalStorageController from "./LocalStorageController";
 import LoginController from "@/controllers/LoginController";
 import TeamsController from "./TeamsController";
-import { EventUser } from "../store/Models";
+import { EventUser, Event } from "../store/Models";
 
 const EventsController = (() => {
     function constructor() {
@@ -24,6 +24,17 @@ const EventsController = (() => {
             events.push(...team.events);
         }
         events = events.filter((e) => this.isUpToDate(e));
+        sortEventsByDatetime(events);
+        return events;
+    }
+
+    function getPublicEvents(){
+        let events = Event.query().where((event) => event.team_id === null).get();
+        sortEventsByDatetime(events);
+        return events;
+    }
+
+    function sortEventsByDatetime(events){
         events.sort((x,y) => {
             if (x.datetime > y.datetime){
                 return 1
@@ -33,7 +44,6 @@ const EventsController = (() => {
             }
             return -1;
         });
-        return events;
     }
 
     function joinEvent(eventId) {
@@ -69,7 +79,8 @@ const EventsController = (() => {
         joinEvent,
         leaveEvent,
         didUserJoinEvent,
-        isUpToDate
+        isUpToDate,
+        getPublicEvents
     }
 })();
 
