@@ -24,7 +24,16 @@
               <i class="fas fa-users mr-2"></i>
               Teams
             </button>
-            <button v-if="this.state.loggedUser !== null"
+
+            <button v-if="this.state.loggedUser === null"
+                    disabled
+                    class="button-disabled mx-1.5 hidden sm:block"
+            >
+              <i class="fas fa-users mr-2"></i>
+              Teams
+            </button>
+
+            <button
                  @click="updatePath('/events')"
                  class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/events'}"
@@ -69,7 +78,7 @@
         </div>
 
     <nav class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-20">
-      <button v-if="this.state.loggedUser !== null"
+      <button
            @click="updatePath('/')"
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/'}"
@@ -86,8 +95,17 @@
         <i class="fas fa-users mr-2"></i>
         <p>Teams</p>
       </button>
+
+      <button v-if="this.state.loggedUser === null"
+              disabled
+              class="mobile-disabled"
+              v-bind:class="{mobileactive: this.state.currentPath === '/teams'}"
+      >
+        <i class="fas fa-users mr-2"></i>
+        <p>Teams</p>
+      </button>
       
-      <button v-if="this.state.loggedUser !== null"
+      <button
            @click="updatePath('/events')"
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/events'}"
@@ -319,6 +337,52 @@ export default {
 
 .mobileactive {
   color: orange;
+}
+
+.button-disabled {
+  background-color: #25252c;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  color: #5b5b5b;
+  cursor: not-allowed;
+  flex: 0 0 auto;
+  font-size: 1.000rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .40rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+}
+
+.mobile-disabled {
+  background-color: #4f4f4f;
+  box-sizing: border-box;
+  color: #b9b9b9;
+  cursor: not-allowed;
+  flex: 0 0 auto;
+  font-size: 1.000rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: .45rem 1.2rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 33.333333%;
 }
 
 .bottom-navbar {

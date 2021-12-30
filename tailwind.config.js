@@ -10,7 +10,9 @@ module.exports = {
       brightred: "#d21b1b",
       gray: {
         light: '#D1D1D1',
-        darker: '#797979'
+        bitdarker: '#a6a6a6',
+        darker: '#797979',
+        dark: '#4f4f4f'
       },
       green: "#10B981",
       darkgreen: "#0e521c",
