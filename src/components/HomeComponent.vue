@@ -3,8 +3,8 @@
 
     <article class="border-black" v-if="this.state.loggedUser === null">
       <div class="flex flex-col-reverse xlg:flex-row-reverse">
-        <figure class="w-full mt-5 xlg:w-1/2 xlg:mt-0">
-          <img alt="Young people having fun playing football." v-bind:src="'/pictures/im1.png'">
+        <figure class="w-full mt-5 xlg:w-1/2 xlg:mt-0 text-center flex">
+          <img class="m-auto" alt="Young people having fun playing football." v-bind:src="'/pictures/im1.png'">
         </figure>
         <div class="px-5 sm:px-10 my-auto mx-auto">
           <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
@@ -18,7 +18,7 @@
               Do you want to easily manage matches with friends?<br>
             <b>To access teams and create events you have to log in.</b></p>
 
-          <div class="flex-col sm:flex-row">
+          <div class="flex-col sm:flex-row text-center">
             <router-link
                 to="/login">
               <button
@@ -46,8 +46,8 @@
 
     <article class="border-black" v-if="this.state.loggedUser !== null">
       <div class="flex flex-col-reverse lg:flex-row-reverse">
-        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0">
-          <img alt="" v-bind:src="'/pictures/review.png'">
+        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0 text-center flex">
+          <img class="m-auto" alt="" v-bind:src="'/pictures/review.png'">
         </figure>
         <div class="px-5 sm:px-10 my-auto mx-auto">
           <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
