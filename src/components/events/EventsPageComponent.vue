@@ -7,15 +7,16 @@
         </h1>
         <div v-if="this.isUserLoggedIn()">
           <input id="showPublic" type="checkbox" v-model="this.input.showPublic" />
-          <label class="mx-2 text-label" for="showPublic">Public</label>
-          <input class="ml-2" id="showPrivate" type="checkbox" v-model="this.input.showPrivate" checked/>
+          <label class="mx-2 text-label" for="showPublic">Public</label><br>
+          <input id="showPrivate" type="checkbox" v-model="this.input.showPrivate" checked/>
           <label class="mx-2 text-label" for="showPrivate">Private</label>
         </div>
         <div v-if="!this.isUserLoggedIn()">
           <input id="showPublic2" type="checkbox" v-model="this.input.showPublic" checked/>
-          <label class="mx-2 text-label" for="showPublic2">Public</label>
-          <input disabled class="ml-2 cursor-not-allowed" id="showPrivate2" type="checkbox" v-model="this.input.showPrivate" />
-          <label class="mx-2 text-label text-gray-bitdarker" for="showPrivate2">Private</label>
+          <label class="mx-2 text-label" for="showPublic2">Public</label><br>
+          <input disabled title="Accessible to logged in users" class="cursor-not-allowed" id="showPrivate2" type="checkbox" v-model="this.input.showPrivate" />
+          <label title="Accessible to logged in users" class="mx-2 text-label text-gray-bitdarker" for="showPrivate2">Private</label>
+
         </div>
         <router-link v-if="this.isUserLoggedIn()"
             to="/create-event"
@@ -28,6 +29,7 @@
           </div>
         </router-link>
         <div v-if="!this.isUserLoggedIn()"
+                    title="Accessible to logged in users"
                      class="px-4 py-2 flex items-center border-black bg-gray-light text-gray-darker
                    rounded-xl cursor-not-allowed">
           <i class="fas fa-plus-circle text-2xl"></i>
