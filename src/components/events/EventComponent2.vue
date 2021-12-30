@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <router-link :to="{name: 'EventDetail', query: {eventId: this.eventId}}">
+    <div @click="this.openclose">
   <div class="p-0.5 flex">
       <div class="flex flex-col ml-5 relative">
         <time class="text-info italic">
@@ -18,7 +18,6 @@
           {{ this.name }}
         </h2>
         <p class="text-info">
-<!--          <b class="text-label"> Sport: </b>-->
           <i class="fas fa-mouse" v-if="this.sport === 'E-sport'"></i>
           <i class="far fa-futbol" v-else-if="this.sport === 'Football'"></i>
           <i class="fas fa-dumbbell" v-else-if="this.sport === 'Gym'"></i>
@@ -30,7 +29,6 @@
           <i class="fas fa-volleyball-ball" v-else-if="this.sport === 'Volleyball'"></i>
           <i class="fas fa-basketball-ball" v-else-if="this.sport === 'Basketball'"></i>
           <i class="fas fa-running" v-else></i>
-
           {{ this.sport }}
         </p>
 <!--        <p class="text-info" v-if="this.isPrivate()">-->
@@ -50,10 +48,14 @@
         </div>
         <i v-if="this.isPrivate()" class="fas fa-user-lock ml-auto"></i>
 
+        <i v-if="this.userJoined && !this.open" class="fas fa-chevron-down ml-auto mt-8"></i>
+        <i v-else-if="!this.userJoined && !this.open" class="fas fa-chevron-down ml-auto mt-14"></i>
+        <i v-else-if="!this.userJoined && this.open" class="fas fa-chevron-up ml-auto mt-14"></i>
+        <i v-else-if="this.userJoined && this.open" class="fas fa-chevron-up ml-auto mt-8"></i>
       </div>
 
   </div>
-    </router-link>
+    </div>
 
     <div class="flex w-full mt-2">
       <button type="button"
@@ -74,24 +76,6 @@
       </button>
     </div>
 
-<!--    <div class="sm:block hidden absolute bottom-0 right-2">-->
-<!--      <button type="button"-->
-<!--              class="my-4 px-10 py-2 text-white text-2xl rounded-xl border-black bg-brightred-->
-<!--                              hover:shadow-xl hover:text-xl hover-zoom z-10"-->
-<!--              v-if="this.userJoined"-->
-<!--              @click="leave"-->
-<!--      >-->
-<!--        LEAVE-->
-<!--      </button>-->
-<!--      <button type="button"-->
-<!--              class="my-4 px-10 py-2 text-white text-2xl rounded-xl border-black bg-brightgreen-->
-<!--                              hover:shadow-xl hover:text-xl hover-zoom z-10"-->
-<!--              v-else-->
-<!--              @click="join"-->
-<!--      >-->
-<!--        JOIN-->
-<!--      </button>-->
-<!--    </div>-->
 
   </div>
 </template>
@@ -102,7 +86,12 @@ import DateController from "@/controllers/DateController";
 
 
 export default {
-  name: "EventComponent",
+  name: "EventComponent2",
+  data() {
+    return {
+      open: false
+    }
+  },
   props: {
     teamId: String,
     eventId: String,
@@ -138,6 +127,10 @@ export default {
     leave() {
       EventsController.leaveEvent(this.eventId);
       this.loadEvent();
+    },
+
+    openclose() {
+      this.open = !this.open;
     }
   },
 

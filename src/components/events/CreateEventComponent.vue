@@ -142,7 +142,7 @@ export default {
         selectedTeamId: null,
       },
       teams: [],
-      sports: ['Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis', 'Other'],
+      sports: ['Basketball', 'Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis','Volleyball', 'Other'],
       errors: {
           name: false,
           place: false,
