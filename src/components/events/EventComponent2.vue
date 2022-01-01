@@ -28,6 +28,11 @@
           <i class="fas fa-table-tennis" v-else-if="this.sport === 'Tennis'"></i>
           <i class="fas fa-volleyball-ball" v-else-if="this.sport === 'Volleyball'"></i>
           <i class="fas fa-basketball-ball" v-else-if="this.sport === 'Basketball'"></i>
+          <i class="fas fa-bullseye" v-else-if="this.sport === 'Curling'"></i>
+          <span v-else-if="this.sport === 'Petang'">
+          <i class="fas fa-circle"></i>
+          <i class="far fa-circle text-xs"></i>
+          </span>
           <i class="fas fa-running" v-else></i>
           {{ this.sport }}
         </p>
