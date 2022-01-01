@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div @click="this.openclose">
+    <div class="mb-2" @click="this.openclose">
   <div class="p-0.5 flex">
       <div class="flex flex-col ml-5 relative">
         <time class="text-info italic">
@@ -31,10 +31,15 @@
           <i class="fas fa-running" v-else></i>
           {{ this.sport }}
         </p>
-<!--        <p class="text-info" v-if="this.isPrivate()">-->
+        <p class="text-info" v-if="this.isPrivate()">
 <!--          <b class="text-label"> Team: </b>-->
-<!--          {{ this.team }}-->
-<!--        </p>-->
+          <router-link class="underline hover:text-white"
+                       :to="{name: 'TeamDetail', query: {teamId: this.teamId}}"
+                       @click="updateTeamPath('/teams')">
+            <i class="fas fa-users"></i>
+          {{ this.team }}
+          </router-link>
+        </p>
 <!--        <p class="text-info">-->
 <!--          <b class="text-label"> Joined: </b>-->
 <!--          {{ this.attendees.length }}-->
@@ -57,7 +62,12 @@
   </div>
     </div>
 
-    <div class="flex w-full mt-2">
+    <div v-if="this.open">
+      <event-info :eventId=this.eventId>
+      </event-info>
+    </div>
+
+    <div class="flex w-full">
       <button type="button"
               class="w-full py-1 text-white text-2xl rounded-b-xl border-black bg-brightred
                               hover:shadow-xl hover:text-xl z-10"
@@ -83,6 +93,7 @@
 <script>
 import EventsController from '../../controllers/EventsController';
 import DateController from "@/controllers/DateController";
+import store from "../../store";
 
 
 export default {
@@ -131,7 +142,12 @@ export default {
 
     openclose() {
       this.open = !this.open;
-    }
+    },
+
+    async updateTeamPath(target) {
+      //await router.push(target);
+      store.commit('setCurrentPath',target);
+    },
   },
 
   created(){

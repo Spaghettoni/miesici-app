@@ -33,10 +33,15 @@
 
           {{ this.sport }}
         </p>
-<!--        <p class="text-info" v-if="this.isPrivate()">-->
-<!--          <b class="text-label"> Team: </b>-->
-<!--          {{ this.team }}-->
-<!--        </p>-->
+        <p class="text-info" v-if="this.isPrivate()">
+          <!--          <b class="text-label"> Team: </b>-->
+          <router-link class="underline hover:text-white"
+                       :to="{name: 'TeamDetail', query: {teamId: this.teamId}}"
+                       @click="updateTeamPath('/teams')">
+            <i class="fas fa-users"></i>
+            {{ this.team }}
+          </router-link>
+        </p>
 <!--        <p class="text-info">-->
 <!--          <b class="text-label"> Joined: </b>-->
 <!--          {{ this.attendees.length }}-->
@@ -99,6 +104,7 @@
 <script>
 import EventsController from '../../controllers/EventsController';
 import DateController from "@/controllers/DateController";
+import store from "../../store";
 
 
 export default {
@@ -138,6 +144,11 @@ export default {
     leave() {
       EventsController.leaveEvent(this.eventId);
       this.loadEvent();
+    },
+
+    async updateTeamPath(target) {
+      //await router.push(target);
+      store.commit('setCurrentPath',target);
     }
   },
 

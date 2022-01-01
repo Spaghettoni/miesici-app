@@ -10,6 +10,7 @@ module.exports = {
       darkBlue: '#111827',
       brightred: "#d21b1b",
       gray: {
+        superlight: '#f1f1f1',
         light: '#D1D1D1',
         bitdarker: '#a6a6a6',
         darker: '#797979',
