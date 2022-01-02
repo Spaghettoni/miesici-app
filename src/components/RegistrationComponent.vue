@@ -75,6 +75,7 @@
 <script>
 import RegistrationController from "../controllers/RegistrationController";
 import router from "../router";
+import store from "../store";
 
 export default {
   name: 'RegistrationComponent',
@@ -106,7 +107,15 @@ export default {
       if (!this.errors.username && !this.errors.password && !this.errors.confirmPassword && !this.errors.email) {
         this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/');
       }
-    }
+    },
+
+    async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    },
+  },
+
+  mounted() {
+    this.updateActive('/register');
   }
 }
 </script>

@@ -142,7 +142,7 @@ export default {
         selectedTeamId: null,
       },
       teams: [],
-      sports: ['Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis', 'Other'],
+      sports: ['Basketball', 'Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis','Volleyball', 'Other sport'],
       errors: {
           name: false,
           place: false,
@@ -156,6 +156,10 @@ export default {
   methods: {
     async updatePath(target) {
       await router.push(target);
+      store.commit('setCurrentPath',target);
+    },
+
+    async updateActive(target) {
       store.commit('setCurrentPath',target);
     },
 
@@ -198,6 +202,7 @@ export default {
 
   mounted() {
     this.teams = TeamsController.getUsersTeams();
+    this.updateActive('/events');
   }
 
 }
