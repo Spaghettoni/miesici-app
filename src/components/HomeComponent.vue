@@ -144,9 +144,15 @@ export default {
     async updatePath(target) {
       await router.push(target);
       store.commit('setCurrentPath',target);
-  }
-}
+  },
+    async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    }
+},
 
+  mounted() {
+    this.updateActive('/');
+  }
 }
 </script>
 

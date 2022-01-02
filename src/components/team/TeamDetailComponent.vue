@@ -194,6 +194,10 @@ export default {
     async updatePath(target) {
       await router.push(target);
       store.commit('setCurrentPath', target);
+    },
+
+    async updateActive(target) {
+      store.commit('setCurrentPath', target);
     }
   },
 
@@ -203,6 +207,10 @@ export default {
 
     this.allUsernames = UsersController.allUsernames();
   },
+
+  mounted() {
+    this.updateActive('/teams');
+  }
 }
 </script>
 

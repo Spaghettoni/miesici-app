@@ -97,6 +97,7 @@ import router from "../../router";
 import EventsController from "../../controllers/EventsController";
 import { Team } from "../../store/Models";
 import LoginController from '../../controllers/LoginController';
+import store from "../../store";
 
 export default {
   name: "EventsComponent",
@@ -143,9 +144,14 @@ export default {
     isUserLoggedIn(){
       return LoginController.getLoggedUser() !== null;
     },
+
+    async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    },
   },
   mounted() {
     //this.events = EventsController.getUsersEvents();
+    this.updateActive('/events');
   }
 }
 </script>

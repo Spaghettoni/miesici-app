@@ -65,6 +65,7 @@
 import TeamsController from "../../controllers/TeamsController";
 import router from "../../router";
 import JoinRequestComponent from './JoinRequestComponent.vue';
+import store from "../../store";
 
 export default {
   name: "TeamsComponent",
@@ -92,11 +93,16 @@ export default {
 
     memberNames(team){
        return team.members.map(m => m.username);
-    }
+    },
+
+    async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    },
   },
   mounted() {
     this.teams = TeamsController.getUsersTeams();
     this.filterTeams();
+    this.updateActive('/teams');
   }
 }
 </script>

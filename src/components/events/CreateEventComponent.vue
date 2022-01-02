@@ -159,6 +159,10 @@ export default {
       store.commit('setCurrentPath',target);
     },
 
+    async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    },
+
     createEvent() {
       if (this.input.privacy === 'public') {
         this.input.selectedTeamId = null;   
@@ -198,6 +202,7 @@ export default {
 
   mounted() {
     this.teams = TeamsController.getUsersTeams();
+    this.updateActive('/events');
   }
 
 }

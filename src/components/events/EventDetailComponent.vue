@@ -58,7 +58,7 @@
             <b class="text-label"> Team: </b>
             <router-link class="underline hover:text-orange"
                          :to="{name: 'TeamDetail', query: {teamId: this.event.team_id}}"
-                         @click="updateTeamPath('/teams')">
+                         @click="updateActive('/teams')">
               {{ this.teamName() }}
             </router-link>
           </p>
@@ -147,7 +147,7 @@ export default {
       store.commit('setCurrentPath',target);
     },
 
-    async updateTeamPath(target) {
+    async updateActive(target) {
       //await router.push(target);
       store.commit('setCurrentPath',target);
     },
@@ -208,7 +208,11 @@ export default {
   created() {
     this.eventId = this.$route.query.eventId;
     this.loadEvent();
-    console.log(this.event.team_id)
+    console.log(this.event.team_id);
+  },
+
+  mounted() {
+    this.updateActive('/events');
   }
 }
 </script>
