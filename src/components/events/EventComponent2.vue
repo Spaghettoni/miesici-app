@@ -141,7 +141,7 @@ export default {
         this.loadEvent();
       } else {
         console.log('not logged in');
-        this.$emit('openForm');
+        this.$emit('openForm', this.eventId);
       }
 
     },
@@ -162,8 +162,9 @@ export default {
   },
 
   created() {
-    console.log("creted team id " + this.teamId)
-    console.log("is private " + this.isPrivate())
+    console.log("creted team id " + this.teamId);
+    console.log("is private " + this.isPrivate());
+    console.log("eventId " + this.eventId, typeof this.eventId);
   }
 }
 </script>

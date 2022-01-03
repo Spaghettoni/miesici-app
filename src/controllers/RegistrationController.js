@@ -13,6 +13,7 @@ const RegistrationController = (() => {
 
     }
 
+    // async function createUser(username, password, email)
     async function register(username, password, confirmPassword, email, targetPath) {
         if(username === "" || password === "" || email === ""){
             window.alert("please fill out all fields");

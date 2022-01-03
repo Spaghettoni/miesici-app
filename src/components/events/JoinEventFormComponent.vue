@@ -2,7 +2,7 @@
   <section class="overlay absolute w-full h-full top-0 left-0 bg-black flex justify-center items-center">
     <div class="relative sm:rounded-2xl bg-white min-w-min w-full h-full pb-10 px-10 sm:w-1/2 sm:h-auto border flex flex-col justify-center sm:justify-start items-center">
       <div class="absolute top-4 right-4 cursor-pointer p-1 "
-           @click="closeForm"
+           @click="$emit('closeForm')"
       >
         <i class="fas fa-times text-5xl leading-8"></i>
       </div>
@@ -12,9 +12,12 @@
         <label>Enter your name:</label>
         <input type="text"
                placeholder="Your name"
+               v-model="this.name"
                class="px-4 py-2 sm:text-3xl flex appearance-none bg-white rounded border"/>
         <button type="button"
-                class="mt-2 py-1 px-4 text-white text-2xl rounded border-black bg-brightgreen hover:shadow-xl hover-zoom hover:text-xl">
+                class="mt-2 py-1 px-4 text-white text-2xl rounded border-black bg-brightgreen hover:shadow-xl hover-zoom hover:text-xl"
+                @click="join"
+        >
           Join
         </button>
         <div class="mt-5 text-xl">
@@ -26,11 +29,34 @@
 </template>
 
 <script>
+import RegistrationController from "../../controllers/RegistrationController";
+import UsersController from "../../controllers/UsersController";
+import EventsController from "../../controllers/EventsController";
+
 export default {
   name: "JoinEventFormComponent",
+  data() {
+    return {
+      name: '',
+    }
+  },
+  props: {
+    eventId: String,
+  },
   methods: {
     closeForm() {
       this.$emit('closeForm')
+    },
+    async join() {
+      let id = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+      console.log(this.eventId)
+      const guestUsername = this.name + ' - Guest' + id;
+      await RegistrationController.register(guestUsername, guestUsername, guestUsername, 'guest@guest.com', '/events');
+      const newGuest = UsersController.findByUsername(guestUsername);
+      console.log('new guest registered:', newGuest[0]);
+      console.log(newGuest[0].id);
+      EventsController.joinEvent(this.eventId, newGuest[0].id);
+      this.closeForm();
     }
   }
 }

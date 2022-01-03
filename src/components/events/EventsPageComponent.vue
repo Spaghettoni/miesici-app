@@ -77,7 +77,7 @@
                  v-bind:key=event v-for="event in this.events"
         >
           <event-component2
-              @openForm="openForm"
+              @openForm="openForm($event)"
               :teamId=event.team_id
               :eventId=event.id
               :name=event.name
@@ -93,6 +93,7 @@
     <join-event-form-component
         @closeForm="closeForm"
         :class="[this.showForm ? 'block' : 'hidden']"
+        :eventId=this.eventId
     ></join-event-form-component>
   </article>
 </template>
@@ -114,6 +115,7 @@ export default {
         showDetail: true,
       },
       showForm: false,
+      eventId: '',
     }
   },
 
@@ -155,8 +157,9 @@ export default {
       store.commit('setCurrentPath',target);
     },
 
-    openForm() {
+    openForm(eventId) {
       console.log('toggle form');
+      this.eventId = eventId;
       this.showForm = true;
     },
 
