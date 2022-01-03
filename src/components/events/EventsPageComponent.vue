@@ -77,6 +77,7 @@
                  v-bind:key=event v-for="event in this.events"
         >
           <event-component2
+              @openForm="openForm"
               :teamId=event.team_id
               :eventId=event.id
               :name=event.name
@@ -89,6 +90,10 @@
         </article>
       </div>
     </div>
+    <join-event-form-component
+        @closeForm="closeForm"
+        :class="[this.showForm ? 'block' : 'hidden']"
+    ></join-event-form-component>
   </article>
 </template>
 
@@ -106,8 +111,9 @@ export default {
       input: {
         showPrivate: this.isUserLoggedIn(),
         showPublic: this.isUserLoggedIn() === false,
-        showDetail: true
+        showDetail: true,
       },
+      showForm: false,
     }
   },
 
@@ -148,6 +154,15 @@ export default {
     async updateActive(target) {
       store.commit('setCurrentPath',target);
     },
+
+    openForm() {
+      console.log('toggle form');
+      this.showForm = true;
+    },
+
+    closeForm() {
+      this.showForm = false;
+    }
   },
   mounted() {
     //this.events = EventsController.getUsersEvents();
