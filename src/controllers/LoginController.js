@@ -36,7 +36,6 @@ const LoginController = (() => {
         await localStorage.setItem('loggedUser', null);
         store.commit('setLoggedUser', null);
         store.commit('setCurrentPath', '/');
-        console.log("successfully logged out!");
     }
 
     function getLoggedUser() {

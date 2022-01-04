@@ -71,8 +71,6 @@ export default {
   },
   methods: {
     checkForm(){
-      console.log('yaas?')
-
       if (this.input.username && this.input.password) {
         let foundUsers = UsersController.findByUsernameAndPassword(this.input.username, this.input.password);
 

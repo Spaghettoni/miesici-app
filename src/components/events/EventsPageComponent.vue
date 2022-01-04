@@ -159,7 +159,6 @@ export default {
     },
 
     openForm(eventId) {
-      console.log('toggle form');
       this.eventId = eventId;
       this.showForm = true;
     },

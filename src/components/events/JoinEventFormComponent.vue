@@ -70,7 +70,6 @@ export default {
       this.errors.name = !this.name;
       if (!this.errors.name) {
         let identifier = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
-        console.log(this.eventId)
         const guestUsername = this.name + ' - Guest' + identifier;
         await RegistrationController.register(guestUsername, guestUsername, guestUsername, 'guest@guest.com', '/events');
         const newGuest = UsersController.findByUsername(guestUsername)[0];

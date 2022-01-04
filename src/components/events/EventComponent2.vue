@@ -179,9 +179,9 @@ export default {
   },
 
   created() {
-    console.log("creted team id " + this.teamId);
-    console.log("is private " + this.isPrivate());
-    console.log("eventId " + this.eventId, typeof this.eventId);
+    // console.log("creted team id " + this.teamId);
+    // console.log("is private " + this.isPrivate());
+    // console.log("eventId " + this.eventId, typeof this.eventId);
   }
 }
 </script>

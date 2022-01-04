@@ -149,7 +149,6 @@ export default {
 
   created() {
     this.loadEvent();
-    console.log(this.event.team_id, this.attendeeNames())
   }
 }
 </script>
