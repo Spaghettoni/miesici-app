@@ -51,7 +51,6 @@
 import LoginController from "../controllers/LoginController";
 import router from "../router";
 import UsersController from "../controllers/UsersController";
-import store from "../store";
 
 export default {
   name: 'LoginComponent',
@@ -80,21 +79,13 @@ export default {
           this.errors.username = "Invalid credentials!";
           this.errors.password = "Invalid credentials!";
         } else {
-          this.login(this.input.username, this.input.password, '/events');
+          this.login(this.input.username, this.input.password, '/');
         }
       } else {
         this.errors.username = !this.input.username ? "Please fill in your username!" : "";
         this.errors.password = !this.input.password ? "Please fill in your password!" : "";
       }
     },
-
-    async updateActive(target) {
-      store.commit('setCurrentPath',target);
-    },
-  },
-
-  mounted() {
-    this.updateActive('/login');
   }
 }
 </script>

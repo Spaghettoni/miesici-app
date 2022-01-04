@@ -2,27 +2,25 @@
   <div class="w-full flex justify-center">
     <div class="px-4 flex flex-col w-full max-w-3xl">
       <div class="mt-6 flex items-start flex-col sm:justify-between sm:flex-row sm:items-center">
-
         <h1 class="mb-4 mr-8 text-heading">
           Teams
         </h1>
-
-        <div class="flex flex-col">
-          <router-link
-              to="/create-team"
-              class="px-4 py-2 flex items-center border-black bg-orange
-                    rounded-xl cursor-pointer hover:shadow-xl hover-zoom mb-2">
-            <i class="fas fa-plus-circle text-2xl"></i>
-            <div class="ml-2 font-semibold text-lg">
-              Create new team
-            </div>
-          </router-link>
-          <join-request-component></join-request-component>
-        </div>
+        <router-link
+            to="/create-team"
+            class="px-4 py-2 flex items-center border-black bg-orange
+                   rounded-xl cursor-pointer hover:shadow-xl
+                   hover-zoom">
+          <i class="fas fa-plus-circle text-2xl"></i>
+          <div class="ml-2 font-semibold text-lg">
+            Create new team
+          </div>
+        </router-link>
       </div>
-
-      <div class="flex flex-col sm:flex-row">     
-        <div class="flex flex-col">
+      <div class="mt-6">
+        <div class="font-semibold text-create-button">
+          Search by member
+        </div>
+        <div class="flex max-w-min flex-col sm:flex-row">
           <!-- <select class="border px-4 py-2 rounded-xl cursor-pointer"
                   v-model="selected"
           >
@@ -36,10 +34,7 @@
               {{ team.name }}
             </option>
           </select> -->
-          <span class="font-semibold text-create-button">
-            Search by member
-          </span>
-          <input type="text" class="border px-4 py-2 rounded max-w-min"
+          <input type="text" class="border px-4 py-2 rounded"
                  placeholder="username"
                  v-model="member"
                  @input="filterTeams"
@@ -64,8 +59,6 @@
 <script>
 import TeamsController from "../../controllers/TeamsController";
 import router from "../../router";
-import JoinRequestComponent from './JoinRequestComponent.vue';
-import store from "../../store";
 
 export default {
   name: "TeamsComponent",
@@ -93,16 +86,11 @@ export default {
 
     memberNames(team){
        return team.members.map(m => m.username);
-    },
-
-    async updateActive(target) {
-      store.commit('setCurrentPath',target);
-    },
+    }
   },
   mounted() {
     this.teams = TeamsController.getUsersTeams();
     this.filterTeams();
-    this.updateActive('/teams');
   }
 }
 </script>

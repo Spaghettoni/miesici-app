@@ -50,7 +50,6 @@
 <script>
 import router from "../../router";
 import TeamsController from "../../controllers/TeamsController";
-import store from "../../store";
 
 export default {
   name: "CreateTeamComponent",
@@ -79,15 +78,8 @@ export default {
       if (!this.errors.teamName) {
         this.createTeam(this.input.teamName);
       }
-    },
-    async updateActive(target) {
-      store.commit('setCurrentPath',target);
-    },
+    }
   },
-
-  mounted() {
-    this.updateActive('/teams');
-  }
 }
 </script>
 
