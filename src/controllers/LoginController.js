@@ -1,7 +1,5 @@
 import router from "../router";
 import store from "../store";
-import LocalStorageController from "./LocalStorageController";
-import { User } from "../store/Models";
 import UsersController from "./UsersController";
 
 const LoginController = (() => {
@@ -28,6 +26,11 @@ const LoginController = (() => {
         await router.push(targetPath);
     }
 
+    async function loginGuest(guest) {
+        store.commit('setGuestUser', guest);
+        await localStorage.setItem('guestUser', JSON.stringify(guest));
+    }
+
     async function logout() {
         await router.push('/');
         await localStorage.setItem('loggedUser', null);
@@ -37,13 +40,28 @@ const LoginController = (() => {
     }
 
     function getLoggedUser() {
-        return JSON.parse(localStorage.getItem("loggedUser"));
+        return store.state.loggedUser;
     }
+
+    function getGuestUser() {
+        return store.state.guestUser;
+    }
+
+    function getCurrentUser() {
+        if (getLoggedUser() !== null) {
+            return getLoggedUser();
+        }
+        return getGuestUser();
+    }
+
 
     return {
         login,
+        loginGuest,
         logout,
         getLoggedUser,
+        getGuestUser,
+        getCurrentUser,
     }
 })()
 
