@@ -208,7 +208,7 @@ export default {
   created() {
     this.eventId = this.$route.query.eventId;
     this.loadEvent();
-    console.log(this.event.team_id);
+    // console.log(this.event.team_id);
   },
 
   mounted() {

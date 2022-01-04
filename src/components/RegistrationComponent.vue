@@ -58,6 +58,10 @@
           <i class="fas fa-exclamation-triangle"></i>
           Please confirm your password!
         </span>
+      <div class="mt-6 flex">
+        <input type="checkbox" class="w-6"/>
+        <label class="text-2xl ml-4">I want to recieve emails with event notifications</label>
+      </div>
       <input type="submit" v-on:click="checkForm"
              class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
                     bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"

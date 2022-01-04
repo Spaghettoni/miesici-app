@@ -110,6 +110,7 @@
 import EventsController from '../../controllers/EventsController';
 import DateController from "@/controllers/DateController";
 import store from "../../store";
+import LoginController from "../../controllers/LoginController";
 
 
 export default {
@@ -142,8 +143,13 @@ export default {
     },
 
     join() {
-      EventsController.joinEvent(this.eventId);
-      this.loadEvent();
+      const currentUser = LoginController.getCurrentUser();
+      if (currentUser !== null) {
+        EventsController.joinEvent(this.eventId);
+        this.loadEvent();
+      } else {
+        this.$emit('openForm', this.eventId);
+      }
     },
 
     leave() {
@@ -158,8 +164,8 @@ export default {
   },
 
   created(){
-    console.log("creted team id " + this.teamId)
-    console.log("is private "+ this.isPrivate())
+    // console.log("creted team id " + this.teamId)
+    // console.log("is private "+ this.isPrivate())
   }
 }
 </script>
