@@ -39,27 +39,22 @@
         </div>
       </div>
 
-      <div class="mt-1">
-        <span class="mx-2 text-label">Accordion</span>
-        <label class="switch">
-          <input type="checkbox" v-model="this.input.showDetail">
-          <span class="slider round"></span>
-        </label>
-        <span class="mx-2 text-label">Detail</span>
+<!--      <div class="mt-1">-->
+<!--        <span class="mx-2 text-label">Accordion</span>-->
+<!--        <label class="switch">-->
+<!--          <input type="checkbox" v-model="this.input.showDetail">-->
+<!--          <span class="slider round"></span>-->
+<!--        </label>-->
+<!--        <span class="mx-2 text-label">Detail</span>-->
+<!--      </div>-->
 
-        <!--        <input class="ml-2" id="showDetail" type="radio" name="display-method" v-model="this.input.showDetail" checked/>-->
-<!--        <label class="mx-2 text-label" for="showDetail">Detail</label>-->
-<!--        |-->
-<!--        <input class="ml-2" id="showAccordion" type="radio" name="display-method"/>-->
-<!--        <label class="mx-2 text-label" for="showAccordion">Accordion</label>-->
-      </div>
-
-      <div class="flex flex-col" v-if="this.input.showDetail">
+      <div class="flex flex-col" v-if="!this.input.showDetail">
         <article class="mt-6 cursor-pointer hover:shadow-xl hover:bg-orange rounded-xl bg-gray-light
                             transition duration-100 transform hover:scale-105"
                      v-bind:key=event v-for="event in this.events"
                      >
           <event-component
+              @openForm="openForm($event)"
               :teamId=event.team_id
               :eventId=event.id
               :name=event.name

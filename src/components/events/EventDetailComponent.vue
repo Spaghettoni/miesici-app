@@ -112,6 +112,11 @@
       </div>
 
     </div>
+    <join-event-form-component
+        @closeForm="closeForm"
+        :class="[this.showForm ? 'block' : 'hidden']"
+        :eventId=this.eventId
+    ></join-event-form-component>
   </article>
 </template>
 
@@ -127,7 +132,8 @@ export default {
   name: "EventDetailComponent",
   data() {
     return {
-      event: null
+      event: null,
+      showForm: false,
     }
   },
 
@@ -153,8 +159,13 @@ export default {
     },
 
     join() {
-      EventsController.joinEvent(this.eventId);
-      this.loadEvent();
+      const currentUser = LoginController.getCurrentUser();
+      if (currentUser !== null) {
+        EventsController.joinEvent(this.eventId);
+        this.loadEvent();
+      } else {
+        this.showForm = true;
+      }
     },
 
     leave() {
@@ -203,6 +214,10 @@ export default {
     isUserLoggedIn(){
       return LoginController.getLoggedUser() !== null;
     },
+
+    closeForm() {
+      this.showForm = false;
+    }
   },
 
   created() {

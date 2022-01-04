@@ -111,6 +111,8 @@ import EventsController from '../../controllers/EventsController';
 import DateController from "@/controllers/DateController";
 import store from "../../store";
 import LoginController from "../../controllers/LoginController";
+import {Event} from "../../store/Models";
+import router from "../../router";
 
 
 export default {
@@ -160,7 +162,23 @@ export default {
     async updateTeamPath(target) {
       //await router.push(target);
       store.commit('setCurrentPath',target);
-    }
+    },
+
+    loadEvent() {
+      this.event = Event.query().whereId(this.eventId).with('attendees').first();
+      if (this.event === null) {
+        this.event = {
+          id: "",
+          name: "",
+          place: "",
+          sport: "",
+          team_id: "",
+          datetime: "",
+          attendees: []
+        }
+        router.replace("/NotFound");
+      }
+    },
   },
 
   created(){
