@@ -81,6 +81,8 @@ const storage = {
 
     "loggedUser": null,
 
+    "guestUser": null,
+
     "teams": [
         {
             "name": "Kolegovci",

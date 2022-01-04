@@ -10,14 +10,14 @@
                          sm:hidden"
                   @click="deleteEvent"
           >
-            <i class="fas fa-trash-alt"></i> DELETE EVENT
+            <i class="fas fa-trash-alt"></i> Delete event
           </button>
 
           <button v-if="!this.isUserLoggedIn()" type="button"
                   class="mb-6 px-2 py-1 text-1xl rounded-xl border-black bg-gray-light text-gray-darker
                          sm:hidden cursor-not-allowed"
           >
-            <i class="fas fa-trash-alt"></i> DELETE EVENT
+            <i class="fas fa-trash-alt"></i> Delete event
           </button>
 
 
@@ -39,14 +39,14 @@
                           hover:shadow-xl hover:text-xl hover-zoom hidden sm:block"
                 @click="deleteEvent"
         >
-          <i class="fas fa-trash-alt"></i> DELETE EVENT
+          <i class="fas fa-trash-alt"></i> Delete event
         </button>
         <button v-if="!this.isUserLoggedIn()" type="button"
                 title="Accessible to logged in users"
                 class="mb-10 mx-auto px-2 py-4 text-1xl rounded-xl border-black bg-gray-light text-gray-darker
                            hidden sm:block cursor-not-allowed"
         >
-          <i class="fas fa-trash-alt"></i> DELETE EVENT
+          <i class="fas fa-trash-alt"></i> Delete event
         </button>
       </div>
 

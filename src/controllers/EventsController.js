@@ -24,13 +24,12 @@ const EventsController = (() => {
             events.push(...team.events);
         }
         events = events.filter((e) => this.isUpToDate(e));
-        sortEventsByDatetime(events);
         return events;
     }
 
     function getPublicEvents() {
         let events = Event.query().where((event) => event.team_id === null).get();
-        sortEventsByDatetime(events);
+        events = events.filter((e) => this.isUpToDate(e));
         return events;
     }
 
@@ -46,7 +45,8 @@ const EventsController = (() => {
         });
     }
 
-    function joinEvent(eventId, userId) {
+    function joinEvent(eventId) {
+        const userId = LoginController.getCurrentUser().id;
         EventUser.insert({
             data: {
                 event_id: eventId,
@@ -56,16 +56,20 @@ const EventsController = (() => {
     }
 
     function leaveEvent(eventId) {
-        const loggedUser = store.state.loggedUser;
-        EventUser.delete([eventId, loggedUser.id]);
+        const userId = LoginController.getCurrentUser().id;
+        EventUser.delete([eventId, userId]);
     }
 
     function didUserJoinEvent(eventId) {
         const loggedUser = store.state.loggedUser;
-        if (loggedUser === null) {
-            return false;
-        }
-        return EventUser.query().whereId([eventId, loggedUser.id]).exists();
+        const guestUser = store.state.guestUser;
+        const isLoggedUser = loggedUser !== null;
+        const isGuestUser = guestUser !== null;
+
+        if (!isLoggedUser && !isGuestUser) return false;
+
+        return isLoggedUser ? EventUser.query().whereId([eventId, loggedUser.id]).exists() :
+                            EventUser.query().whereId([eventId, guestUser.id]).exists();
     }
 
     function isUpToDate(event) {
@@ -88,7 +92,8 @@ const EventsController = (() => {
         didUserJoinEvent,
         isUpToDate,
         getPublicEvents,
-        deleteEvent
+        deleteEvent,
+        sortEventsByDatetime
     }
 })();
 

@@ -128,6 +128,7 @@ export default {
       if(this.input.showPublic){
         events.push(...EventsController.getPublicEvents());
       }
+      EventsController.sortEventsByDatetime(events)
       return events;
     }
   },

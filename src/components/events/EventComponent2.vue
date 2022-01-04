@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="mb-2" @click="this.openclose">
+    <div class="mb-2" @click="this.toggleInfo">
       <div class="p-0.5 flex">
         <div class="flex flex-col ml-5 relative">
           <time class="text-info italic">
@@ -99,6 +99,9 @@
 import EventsController from '../../controllers/EventsController';
 import DateController from "@/controllers/DateController";
 import store from "../../store";
+import LoginController from "../../controllers/LoginController";
+import {Event} from "../../store/Models";
+import router from "../../router";
 
 export default {
   name: "EventComponent2",
@@ -135,24 +138,38 @@ export default {
     },
 
     join() {
-      if (store.state.loggedUser !== null) {
-        console.log('logged in');
+      const currentUser = LoginController.getCurrentUser();
+      if (currentUser !== null) {
         EventsController.joinEvent(this.eventId);
-        this.loadEvent();
+        this.toggleInfo();
       } else {
-        console.log('not logged in');
         this.$emit('openForm', this.eventId);
       }
-
     },
 
     leave() {
       EventsController.leaveEvent(this.eventId);
-      this.loadEvent();
+      this.toggleInfo();
     },
 
-    openclose() {
+    toggleInfo() {
       this.open = !this.open;
+    },
+
+    loadEvent() {
+      this.event = Event.query().whereId(this.eventId).with('attendees').first();
+      if (this.event === null) {
+        this.event = {
+          id: "",
+          name: "",
+          place: "",
+          sport: "",
+          team_id: "",
+          datetime: "",
+          attendees: []
+        }
+        router.replace("/NotFound");
+      }
     },
 
     async updateTeamPath(target) {
