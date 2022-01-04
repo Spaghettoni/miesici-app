@@ -1,13 +1,7 @@
 <template>
   <form class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <router-link
-          class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
-          to="/events"
-          @click="updatePath('/events')"
-      >
-        <i class="fas fa-solid fa-arrow-left mr-2"></i> Events
-      </router-link>
+      <back-button></back-button>
 
       <div class="flex justify-between items-center">
         <h1 class="mb-4 text-heading">
@@ -78,22 +72,6 @@
       </div>
 
       <div class="mt-6 form-inputs flex flex-col">
-        <p class="text-2xl">Select who can see and join your event:</p>
-        <div class="flex flex-col sm:flex-row">
-          <div>
-            <input class="mt-2 mr-2" type="radio" id="public" name="radio" checked
-                   value="public" v-model="this.input.privacy">
-            <label class="text-2xl" for="public">Everyone</label>
-          </div>
-          <div>
-            <input class="mt-2 mr-2 sm:ml-5" type="radio" id="private" name="radio"
-                   value="private" v-model="this.input.privacy">
-            <label class="text-2xl" for="private">Only a selected team</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-6 form-inputs flex flex-col" v-if="this.input.privacy === 'private'">
         <label class="text-2xl">Team</label>
 
         <select v-model="input.team" id="team" name="team" @change="saveTeamIdOnChange($event)"
@@ -109,12 +87,12 @@
 
       </div>
 
-      <div 
-             class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl cursor-pointer
-                    hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
+      <input type="submit"
+             class="mt-12 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl
+                    bg-orange hover:shadow-xl hover:text-xl transition duration-100 transform hover:scale-105"
              @click="checkForm"
-             >Create event
-      </div>
+             value="Create event"
+      />
 
 
     </div>
@@ -138,11 +116,10 @@ export default {
         sport: '',
         datetime: '',
         team: '',
-        privacy: 'public',
-        selectedTeamId: null,
+        selectedTeamId: null
       },
       teams: [],
-      sports: ['Basketball', 'Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis','Volleyball', 'Other sport'],
+      sports: ['Curling', 'E-sport', 'Football', 'Gym', 'Ice hockey', 'Javelin throw', 'Petang', 'Street hockey', 'Swimming', 'Tennis', 'Other'],
       errors: {
           name: false,
           place: false,
@@ -154,18 +131,14 @@ export default {
   },
 
   methods: {
-    async updatePath(target) {
-      await router.push(target);
-      store.commit('setCurrentPath',target);
-    },
-
-    async updateActive(target) {
-      store.commit('setCurrentPath',target);
-    },
+    // goBack() {
+    //   console.log("back button called")
+    //   router.back()
+    // },
 
     createEvent() {
-      if (this.input.privacy === 'public') {
-        this.input.selectedTeamId = null;   
+      if (!this.input.selectedTeamId) {
+        return;   //toto sa zmeni ak budu public eventy
       }
       const loggedUser = store.state.loggedUser;
 
@@ -192,8 +165,9 @@ export default {
       this.errors.place = !this.input.place;
       this.errors.sport = !this.input.sport;
       this.errors.datetime = !this.input.datetime;
-      this.errors.team = this.input.privacy === 'public'? false : !this.input.team;
+      this.errors.team = !this.input.team;
 
+      console.log(this.errors.team);
       if (!this.errors.name && !this.errors.place && !this.errors.sport && !this.errors.datetime && !this.errors.team) {
         this.createEvent()
       }
@@ -202,7 +176,6 @@ export default {
 
   mounted() {
     this.teams = TeamsController.getUsersTeams();
-    this.updateActive('/events');
   }
 
 }

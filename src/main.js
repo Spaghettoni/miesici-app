@@ -15,8 +15,6 @@ TeamsController.constructor();
 const app = createApp(App);
 app.use(router);
 
-require('datejs')
-
 const requireComponent = require.context(
     // The relative path of the components folder
     './components',

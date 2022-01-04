@@ -2,27 +2,22 @@
   <div>
 
     <article class="border-black" v-if="this.state.loggedUser === null">
-      <div class="flex flex-col-reverse xlg:flex-row-reverse">
-        <figure class="w-full mt-5 xlg:w-1/2 xlg:mt-0 text-center flex">
-          <img class="m-auto" alt="Young people having fun playing football." v-bind:src="'/pictures/im1.png'">
+      <div class="flex flex-col-reverse lg:flex-row">
+        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0">
+          <img alt="Young people having fun playing football." v-bind:src="'/pictures/im1.png'">
         </figure>
         <div class="px-5 sm:px-10 my-auto mx-auto">
           <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
             Meet and play!
           </h2>
-          <p class="text-simple-text mb-3">
-            Do you want to meet new people and take part in public matches?<br>
-            <b>You can join public events even without logging in.</b>
-          </p>
-          <p class="text-simple-text">
-              Do you want to easily manage matches with friends?<br>
-            <b>To access teams and create events you have to log in.</b></p>
+          <p class="text-simple-text">Do you want to easily manage matches with friends?<br>
+            <b>Log in, create team and manage your sport events with ease!</b></p>
 
-          <div class="flex-col sm:flex-row text-center">
+          <div class="flex-col sm:space-x-2.5 sm:flex-row">
             <router-link
                 to="/login">
               <button
-                  class="mt-5 mr-2 ml-auto px-5 py-2 text-2xl border-black bg-orange rounded-xl cursor-pointer hover:shadow-xl
+                  class="mt-5 mx-auto px-10 py-4 text-3xl border-black bg-orange rounded-xl cursor-pointer hover:shadow-xl
                    hover:text-xl transition duration-100 transform hover:scale-105"
                    @click="updatePath('/login')">
                 Login
@@ -32,7 +27,7 @@
             <router-link
                 to="/register">
               <button
-                  class="mt-5 mx-auto px-5 py-2 text-2xl border-black bg-brightgreen rounded-xl cursor-pointer hover:shadow-xl
+                  class="mt-5 mx-auto px-10 py-4 text-3xl border-black bg-brightgreen rounded-xl cursor-pointer hover:shadow-xl
                    hover:text-xl transition duration-100 transform hover:scale-105"
                    @click="updatePath('/register')">
                 Register
@@ -45,9 +40,9 @@
     </article>
 
     <article class="border-black" v-if="this.state.loggedUser !== null">
-      <div class="flex flex-col-reverse lg:flex-row-reverse">
-        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0 text-center flex">
-          <img class="m-auto" alt="" v-bind:src="'/pictures/review.png'">
+      <div class="flex flex-col-reverse lg:flex-row">
+        <figure class="w-full mt-5 lg:w-1/2 lg:mt-0">
+          <img alt="" v-bind:src="'/pictures/review.png'">
         </figure>
         <div class="px-5 sm:px-10 my-auto mx-auto">
           <h2 class="mx-auto mt-7 mb-2 text-heading z-0">
@@ -111,20 +106,6 @@
       </div>
     </article>
 
-    <div v-if="this.state.loggedUser === null" class="absolute top-10 left-72 px-2.5 py-1 text-gray-light text-info text-center hidden sm:block">
-      ▲
-    </div>
-    <div v-if="this.state.loggedUser === null" class="absolute top-16 left-32 px-2.5 py-1 bg-gray-light rounded-md text-info text-center hidden sm:block">
-      Search and join public events!
-    </div>
-
-    <div v-if="this.state.loggedUser === null" class="fixed bottom-14 right-16 px-2.5 py-1 opacity-80 text-darkBlue text-info text-center sm:hidden block">
-      ▼
-    </div>
-    <div v-if="this.state.loggedUser === null" class="fixed bottom-20 right-1 px-2.5 py-1 bg-opacity-80 bg-darkBlue text-white rounded-md text-info text-center sm:hidden block">
-      Search and join <br> public events!
-    </div>
-
   </div>
 </template>
 
@@ -144,15 +125,9 @@ export default {
     async updatePath(target) {
       await router.push(target);
       store.commit('setCurrentPath',target);
-  },
-    async updateActive(target) {
-      store.commit('setCurrentPath',target);
-    }
-},
-
-  mounted() {
-    this.updateActive('/');
   }
+}
+
 }
 </script>
 

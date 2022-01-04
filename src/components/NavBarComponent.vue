@@ -3,40 +3,30 @@
     <div class="flex flex-col">
       <div>
           <figure @click="updatePath('/')"
-               class="logo mt-3.5 ml-1.5 cursor-pointer" v-if="activePage !== '/'">
+               class="logo mt-3.5 ml-5 cursor-pointer" v-if="activePage !== '/'">
             <img alt="" :src="'/pictures/icon2.png'" width="75">
 
           </figure>
           <figure
-               class="logo mt-3.5 ml-1.5" v-else>
+               class="logo mt-3.5 ml-5" v-else>
             <img alt="" :src="'/pictures/icon2.png'" width="75">
 
           </figure>
 
           <nav id="nav"
-               class="float-left flex ml-32 justify-end hidden sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
+               class="float-left flex ml-40 justify-end hidden sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
 
             <button v-if="this.state.loggedUser !== null"
                  @click="updatePath('/teams')"
-                 class="button-40 mx-1 hidden sm:block"
+                 class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/teams'}"
             >
               <i class="fas fa-users mr-2"></i>
               Teams
             </button>
-
-            <button v-if="this.state.loggedUser === null"
-                    disabled
-                    title="Accessible to logged in users"
-                    class="button-disabled mx-1 hidden sm:block"
-            >
-              <i class="fas fa-users mr-2"></i>
-              Teams
-            </button>
-
-            <button
+            <button v-if="this.state.loggedUser !== null"
                  @click="updatePath('/events')"
-                 class="button-40 mx-1 hidden sm:block"
+                 class="button-40 mx-1.5 hidden sm:block"
                  v-bind:class="{active: activePage === '/events'}"
             >
               <i class="far fa-calendar-alt mr-2"></i>
@@ -48,21 +38,21 @@
           <div class="float-right flex flex-row justify-end mr-1 sm:mr-5 sm:px-0 sm:flex-row sm:justify-end py-4 sm:py-4 font-semibold">
             <button v-if="this.state.loggedUser === null"
                   @click="updatePath('/login')"
-                  class="button-40 mx-1 userbutton"
+                  class="button-40 mx-1.5 userbutton"
                   v-bind:class="{active: activePage === '/login'}"
             >
                       Login
             </button>
                   <button  v-if="this.state.loggedUser === null"
                         @click="updatePath('/register')"
-                        class="sign-up-button-40 mx-1 userbutton"
+                        class="sign-up-button-40 mx-1.5 userbutton"
                         v-bind:class="{active: activePage === '/register'}"
                   >
                     Register
                   </button>
             <button v-if="this.state.loggedUser !== null"
                  @click="updatePath('/profile')"
-                 class="button-40 ml-10 mx-1 userbutton"
+                 class="button-40 ml-10 mx-1.5 userbutton"
                  v-bind:class="{active: activePage === '/profile'}"
             >
               <i class="fas fa-user-alt md:mr-2"></i>
@@ -70,7 +60,7 @@
             </button>
             <button  v-if="this.state.loggedUser !== null"
                   @click="this.logout()"
-                  class="logout-button-40 mx-1 userbutton"
+                  class="logout-button-40 mx-1.5 userbutton"
             >
               <i class="fas fa-sign-out-alt md:mr-2"></i>
               <span class="hidden md:inline-block">Logout</span>
@@ -78,8 +68,8 @@
           </div>
         </div>
 
-    <nav class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-20">
-      <button
+    <nav class="bottom-navbar self-end flex flex-row sm:hidden fixed bottom-0 z-10">
+      <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/')"
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/'}"
@@ -96,18 +86,8 @@
         <i class="fas fa-users mr-2"></i>
         <p>Teams</p>
       </button>
-
-      <button v-if="this.state.loggedUser === null"
-              disabled
-              title="Accessible to logged in users"
-              class="mobile-disabled"
-              v-bind:class="{mobileactive: this.state.currentPath === '/teams'}"
-      >
-        <i class="fas fa-users mr-2"></i>
-        <p>Teams</p>
-      </button>
       
-      <button
+      <button v-if="this.state.loggedUser !== null"
            @click="updatePath('/events')"
            class="mobile-button-40"
            v-bind:class="{mobileactive: this.state.currentPath === '/events'}"
@@ -122,7 +102,6 @@
 </template>
 
 <script>
-
 import LoginController from "../controllers/LoginController";
 import router from "../router";
 import store from "../store";
@@ -340,52 +319,6 @@ export default {
 
 .mobileactive {
   color: orange;
-}
-
-.button-disabled {
-  background-color: #25252c;
-  border: 1px solid transparent;
-  border-radius: .75rem;
-  box-sizing: border-box;
-  color: #5b5b5b;
-  cursor: not-allowed;
-  flex: 0 0 auto;
-  font-size: 1.000rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  padding: .40rem 1.2rem;
-  text-align: center;
-  text-decoration: none #6B7280 solid;
-  text-decoration-thickness: auto;
-  transition-duration: .2s;
-  transition-property: background-color,border-color,color,fill,stroke;
-  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: auto;
-}
-
-.mobile-disabled {
-  background-color: #25252c;
-  box-sizing: border-box;
-  color: #5b5b5b;
-  cursor: not-allowed;
-  flex: 0 0 auto;
-  font-size: 1.000rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  padding: .45rem 1.2rem;
-  text-align: center;
-  text-decoration: none #6B7280 solid;
-  text-decoration-thickness: auto;
-  transition-duration: .2s;
-  transition-property: background-color,border-color,color,fill,stroke;
-  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 33.333333%;
 }
 
 .bottom-navbar {

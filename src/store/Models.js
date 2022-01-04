@@ -1,4 +1,4 @@
-import { Model } from '@vuex-orm/core'
+import { Model, use } from '@vuex-orm/core'
 import storage from '../assets/InitialValues.js'
 
 class User extends Model {
@@ -31,20 +31,6 @@ class Team extends Model {
 
 class TeamUser extends Model {
     static entity = 'teamUser'
-
-    static primaryKey = ['team_id', 'user_id']
-
-    static fields () {
-        return {
-            team_id: this.attr(null),
-            user_id: this.attr(null)
-        }
-    }
-}
-
-
-class Request extends Model {
-    static entity = 'requests'
 
     static primaryKey = ['team_id', 'user_id']
 
@@ -97,7 +83,6 @@ function initModels(){
     initUsers();
     initTeams();
     initEvents();
-    initRequests();
 }
 
 
@@ -143,26 +128,10 @@ function initEvents(){
     }
 }
 
-function initRequests(){
-    const requests = storage["requests"];
-    for(let request of requests){
-        let team = Team.query().where('name', request.team).first();
-        let users = usersFromUsernames(request.requesters);
-        for(let user of users){
-            Request.insert({
-                data: {
-                    team_id: team.id,
-                    user_id: user.id
-                }
-            });
-        }
-    }
-}
-
 
 function usersFromUsernames(usernames){
     return User.query().where('username', u => usernames.includes(u)).get();
 }
 
 
-export {User, Team, TeamUser, Event, EventUser, Request, initModels};
+export {User, Team, TeamUser, Event, EventUser, initModels};
