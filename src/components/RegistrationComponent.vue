@@ -109,11 +109,16 @@ export default {
       this.errors.email = !this.input.email;
 
       if (!this.errors.username && !this.errors.password && !this.errors.confirmPassword && !this.errors.email) {
-        this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/');
+        this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/login');
       }
     },
 
     async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    },
+
+    async updatePath(target) {
+      await router.push(target);
       store.commit('setCurrentPath',target);
     },
   },
