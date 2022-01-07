@@ -6,16 +6,16 @@
           Events
         </h1>
         <div v-if="this.isUserLoggedIn()">
-          <input id="showPublic" type="checkbox" v-model="this.input.showPublic" />
-          <label class="mx-2 text-label" for="showPublic">Public</label><br>
-          <input id="showPrivate" type="checkbox" v-model="this.input.showPrivate" checked/>
-          <label class="mx-2 text-label" for="showPrivate">Private</label>
+          <input id="showPublic" title="Events that anyone can join" type="checkbox" v-model="this.input.showPublic" />
+          <label class="mx-2 text-label" title="Events that anyone can join" for="showPublic">Public</label><br>
+          <input id="showPrivate" title="Events of your teams (only team members can join them)" type="checkbox" v-model="this.input.showPrivate" checked/>
+          <label class="mx-2 text-label" title="Events of your teams (only team members can join them)" for="showPrivate">Private</label>
         </div>
         <div v-if="!this.isUserLoggedIn()">
-          <input id="showPublic2" type="checkbox" v-model="this.input.showPublic" checked/>
-          <label class="mx-2 text-label" for="showPublic2">Public</label><br>
-          <input disabled title="Accessible to logged in users" class="cursor-not-allowed" id="showPrivate2" type="checkbox" v-model="this.input.showPrivate" />
-          <label title="Accessible to logged in users" class="mx-2 text-label text-gray-bitdarker" for="showPrivate2">Private</label>
+          <input id="showPublic2" title="Events that anyone can join" type="checkbox" v-model="this.input.showPublic" checked/>
+          <label class="mx-2 text-label" title="Events that anyone can join" for="showPublic2">Public</label><br>
+          <input disabled title="Events of your teams (Accessible to logged in users)" class="cursor-not-allowed" id="showPrivate2" type="checkbox" v-model="this.input.showPrivate" />
+          <label title="Events of your teams (Accessible to logged in users)" class="mx-2 text-label text-gray-bitdarker" for="showPrivate2">Private</label>
 
         </div>
         <router-link v-if="this.isUserLoggedIn()"
