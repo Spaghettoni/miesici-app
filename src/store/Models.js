@@ -135,7 +135,7 @@ function initEvents(){
               name: event.name,
               place: event.place,
               sport: event.sport,
-              team_id: foundTeam.id,
+              team_id: foundTeam ? foundTeam.id : null,
               datetime: event.datetime,
               attendees: users
             }

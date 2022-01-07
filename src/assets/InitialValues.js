@@ -210,7 +210,43 @@ const storage = {
             "team": "Experti",
             "datetime": "2022-02-06 14:40",
             "attendees": [],
-        }
+        },
+
+        {
+            "name": "Tenisova exhibicia",
+            "place": "Areal Jana Popluhara",
+            "sport": "Tennis",
+            "team": null,
+            "datetime": "2022-04-06 12:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Basket pre kazdeho",
+            "place": "FMFI sports hall",
+            "sport": "Basketball",
+            "team": null,
+            "datetime": "2022-03-10 11:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Prisny volejbal",
+            "place": "Areal Jana Popluhara",
+            "sport": "Volleyball",
+            "team": null,
+            "datetime": "2022-02-05 8:00",
+            "attendees": [],
+        },
+
+        {
+            "name": "Asterix a olympijske hry",
+            "place": "Tehelne pole",
+            "sport": "Javelin throw",
+            "team": null,
+            "datetime": "2022-02-05 8:00",
+            "attendees": [],
+        },
     ],
 
     "requests": [
