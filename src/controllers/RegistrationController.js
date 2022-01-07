@@ -30,14 +30,14 @@ const RegistrationController = (() => {
         }
 
         store.commit('setCurrentPath', targetPath);
-        await router.push(targetPath);  
+        await router.push(targetPath);
 
         User.insert({
             data: {
                 username: username,
                 password: password,
                 email: email
-              }
+            }
         })
     }
 

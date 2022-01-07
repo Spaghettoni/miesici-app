@@ -20,6 +20,9 @@ const LoginController = (() => {
         }
 
         let foundUser = foundUsers[0];
+        store.commit('clearGuestUser');
+        await localStorage.setItem('guestUser', JSON.stringify(null));
+
         store.commit('setLoggedUser', foundUser);
         await localStorage.setItem('loggedUser', JSON.stringify(foundUser));
         store.commit('setCurrentPath', targetPath);

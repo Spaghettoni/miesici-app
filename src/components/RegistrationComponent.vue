@@ -80,6 +80,7 @@
 import RegistrationController from "../controllers/RegistrationController";
 import router from "../router";
 import store from "../store";
+import LoginController from "../controllers/LoginController";
 
 export default {
   name: 'RegistrationComponent',
@@ -102,14 +103,16 @@ export default {
     }
   },
   methods: {
-    checkForm() {
+    async checkForm() {
       this.errors.username = !this.input.username;
       this.errors.password = !this.input.password;
       this.errors.confirmPassword = !this.input.confirmPassword;
       this.errors.email = !this.input.email;
 
       if (!this.errors.username && !this.errors.password && !this.errors.confirmPassword && !this.errors.email) {
-        this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/');
+        console.log('registering user with:', this.input.username, this.input.password);
+        await this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/');
+        await LoginController.login(this.input.username, this.input.password, '/');
       }
     },
 
