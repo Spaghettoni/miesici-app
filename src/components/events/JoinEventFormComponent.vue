@@ -9,7 +9,7 @@
       </div>
       <h2 class="text-3xl font-bold sm:mt-10 sm:max-w-md text-center">You are joining public event without being logged
         in!</h2>
-      <h2 class="text-xl font-semibold mt-5 text-center">Please enter your name below</h2>
+      <p class="text-xl font-semibold mt-5 text-center">Please enter your name and email below. Event information will be sent to the entered email.</p>
       <div class="mt-6">
         <label>Enter your name:</label>
         <input type="text"
@@ -47,6 +47,7 @@ import RegistrationController from "../../controllers/RegistrationController";
 import UsersController from "../../controllers/UsersController";
 import EventsController from "../../controllers/EventsController";
 import LoginController from "../../controllers/LoginController";
+import router from "../../router";
 
 export default {
   name: "JoinEventFormComponent",
