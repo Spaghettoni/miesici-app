@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="mb-2" @click="this.toggleInfo">
+    <div class="mb-2" @click="this.toggleInfo" >
       <div class="p-0.5 flex">
         <div class="flex flex-col ml-5 relative">
           <time class="text-info italic">
@@ -67,12 +67,15 @@
       </div>
     </div>
 
-    <div v-if="this.open">
-      <event-info :eventId=this.eventId>
+    <div :class="[this.open ? 'block' : 'hidden']"
+    >
+      <event-info :eventId=this.eventId
+                  ref="eventInfo"
+      >
       </event-info>
     </div>
 
-    <div class="flex w-full">
+    <div class="flex w-full z-50">
       <button type="button"
               class="w-full py-1 text-white text-2xl rounded-b-xl border-black bg-brightred
                               hover:shadow-xl hover:text-xl z-10"
@@ -141,7 +144,8 @@ export default {
       const currentUser = LoginController.getCurrentUser();
       if (currentUser !== null) {
         EventsController.joinEvent(this.eventId);
-        this.toggleInfo();
+        this.loadEvent();
+        this.$refs.eventInfo.loadEvent();
       } else {
         this.$emit('openForm', this.eventId);
       }
@@ -149,7 +153,12 @@ export default {
 
     leave() {
       EventsController.leaveEvent(this.eventId);
-      this.toggleInfo();
+      this.loadEvent();
+      this.$refs.eventInfo.loadEvent();
+    },
+
+    reloadEventInfo() {
+      this.$refs.eventInfo.loadEvent();
     },
 
     toggleInfo() {

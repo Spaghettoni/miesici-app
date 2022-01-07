@@ -6,7 +6,7 @@
           Events
         </h1>
         <div v-if="this.isUserLoggedIn()">
-          <input id="showPublic" title="Events that anyone can join" type="checkbox" v-model="this.input.showPublic" />
+          <input id="showPublic" title="Events that anyone can join" type="checkbox" v-model="this.input.showPublic" size="20"/>
           <label class="mx-2 text-label" title="Events that anyone can join" for="showPublic">Public</label><br>
           <input id="showPrivate" title="Events of your teams (only team members can join them)" type="checkbox" v-model="this.input.showPrivate" checked/>
           <label class="mx-2 text-label" title="Events of your teams (only team members can join them)" for="showPrivate">Private</label>
@@ -72,6 +72,7 @@
                  v-bind:key=event v-for="event in this.events"
         >
           <event-component2
+              :ref="setItemRef"
               @openForm="openForm($event)"
               :teamId=event.team_id
               :eventId=event.id
@@ -106,11 +107,12 @@ export default {
     return {
       input: {
         showPrivate: this.isUserLoggedIn(),
-        showPublic: this.isUserLoggedIn() === false,
+        showPublic: true,
         showDetail: true,
       },
       showForm: false,
       eventId: '',
+      itemRefs: [],
     }
   },
 
@@ -129,6 +131,22 @@ export default {
   },
 
   methods: {
+    setItemRef(el) {
+      if (el) {
+        this.itemRefs.push(el)
+      }
+    },
+
+    getRef(eventId) {
+      let res = null;
+      this.itemRefs.forEach(item => {
+        if (item.eventId === eventId) {
+          res = item;
+        }
+      })
+      return res;
+    },
+
     goBack() {
       router.back()
     },
@@ -160,10 +178,11 @@ export default {
 
     closeForm() {
       this.showForm = false;
+      const eventComponent = this.getRef(this.eventId);
+      eventComponent.reloadEventInfo();
     }
   },
   mounted() {
-    //this.events = EventsController.getUsersEvents();
     this.updateActive('/events');
   }
 }
