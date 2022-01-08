@@ -2,13 +2,13 @@
   <article class="w-full flex flex-col justify-center bg-gray-superlight">
 
     <div v-if="this.event.note !== null && this.event.note !== ''" class="mt-2 px-3 py-1 w-full">
-      <p class="text-info italic">
+      <p class="text-info text-center">
         <i class="fas fa-sticky-note"></i>
-        {{ this.event.note}}
+        <span class="ml-1"> {{ this.event.note}} </span>
       </p>
     </div>
 
-    <div class="mt-5 px-4 py-1 flex flex-col w-full max-w-3xl sm:flex-row justify-center justify-evenly">
+    <div class="mt-8 px-4 py-1 flex flex-col w-full max-w-3xl sm:flex-row justify-center justify-evenly">
       <div>
 
         <div class="flex flex-row">
