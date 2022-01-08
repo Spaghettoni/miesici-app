@@ -77,6 +77,16 @@
         </span>
       </div>
 
+
+      <div class="mt-6 form-inputs flex flex-col">
+        <label class="text-2xl" for="place">Note</label>
+        <textarea type="text" id="note" name="note" rows="4"
+                  v-model="input.note"
+               placeholder="short event description or event note"
+               class="px-4 py-2 text-4xl border-2 border-black rounded"
+        />
+      </div>
+
       <div class="mt-6 form-inputs flex flex-col">
         <p class="text-2xl">Select who can see and join your event:</p>
         <div class="flex flex-col sm:flex-row">
@@ -136,6 +146,7 @@ export default {
         name: '',
         place: '',
         sport: '',
+        note: '',
         datetime: '',
         team: '',
         privacy: 'public',
@@ -169,11 +180,14 @@ export default {
       }
       const loggedUser = store.state.loggedUser;
 
+      console.log(this.input.note);
+
       Event.insert({
         data: {
           name: this.input.name,
           place: this.input.place,
           sport: this.input.sport,
+          note: this.input.note,
           team_id: this.input.selectedTeamId,
           datetime: this.input.datetime.split("T").join(" "),
           attendees: [loggedUser]

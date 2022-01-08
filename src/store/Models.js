@@ -66,6 +66,7 @@ class Event extends Model {
             name: this.attr(''),
             place: this.attr(''),
             sport: this.attr(''),
+            note: this.attr(''),
             team_id: this.attr(null),
             datetime: this.attr(null),
             attendees: this.belongsToMany(User, EventUser, 'event_id', 'user_id')
@@ -135,6 +136,7 @@ function initEvents(){
               name: event.name,
               place: event.place,
               sport: event.sport,
+                note: event.note,
               team_id: foundTeam ? foundTeam.id : null,
               datetime: event.datetime,
               attendees: users

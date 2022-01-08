@@ -119,6 +119,7 @@ export default {
     name: String,
     team: String,
     sport: String,
+    note: String,
     place: String,
     datetime: String,
     private: Boolean,
@@ -173,6 +174,7 @@ export default {
           name: "",
           place: "",
           sport: "",
+          note: "",
           team_id: "",
           datetime: "",
           attendees: []
