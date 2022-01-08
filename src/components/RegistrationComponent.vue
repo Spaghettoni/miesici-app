@@ -112,7 +112,7 @@ export default {
       if (!this.errors.username && !this.errors.password && !this.errors.confirmPassword && !this.errors.email) {
         console.log('registering user with:', this.input.username, this.input.password);
         await this.register(this.input.username, this.input.password, this.input.confirmPassword, this.input.email, '/');
-        await LoginController.login(this.input.username, this.input.password, '/');
+        await LoginController.login(this.input.username, this.input.password, '/events');
       }
     },
 
