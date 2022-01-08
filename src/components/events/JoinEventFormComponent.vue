@@ -1,5 +1,5 @@
 <template>
-  <section class="overlay absolute w-full h-full top-0 left-0 bg-black flex justify-center items-center">
+  <section class="overlay fixed w-full h-full top-0 left-0 bg-black flex justify-center items-center">
     <div
         class="relative sm:rounded-2xl bg-white min-w-min w-full h-full pb-10 px-10 sm:w-1/2 sm:h-auto border flex flex-col justify-center sm:justify-start items-center">
       <div class="absolute top-4 right-4 cursor-pointer p-1 "
