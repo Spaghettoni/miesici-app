@@ -62,15 +62,15 @@
 
       <div class="mt-6 form-inputs flex flex-col">
         <label class="text-2xl" for="datetime">Date</label>
-        <div class="border-2 border-black rounded w-full">
+<!--        <div class="border-2 border-black rounded w-full">-->
           <input type="datetime-local" id="datetime" name="datetime"
                  v-model="input.datetime"
                  placeholder="datetime"
                  required
-                 class="px-4 py-2 text-3xl flex appearance-none bg-white rounded"
+                 class="px-4 py-2 text-3xl flex appearance-none bg-white rounded border-2"
           />
 
-        </div>
+<!--        </div>-->
         <span class="text-brightred font-semibold" :class="[this.errors.datetime ? 'block' : 'hidden']">
           <i class="fas fa-exclamation-triangle"></i>
           Please fill in event date!

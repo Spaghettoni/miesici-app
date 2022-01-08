@@ -1,7 +1,15 @@
 <template>
   <form class="w-full flex justify-center">
     <div class="mt-10 px-4 flex flex-col w-full max-w-3xl">
-      <back-button></back-button>
+
+      <router-link
+          class="mb-6 cursor-pointer font-semibold hover:text-white hover:bg-black px-5 py-3 border max-w-min rounded-xl flex items-center"
+          to="/events"
+          @click="updatePath('/teams')"
+      >
+        <i class="fas fa-solid fa-arrow-left mr-2"></i> Teams
+      </router-link>
+
       <div class="flex justify-between items-center">
         <h1 class="mb-4 text-heading">
           Create new team
@@ -81,6 +89,10 @@ export default {
       }
     },
     async updateActive(target) {
+      store.commit('setCurrentPath',target);
+    },
+    async updatePath(target) {
+      await router.push(target);
       store.commit('setCurrentPath',target);
     },
   },
